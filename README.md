@@ -41,8 +41,9 @@ then open <http://127.0.0.1:8765/>.
   Keep the caveats next to them.
 - Do not guess what the name "Transient" means; the project keeps that open.
 - Hardware is described only roughly on purpose. Do not add personal or device-specific details.
-- `404.html` uses relative links, so on a static host it only renders fully at the site root; make its links absolute
-  once the final domain or sub-path is known.
+- `404.html` uses root-relative links (`/css/site.css`), because a 404 can be served at any path; it only renders correctly when the site is served from the domain root (`https://transientai.org/`).
+- Domain: `CNAME` holds `transientai.org`. `<link rel="canonical">`, `og:` tags, `sitemap.xml`, `feed.xml` and `robots.txt` use that absolute URL.
+- `assets/og-image.png` (1200x630) is the social preview; it was rendered from an SVG with the brand fonts and is not regenerated automatically.
 
 ## Licensing
 
@@ -53,7 +54,6 @@ then open <http://127.0.0.1:8765/>.
 - **Fonts**: SIL OFL 1.1 (`fonts/`).
 - The **Transient** project's code is a separate repository under AGPL-3.0-or-later.
 
-## Open decisions
+## Hosting
 
-- Hosting and domain (GitHub Pages from this repo is the simplest: serve the repository root).
-- Social-preview image and absolute `og:` URLs, once the domain is known. An RSS feed likewise needs absolute URLs.
+GitHub Pages, deploying `main` from the repository root, on the custom domain `transientai.org` (DNS settings are in the repository's Pages settings and at the registrar or DNS provider).
