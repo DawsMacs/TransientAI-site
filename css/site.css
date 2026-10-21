@@ -156,7 +156,7 @@ pre:hover .copy-btn, .copy-btn:focus-visible { opacity: 1; }
 }
 
 /* ---------- hero ---------- */
-.hero { position: relative; overflow: hidden; padding: clamp(3rem, 9vw, 7rem) 0 clamp(2.5rem, 6vw, 4.5rem); }
+.hero { position: relative; overflow: hidden; padding: clamp(2rem, 4.5vw, 3.75rem) 0 clamp(2.5rem, 6vw, 4.5rem); }
 .hero::before {
   content: ""; position: absolute; inset: -20% -10% auto 35%; height: 120%;
   background: radial-gradient(closest-side, var(--glow), transparent 70%); pointer-events: none;
