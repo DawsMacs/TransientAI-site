@@ -44,8 +44,16 @@ then open <http://127.0.0.1:8765/>.
 - `404.html` uses relative links, so on a static host it only renders fully at the site root; make its links absolute
   once the final domain or sub-path is known.
 
+## Licensing
+
+- **Code** (HTML, CSS, JS): MIT, see `LICENSE`.
+- **Text and original blog art**: CC BY 4.0, see `LICENSE-content`.
+- **The TransientAI mark and wordmark, and the names "TransientAI" and "Transient"**: not licensed, all rights reserved.
+  Quote and link freely; do not present your work as TransientAI's. The blog art contains the mark; remove or replace it if you adapt the art.
+- **Fonts**: SIL OFL 1.1 (`fonts/`).
+- The **Transient** project's code is a separate repository under AGPL-3.0-or-later.
+
 ## Open decisions
 
 - Hosting and domain (GitHub Pages from this repo is the simplest: serve the repository root).
-- Licence for the site's text and design (the Transient code is AGPL-3.0-or-later; the site currently says only "© 2026 Daws Macs").
 - Social-preview image and absolute `og:` URLs, once the domain is known. An RSS feed likewise needs absolute URLs.
