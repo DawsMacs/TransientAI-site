@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How we judge results · TransientAI</title>
+<meta name="description" content="How Transient's results are judged: wrong is reported apart from refused, adversarial batteries are part of the tests, and every mistake so far is listed.">
+<meta property="og:title" content="How we judge results · TransientAI">
+<meta property="og:description" content="How Transient's results are judged: wrong is reported apart from refused, adversarial batteries are part of the tests, and every mistake so far is listed.">
+<meta property="og:type" content="website">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/Lexend.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/JosefinSans.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script>document.documentElement.classList.add("js")</script>
+<script src="js/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap bar">
+<a class="brand" href="index.html"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">TransientAI</span></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="baby.html">Project</a><a href="research.html" aria-current="page">Research</a><a href="docs.html">Docs</a><a href="blog/index.html">Blog</a><a href="progress.html">Progress</a><a href="about.html">About</a><a class="gh" href="https://github.com/DawsMacs/Transient" rel="noopener">GitHub ↗</a></nav>
+</div>
+</header>
+<main id="main">
+
+<section class="page-head">
+<div class="wrap">
+<p class="crumbs"><a href="research.html">Research</a> / Method</p>
+<h1>How we judge results, and what we got wrong</h1>
+<p class="lead">A system that bluffs can look excellent on accuracy alone. So we report what matters first: when it was <em>wrong</em>, separately from when it declined to answer.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<div class="prose">
+<h2>The rules we hold ourselves to</h2>
+<ol>
+<li><strong>WRONG is reported apart from refused.</strong> A refusal is an acceptable answer; a stated falsehood is not. The CI check fails the build if the scorecard's WRONG column rises above 0.0%.</li>
+<li><strong>Never silently wrong.</strong> A guess may be wrong, if it is labelled as a guess and its track record is stated. A fact stated and false is the failure that matters most.</li>
+<li><strong>Adversarial questions after every new capability.</strong> We build the harder test <em>before</em> the feature where we can, and keep batteries of must-refuse questions in the test suite.</li>
+<li><strong>Deceptive cases reported apart.</strong> Kinds of lesson built to look like one rule and secretly change behaviour are never folded into the headline.</li>
+<li><strong>Estimates are labelled as estimates.</strong> Energy is counted and priced, not metered, until it is metered.</li>
+<li><strong>Mistakes and rejected hypotheses are written down as they happen</strong>, in the repository's experiment log.</li>
+</ol>
+
+<h2>Standing caveats</h2>
+<ul>
+<li>The lessons are synthetic and tidy: made-up words, small numbers, a handful of phrasings.</li>
+<li>The mechanisms, the expression language and the thresholds are ours, chosen by hand. The system selects among them; it did not discover them.</li>
+<li>The experiments use a simulated teacher that is always right.</li>
+<li>"0% wrong" holds on in-style questions plus our must-refuse batteries. It is a spot check, not a proof.</li>
+<li>Some constants rest on thin evidence. The 0.8 floor of the reliability bar rests on one 72% failure and six clean seeds.</li>
+</ul>
+</div>
+
+<div class="prose">
+<h2 id="mistakes">A list of mistakes</h2>
+<p>Each of these was found by looking at the cases behind a number, not by reasoning about it. Most of our first explanations were wrong; the experiment log says so.</p>
+</div>
+
+<div class="table-wrap reveal">
+<table>
+<thead><tr><th>What went wrong</th><th>How it was found</th><th>Outcome</th></tr></thead>
+<tbody>
+<tr><td><strong>The same ambiguity bit four times.</strong> "how far apart", "minus" and "ten minus n" agree on every lesson taught, so "three minus five" was answered as a distance.</td><td>Asking adversarial questions the scorecard had not asked.</td><td>Ambiguity is now defined by <em>behaviour</em> (expressions that differ somewhere), not by taught examples; operand order is kept; merges are checked per group.</td></tr>
+<tr><td><strong>A bluff the scorecard missed.</strong> "what is the code for five" was answered with the code for "one".</td><td>Asking for every code from zero to ten.</td><td>The word that fills the blank must now match.</td></tr>
+<tr><td><strong>Inflated cost numbers.</strong> A lesson's identity was its sorted words, so "five minus two" and "two minus five" were the same lesson; 39 of 60 lessons were wrongly "corrected", costing 93 ms each.</td><td>Counting what was kept versus skipped.</td><td>Identity is words in order; the same lessons cost 0.18 ms.</td></tr>
+<tr><td><strong>A coincidence explained a tens digit</strong> (60 wrong answers), and <strong>primality was "explained" by chance</strong> (a multiple-comparisons problem: search enough expressions and one fits).</td><td>The invention battery's harder kinds.</td><td>A uniqueness rule, and a check that the lessons carry more bits than the search spent.</td></tr>
+<tr><td><strong>A rule that changes regime outside what was taught</strong> (a sum that caps or wraps) is exact on all lessons and answered confidently wrong: 53 wrong answers per seed.</td><td>Building the deceptive kinds before building the feature.</td><td>Careful mode, later the default, plus labelled guesses.</td></tr>
+<tr><td><strong>A box-shaped "reach"</strong> let two confirmed edges vouch for an unchecked corner: 4 wrong facts of 9,309.</td><td>The calibration run, listing the wrong facts.</td><td>The reach is now a staircase. It costs some coverage (never-taught 96.9% to 94.9% at 60 units), measured and stated.</td></tr>
+<tr><td><strong>A correction widened the reach of the rule it had just contradicted.</strong> Two wrong facts after one correction.</td><td>The baseline of the correction experiment.</td><td>Where a rule is refuted, what the teacher said wins.</td></tr>
+<tr><td><strong>A cross-validation flaw</strong> let memory peek at swapped twins of commutative facts.</td><td>While building the scale test.</td><td>Facts that share a bag of words now stay in one fold.</td></tr>
+<tr><td><strong>A library rotation bug.</strong> The function library held 8 entries for about 14 program units; each refit evicted another, and entries grew into nested equivalents.</td><td>Logging every library addition and eviction after a third round made things worse.</td><td>A unit contributes a given behaviour once. My first guess at the cause was a different, real, smaller bug.</td></tr>
+<tr><td><strong>Flipping the default made a battery read "0 of 32 worked out"</strong> with no failure anywhere: it graded beyond-range questions that careful mode now refuses.</td><td>A number that looked wrong.</td><td>The capability batteries now run permissive explicitly and say so.</td></tr>
+<tr><td><strong>A commit was pushed with a failing test</strong>, because a command chain did not gate on the test result.</td><td>The next run.</td><td>Commits are now gated on the tests passing.</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="prose">
+<p>Dead ends are recorded too. For example, the search budget cannot be cut by watching partial progress, because doomed and deep searches look the same; and an early version of the rule-versus-memory cross-check, which treated a neighbouring lesson as a witness, cut the clean scorecard's never-taught score from 95.1% to 75.6% before the scorecard caught it. The complete record, with the numbers, is the <a href="https://github.com/DawsMacs/Transient/blob/main/baby/README.md" rel="noopener">experiment log</a>.</p>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-grid">
+<div>
+<div class="foot-brand"><img class="invertable" src="assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">TransientAI</span></div>
+<p class="small">An independent research effort, currently one person, behind the open Transient project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
+</div>
+<div>
+<h4>Project</h4>
+<ul>
+<li><a href="baby.html">Transient &amp; baby</a></li>
+<li><a href="docs.html">Documentation</a></li>
+<li><a href="progress.html">Progress &amp; roadmap</a></li>
+<li><a href="https://github.com/DawsMacs/Transient" rel="noopener">Source on GitHub ↗</a></li>
+</ul>
+</div>
+<div>
+<h4>Research</h4>
+<ul>
+<li><a href="adaptive-learning.html">Adaptive learning</a></li>
+<li><a href="efficiency.html">Efficiency &amp; joules</a></li>
+<li><a href="why-rust.html">Why Rust</a></li>
+<li><a href="method.html">How we judge results</a></li>
+<li><a href="hardware.html">Hardware</a></li>
+</ul>
+</div>
+<div>
+<h4>TransientAI</h4>
+<ul>
+<li><a href="about.html">About</a></li>
+<li><a href="blog/index.html">Blog</a></li>
+<li><a href="docs.html#contribute">Contribute</a></li>
+<li><a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">Issues ↗</a></li>
+</ul>
+</div>
+</div>
+<div class="foot-note">
+<span>© 2026 Daws Macs. The Transient code is AGPL-3.0-or-later; see the repository.</span>
+<span>Static HTML. No trackers, no cookies, no third-party requests.</span>
+</div>
+</div>
+</footer>
+</body>
+</html>

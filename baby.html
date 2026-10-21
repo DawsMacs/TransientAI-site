@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transient and baby · TransientAI</title>
+<meta name="description" content="Transient is the project; baby is its first working prototype: a small Rust system that works out how to learn each kind of lesson, says how it knew, and refuses when it should.">
+<meta property="og:title" content="Transient and baby · TransientAI">
+<meta property="og:description" content="Transient is the project; baby is its first working prototype: a small Rust system that works out how to learn each kind of lesson, says how it knew, and refuses when it should.">
+<meta property="og:type" content="website">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/Lexend.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/JosefinSans.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script>document.documentElement.classList.add("js")</script>
+<script src="js/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap bar">
+<a class="brand" href="index.html"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">TransientAI</span></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="baby.html" aria-current="page">Project</a><a href="research.html">Research</a><a href="docs.html">Docs</a><a href="blog/index.html">Blog</a><a href="progress.html">Progress</a><a href="about.html">About</a><a class="gh" href="https://github.com/DawsMacs/Transient" rel="noopener">GitHub ↗</a></nav>
+</div>
+</header>
+<main id="main">
+
+<section class="page-head">
+<div class="wrap">
+<p class="eyebrow">The project</p>
+<h1>Transient, and its first working piece: baby</h1>
+<p class="lead">Transient is an experiment in building a light, adaptive learning system that runs on ordinary hardware. <code>baby</code> is the prototype we have so far: about 11,000 lines of Rust with no dependencies. It is a research prototype tested on a synthetic curriculum. It is not a language model, and makes no claim to be one yet.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<div class="prose">
+<h2>What it does</h2>
+<p>You teach <code>baby</code> <em>lessons</em>: question and answer pairs, such as "what is two plus three → five" or "the capital of peru → lima". Lessons come in groups called <em>units</em> (sums, capitals, "which is bigger"). A teacher can group them, or <code>baby discover</code> can find the units itself from an unlabelled heap.</p>
+<p>The interesting part is that nobody tells it <em>how</em> to learn a unit. For each one it tries several mechanisms on facts it has held back, and keeps whichever generalises best, preferring the cheaper one on a tie.</p>
+</div>
+
+<div class="table-wrap reveal" style="margin-top:1.6rem">
+<table>
+<thead><tr><th>Mechanism</th><th>What it does</th><th>Typical use</th></tr></thead>
+<tbody>
+<tr><td><code>remember</code></td><td>Stores the lessons and answers by weighted similarity, using an inverted index. Voting among matching lessons; a tie refuses.</td><td>Facts: capitals, colours, codes</td></tr>
+<tr><td><code>rule</code></td><td>Exact (ridge) fit of a linear combination of the quantities in the question, with outlier-robust fitting.</td><td>Sums, differences, doubling, halving</td></tr>
+<tr><td><code>select</code></td><td>Picks the larger or the smaller of two numbers.</td><td>Comparisons</td></tr>
+<tr><td><code>program</code></td><td>Searches small expressions (<code>+ − × max min apart div mod half</code>, constants, up to 7 pieces) and keeps the smallest ones that agree.</td><td>Multiplication, "how far apart", digit tricks</td></tr>
+<tr><td><code>network</code></td><td>A small bag-of-words neural net.</td><td>Rarely needed</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="prose">
+<h2>How a question is answered</h2>
+</div>
+<div class="flow reveal">
+<div class="step"><b>1. Question</b><span>"how far apart are two and nine"</span></div>
+<div class="arrow">→</div>
+<div class="step"><b>2. Route</b><span>A precomputed table scores how telling each word's <em>shape</em> is for each unit. Tens of operations, not a scan of every lesson.</span></div>
+<div class="arrow">→</div>
+<div class="step"><b>3. Mechanism</b><span>The unit's chosen mechanism answers, or declines.</span></div>
+<div class="arrow">→</div>
+<div class="step"><b>4. Reply</b><span>An answer with how it knew, a <em>labelled guess</em>, or a refusal with the reason.</span></div>
+</div>
+
+<div class="prose">
+<h2>Every answer says how it knew</h2>
+<p>A reply is never a bare value. It says whether the answer was worked out by an expression it built, by a fitted rule, or simply recalled. A refusal says why: a word it has never met, a kind of question it does not recognise, a unit it can only memorise, or a negative result it cannot state.</p>
+
+<h2>Careful by default, and still willing to guess</h2>
+<p>A rule that is exact on everything it was taught can still change behaviour outside that range (a sum that saturates, a sum that wraps). Nothing in the lessons can reveal that. So, since 2026-10-21, <code>baby</code> states a value <em>as fact</em> only inside the range it was taught or has had checked. Beyond that it offers a <strong>labelled guess</strong> ("probably seven") and keeps a record of how often its guesses at each distance have turned out right. Where they have been wrong more often than right, it stops guessing.</p>
+<p>A correction from the teacher ends the guessing in the region it contradicted. The goal is the rule we call <em>never silently wrong</em>: a guess may be wrong, because being wrong and updating is how learning works, but a wrong answer must never be presented as a fact.</p>
+
+<h2>It keeps learning after school</h2>
+<ul>
+<li><strong>A surprise gate</strong> skips lessons it can already work out: nothing is learned or stored.</li>
+<li><strong>The pen</strong> holds lessons that fit no unit; when enough gather, they open a new unit on their own.</li>
+<li><strong><code>baby sleep</code></strong> merges units that follow one rule, splits units that stopped following one, and can forget lessons that are fully explained (<code>--compact</code>).</li>
+<li><strong><code>baby wonder</code></strong> lets it ask: where two explanations fit the lessons equally well, it names the number that would tell them apart.</li>
+<li><strong>It measures its own noise</strong> (the share of wrong lessons in its data) and sets how reliable a mechanism must be before it may answer.</li>
+</ul>
+</div>
+
+<h2>What it chose to do with 13 units</h2>
+<p class="muted">Output of <code>baby school</code> on the synthetic curriculum: for each unit, the mechanism it picked and its score on held-back facts.</p>
+<div class="table-wrap reveal">
+<table>
+<thead><tr><th>Unit</th><th>Learns by</th><th class="num">Held back</th><th>Note</th></tr></thead>
+<tbody>
+<tr><td><code>sum</code></td><td>rule</td><td class="num">100%</td><td></td></tr>
+<tr><td><code>minus</code></td><td>rule</td><td class="num">100%</td><td></td></tr>
+<tr><td><code>after</code></td><td>rule</td><td class="num">100%</td><td></td></tr>
+<tr><td><code>double</code></td><td>rule</td><td class="num">100%</td><td></td></tr>
+<tr><td><code>half</code></td><td>rule</td><td class="num">100%</td><td></td></tr>
+<tr><td><code>compare</code></td><td>select</td><td class="num">100%</td><td></td></tr>
+<tr><td><code>times</code></td><td>program</td><td class="num">100%</td><td>built <code>first × second</code></td></tr>
+<tr><td><code>apart</code></td><td>program</td><td class="num">100%</td><td>built <code>first apart second</code></td></tr>
+<tr><td><code>capital</code></td><td>remember</td><td class="num">0%</td><td>memorise only: nothing here can be worked out</td></tr>
+<tr><td><code>color</code></td><td>remember</td><td class="num">0%</td><td>memorise only</td></tr>
+<tr><td><code>sound</code></td><td>remember</td><td class="num">0%</td><td>memorise only</td></tr>
+<tr><td><code>opposite</code></td><td>remember</td><td class="num">0%</td><td>memorise only</td></tr>
+<tr><td><code>code</code></td><td>remember</td><td class="num">11%</td><td>memorise only (arbitrary codes)</td></tr>
+</tbody>
+</table>
+</div>
+<p class="small muted">"Held back" is the share of facts held out of the fitting that the chosen mechanism then got right. For memorise-only units it is low by design: you cannot work out an arbitrary capital from other capitals, so it says so instead of bluffing.</p>
+
+<h2>The scorecard</h2>
+<p class="muted">Share of questions, current default (careful) mode, from <code>baby school</code>. "Of the refused: a guess" counts the refusals that came with a labelled guess, and whether that guess was right.</p>
+<div class="table-wrap reveal">
+<table>
+<thead><tr><th>Questions</th><th class="num">Right</th><th class="num">Refused</th><th class="num">WRONG</th><th class="num">Refused, guess right</th><th class="num">Refused, guess wrong</th></tr></thead>
+<tbody>
+<tr><td>taught</td><td class="num ok">100.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td></tr>
+<tr><td>reworded</td><td class="num ok">100.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td><td class="num">0.0%</td></tr>
+<tr><td>never taught</td><td class="num ok">90.2%</td><td class="num">9.8%</td><td class="num">0.0%</td><td class="num">4.9%</td><td class="num">0.0%</td></tr>
+<tr><td>beyond the taught range</td><td class="num">0.0%</td><td class="num">100.0%</td><td class="num">0.0%</td><td class="num">100.0%</td><td class="num">0.0%</td></tr>
+</tbody>
+</table>
+</div>
+<div class="callout caveat">
+<p><strong>Read this with its caveats.</strong> The lessons are synthetic and tidy (a handful of phrasings, small numbers). "0% wrong" is a spot check on in-style questions plus hand-written batteries of questions that must be refused. It is not a proof, and every harder test we have built has found a new way for it to fail, which we then fixed and wrote down. See <a href="method.html">how we judge results</a>.</p>
+</div>
+
+<div class="prose">
+<h2>Limits we state plainly</h2>
+<ul>
+<li>The mechanisms, the expression language, the number line and the thresholds are our design choices. <code>baby</code> selects and fits among them; "invention" here means building expressions and vocabulary, not a new kind of learner.</li>
+<li>It has not yet been run on real text, on millions of lessons, or at the quality of today's language models. Those are the open questions the roadmap exists to answer.</li>
+<li>The experiments use a simulated teacher who is always right. A real teacher is sometimes wrong.</li>
+</ul>
+
+<h2>Try it</h2>
+<p>You need a stable Rust toolchain and nothing else; it builds offline.</p>
+<pre data-copy><code>git clone https://github.com/DawsMacs/Transient.git
+cd Transient
+cargo build --release --offline
+./target/release/baby school
+./target/release/baby ask "how far apart are two and nine"</code></pre>
+<p>More in the <a href="docs.html">documentation</a>, and the full experiment log, newest first, is the repository's <a href="https://github.com/DawsMacs/Transient/blob/main/baby/README.md" rel="noopener">baby/README.md</a>.</p>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-grid">
+<div>
+<div class="foot-brand"><img class="invertable" src="assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">TransientAI</span></div>
+<p class="small">An independent research effort, currently one person, behind the open Transient project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
+</div>
+<div>
+<h4>Project</h4>
+<ul>
+<li><a href="baby.html">Transient &amp; baby</a></li>
+<li><a href="docs.html">Documentation</a></li>
+<li><a href="progress.html">Progress &amp; roadmap</a></li>
+<li><a href="https://github.com/DawsMacs/Transient" rel="noopener">Source on GitHub ↗</a></li>
+</ul>
+</div>
+<div>
+<h4>Research</h4>
+<ul>
+<li><a href="adaptive-learning.html">Adaptive learning</a></li>
+<li><a href="efficiency.html">Efficiency &amp; joules</a></li>
+<li><a href="why-rust.html">Why Rust</a></li>
+<li><a href="method.html">How we judge results</a></li>
+<li><a href="hardware.html">Hardware</a></li>
+</ul>
+</div>
+<div>
+<h4>TransientAI</h4>
+<ul>
+<li><a href="about.html">About</a></li>
+<li><a href="blog/index.html">Blog</a></li>
+<li><a href="docs.html#contribute">Contribute</a></li>
+<li><a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">Issues ↗</a></li>
+</ul>
+</div>
+</div>
+<div class="foot-note">
+<span>© 2026 Daws Macs. The Transient code is AGPL-3.0-or-later; see the repository.</span>
+<span>Static HTML. No trackers, no cookies, no third-party requests.</span>
+</div>
+</div>
+</footer>
+</body>
+</html>

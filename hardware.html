@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hardware · TransientAI</title>
+<meta name="description" content="A rough description of the ordinary machine Transient's experiments run on, how we measure cost on it, and what hardware we plan to add.">
+<meta property="og:title" content="Hardware · TransientAI">
+<meta property="og:description" content="A rough description of the ordinary machine Transient's experiments run on, how we measure cost on it, and what hardware we plan to add.">
+<meta property="og:type" content="website">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/Lexend.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/JosefinSans.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script>document.documentElement.classList.add("js")</script>
+<script src="js/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap bar">
+<a class="brand" href="index.html"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">TransientAI</span></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="baby.html">Project</a><a href="research.html" aria-current="page">Research</a><a href="docs.html">Docs</a><a href="blog/index.html">Blog</a><a href="progress.html">Progress</a><a href="about.html">About</a><a class="gh" href="https://github.com/DawsMacs/Transient" rel="noopener">GitHub ↗</a></nav>
+</div>
+</header>
+<main id="main">
+
+<section class="page-head">
+<div class="wrap">
+<p class="crumbs"><a href="research.html">Research</a> / Hardware</p>
+<h1>The hardware behind the experiments</h1>
+<p class="lead">Every number we publish was produced on an ordinary consumer laptop, not a workstation and not a cluster. That is deliberate: if the aim is AI that runs on hardware people already own, the experiments should too.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<div class="prose">
+<h2>The test machine, roughly</h2>
+</div>
+<div class="grid g4" style="margin-bottom:1.6rem">
+<div class="stat reveal"><div class="v">Laptop</div><div class="l">a typical consumer machine, running Linux</div></div>
+<div class="stat reveal"><div class="v">8 cores</div><div class="l">timings use <strong>one</strong> core; extra cores only run independent checks in parallel</div></div>
+<div class="stat reveal"><div class="v">&lt; 8 GB</div><div class="l">of RAM shared with everything else the machine is doing</div></div>
+<div class="stat reveal"><div class="v">No GPU</div><div class="l">nothing in the prototype uses one</div></div>
+</div>
+<div class="prose">
+<p>We leave out the exact model on purpose. It is not the point, and a rough description is enough to judge the scale: the machine is roughly what a student or a hobbyist might own, and the prototype's whole teach-from-nothing session fits in about 12 MB of memory.</p>
+
+<h2>What we measure, and what we do not</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Quantity</th><th>How</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Wall time</td><td>One CPU core, release build</td><td><span class="chip done">measured</span></td></tr>
+<tr><td>Peak memory</td><td>Resident set of the whole process</td><td><span class="chip done">measured</span></td></tr>
+<tr><td>Operations and words moved</td><td>Counted by a ledger inside the code</td><td><span class="chip done">counted</span></td></tr>
+<tr><td>Energy</td><td>Counted operations priced with published 45 nm figures</td><td><span class="chip open">estimated</span></td></tr>
+<tr><td>Energy from the CPU's own counter</td><td>Intel RAPL energy counter, now readable on the machine</td><td><span class="chip next">to be wired in</span></td></tr>
+<tr><td>Heat and sustained battery draw</td><td>Not measured; matters for phones</td><td><span class="chip later">later</span></td></tr>
+</tbody>
+</table>
+</div>
+<div class="callout caveat">
+<p>Because timings are on a single laptop core and energy is estimated, we trust ratios (this design against that design) more than absolute values. When something is timed we do not run heavy jobs alongside it.</p>
+</div>
+
+<h2>A working budget</h2>
+<p>To give the work a concrete target we use a rough envelope, every number of which is negotiable: about <strong>1 GB of resident RAM</strong> and a few GB of storage for a learned system on an 8 to 12 GB phone or laptop. Bigger stores can sit on disk, because disk is read sparsely. A smaller tier (a 2 to 4 GB phone) is a stretch goal. Budgets like these are stated next to each result, so results can be judged against what a device could actually spare.</p>
+<p>"Not overwhelming the device" is measured, not felt: resident and peak RAM, storage footprint, memory bandwidth per answer and per lesson, energy and heat, and background behaviour. Learning should be scheduled for idle time so the machine stays usable while Transient runs.</p>
+
+<h2>What we plan to add</h2>
+<ul>
+<li><strong>A rented GPU</strong>, for the controlled comparison against a small transformer. Only code and synthetic data would be uploaded; nothing private. The comparison model is to be written in Rust so operations and joules are counted the same way on both sides.</li>
+<li><strong>Real energy readings</strong> from the CPU counter, folded into the ledger so estimated and measured joules can be compared.</li>
+<li><strong>A phone</strong> as a second target, once there is something worth timing there.</li>
+</ul>
+<p class="muted">If you replicate any result on different hardware, we would like to hear what you got. See <a href="docs.html#contribute">how to contribute</a>.</p>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-grid">
+<div>
+<div class="foot-brand"><img class="invertable" src="assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">TransientAI</span></div>
+<p class="small">An independent research effort, currently one person, behind the open Transient project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
+</div>
+<div>
+<h4>Project</h4>
+<ul>
+<li><a href="baby.html">Transient &amp; baby</a></li>
+<li><a href="docs.html">Documentation</a></li>
+<li><a href="progress.html">Progress &amp; roadmap</a></li>
+<li><a href="https://github.com/DawsMacs/Transient" rel="noopener">Source on GitHub ↗</a></li>
+</ul>
+</div>
+<div>
+<h4>Research</h4>
+<ul>
+<li><a href="adaptive-learning.html">Adaptive learning</a></li>
+<li><a href="efficiency.html">Efficiency &amp; joules</a></li>
+<li><a href="why-rust.html">Why Rust</a></li>
+<li><a href="method.html">How we judge results</a></li>
+<li><a href="hardware.html">Hardware</a></li>
+</ul>
+</div>
+<div>
+<h4>TransientAI</h4>
+<ul>
+<li><a href="about.html">About</a></li>
+<li><a href="blog/index.html">Blog</a></li>
+<li><a href="docs.html#contribute">Contribute</a></li>
+<li><a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">Issues ↗</a></li>
+</ul>
+</div>
+</div>
+<div class="foot-note">
+<span>© 2026 Daws Macs. The Transient code is AGPL-3.0-or-later; see the repository.</span>
+<span>Static HTML. No trackers, no cookies, no third-party requests.</span>
+</div>
+</div>
+</footer>
+</body>
+</html>

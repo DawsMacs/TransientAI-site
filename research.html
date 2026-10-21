@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Research · TransientAI</title>
+<meta name="description" content="The research threads behind Transient: adaptive learning, efficiency measured in joules, why Rust, how we judge results, and the hardware experiments run on.">
+<meta property="og:title" content="Research · TransientAI">
+<meta property="og:description" content="The research threads behind Transient: adaptive learning, efficiency measured in joules, why Rust, how we judge results, and the hardware experiments run on.">
+<meta property="og:type" content="website">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/Lexend.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/JosefinSans.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script>document.documentElement.classList.add("js")</script>
+<script src="js/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap bar">
+<a class="brand" href="index.html"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">TransientAI</span></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="baby.html">Project</a><a href="research.html" aria-current="page">Research</a><a href="docs.html">Docs</a><a href="blog/index.html">Blog</a><a href="progress.html">Progress</a><a href="about.html">About</a><a class="gh" href="https://github.com/DawsMacs/Transient" rel="noopener">GitHub ↗</a></nav>
+</div>
+</header>
+<main id="main">
+
+<section class="page-head">
+<div class="wrap">
+<p class="eyebrow">Research</p>
+<h1>What we are trying to find out</h1>
+<p class="lead">One question drives the work: <strong>how much capability can a system learn and hold per unit of energy, memory and money, and how much of that can be done on a machine an ordinary person already owns?</strong> The threads below are the parts of that question we can currently measure.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<div class="grid g3">
+<a class="card reveal" href="adaptive-learning.html"><span class="num">Thread 1</span><h3>Adaptive learning</h3><p>Learning from use, in real time, where the way of learning also adapts. What the prototype does today, and where it stops.</p><span class="more">Read →</span></a>
+<a class="card reveal" href="efficiency.html"><span class="num">Thread 2</span><h3>Efficiency, in joules</h3><p>Counting operations and memory movement instead of parameters, and what that has changed in the code so far.</p><span class="more">Read →</span></a>
+<a class="card reveal" href="why-rust.html"><span class="num">Thread 3</span><h3>Why Rust</h3><p>Rust-first, not Rust-only: what the language buys for small systems, and what it does not change.</p><span class="more">Read →</span></a>
+<a class="card reveal" href="method.html"><span class="num">Thread 4</span><h3>How we judge results</h3><p>WRONG versus refused, adversarial batteries, and a plain list of the mistakes we have made so far.</p><span class="more">Read →</span></a>
+<a class="card reveal" href="hardware.html"><span class="num">Thread 5</span><h3>Hardware</h3><p>A rough description of the machine the experiments run on, how we measure, and what is planned next.</p><span class="more">Read →</span></a>
+<a class="card reveal" href="progress.html"><span class="num">Log</span><h3>Progress and roadmap</h3><p>A dated timeline, what is next, and a list of what we do not know yet.</p><span class="more">Read →</span></a>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<div class="prose">
+<h2>The working hypothesis, stated modestly</h2>
+<p>Today's large models descend from one design, the 2017 transformer, and the industry's progress since has mostly been scaling it and refining it. Hardware has had far more attention than the software that runs on it. The hypothesis is that some of the efficiency that remains is in software and representation rather than in new chips, and that low-end hardware may be underestimated because of it.</p>
+<p><strong>This is a hunch, not a verified claim.</strong> Some evidence points the same way (for example, the compute needed to reach a fixed image-classification accuracy fell 44× between 2012 and 2019, faster than hardware improvement alone would give), and some points the other way (transformers won partly because they map well onto GPUs, and many ideas that look good small fade at scale). We treat the difficulties as terrain: they tell us what to measure first, not whether to continue.</p>
+<p>If the hunch is right, then roughly: some design reaches a given quality using far less energy per answer than a dense transformer; the gain comes mostly from software; and it runs on a phone or an old laptop. Those are things that can be tested one at a time. The controlled comparison that would test them properly (a matched small transformer against <code>baby</code>-style systems, at several sizes) has not been done yet. See the <a href="progress.html">roadmap</a>.</p>
+
+<h2>Where to read more</h2>
+<ul>
+<li><a href="https://github.com/DawsMacs/Transient/blob/main/baby/README.md" rel="noopener">baby/README.md</a>: the experiment log, newest first, including the dead ends.</li>
+<li><a href="https://github.com/DawsMacs/Transient/blob/main/LEARNING.md" rel="noopener">LEARNING.md</a>: notes and sources on learning efficiently on small hardware.</li>
+<li><a href="https://github.com/DawsMacs/Transient/blob/main/docs/Direction.md" rel="noopener">docs/Direction.md</a>: strategy, hardware terrain and the language choice.</li>
+<li><a href="https://github.com/DawsMacs/Transient/blob/main/TransientVision.md" rel="noopener">TransientVision.md</a>: the founder's dated entries on why the project exists, in his own words.</li>
+</ul>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-grid">
+<div>
+<div class="foot-brand"><img class="invertable" src="assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">TransientAI</span></div>
+<p class="small">An independent research effort, currently one person, behind the open Transient project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
+</div>
+<div>
+<h4>Project</h4>
+<ul>
+<li><a href="baby.html">Transient &amp; baby</a></li>
+<li><a href="docs.html">Documentation</a></li>
+<li><a href="progress.html">Progress &amp; roadmap</a></li>
+<li><a href="https://github.com/DawsMacs/Transient" rel="noopener">Source on GitHub ↗</a></li>
+</ul>
+</div>
+<div>
+<h4>Research</h4>
+<ul>
+<li><a href="adaptive-learning.html">Adaptive learning</a></li>
+<li><a href="efficiency.html">Efficiency &amp; joules</a></li>
+<li><a href="why-rust.html">Why Rust</a></li>
+<li><a href="method.html">How we judge results</a></li>
+<li><a href="hardware.html">Hardware</a></li>
+</ul>
+</div>
+<div>
+<h4>TransientAI</h4>
+<ul>
+<li><a href="about.html">About</a></li>
+<li><a href="blog/index.html">Blog</a></li>
+<li><a href="docs.html#contribute">Contribute</a></li>
+<li><a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">Issues ↗</a></li>
+</ul>
+</div>
+</div>
+<div class="foot-note">
+<span>© 2026 Daws Macs. The Transient code is AGPL-3.0-or-later; see the repository.</span>
+<span>Static HTML. No trackers, no cookies, no third-party requests.</span>
+</div>
+</div>
+</footer>
+</body>
+</html>

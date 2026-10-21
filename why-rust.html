@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Rust · TransientAI</title>
+<meta name="description" content="Why Transient is written Rust-first (not Rust-only): what the language gives a small learning system, what it does not change, and what we have measured.">
+<meta property="og:title" content="Why Rust · TransientAI">
+<meta property="og:description" content="Why Transient is written Rust-first (not Rust-only): what the language gives a small learning system, what it does not change, and what we have measured.">
+<meta property="og:type" content="website">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/Lexend.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/JosefinSans.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script>document.documentElement.classList.add("js")</script>
+<script src="js/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap bar">
+<a class="brand" href="index.html"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">TransientAI</span></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="baby.html">Project</a><a href="research.html" aria-current="page">Research</a><a href="docs.html">Docs</a><a href="blog/index.html">Blog</a><a href="progress.html">Progress</a><a href="about.html">About</a><a class="gh" href="https://github.com/DawsMacs/Transient" rel="noopener">GitHub ↗</a></nav>
+</div>
+</header>
+<main id="main">
+
+<section class="page-head">
+<div class="wrap">
+<p class="crumbs"><a href="research.html">Research</a> / Why Rust</p>
+<h1>Why Rust</h1>
+<p class="lead">Transient is <strong>Rust-first, not Rust-only</strong>. Rust is the default for everything we own, and any layer can use something else when a measurement says it is better. The project is the idea, not the language.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<div class="prose">
+<h2>The case for it</h2>
+<ul>
+<li><strong>The cost is around the kernels.</strong> In our regime, small systems taking many small steps, the interpreter, allocation, tokenising, process start-up and glue code are a larger share of the total than they are for giant GPU-bound models. A language with no runtime and predictable memory attacks that share directly.</li>
+<li><strong>One static binary.</strong> Nothing to install on the target machine, no Python environment, no framework version to match. That matters if "anyone can run it" is to be literal.</li>
+<li><strong>Predictable memory.</strong> Light on RAM is a design goal, and we want to know where every byte goes. Peak memory of the whole teach-from-nothing session is about 12 MB, of which about 3 MB is the program itself.</li>
+<li><strong>Zero dependencies.</strong> <code>baby</code> builds offline with the standard library alone, about 11,000 lines. Every dependency would have to earn its place with a measurement. It also means the whole thing can be read, audited and rebuilt without trusting a supply chain.</li>
+<li><strong>Safe concurrency and cross-compilation.</strong> We expect a multi-step system with background learning, and eventually phones. Both are things Rust handles well.</li>
+<li><strong>Room to build from the bottom.</strong> Frameworks assume dense matrix multiplication, attention and a KV cache. Starting from scratch lets bandwidth, sparse reads and per-answer compute budgets sit in the foundations.</li>
+</ul>
+
+<h2>What we measured</h2>
+<p>Not much about the language itself, and we would rather say so. What we have is small and concrete:</p>
+<ul>
+<li>A dot product written as eight independent accumulators let the compiler vectorise a loop in safe code, with no flags: 32 µs to 13 µs per question, same answers. That is an implementation choice that the language made easy to reach, not a property of Rust.</li>
+<li>The release build is one 2 MB binary; the test suite (92 tests, including batteries of questions that must be refused) runs in about 13 seconds; teaching from nothing takes about a third of a second.</li>
+</ul>
+
+<h2>What Rust does not change</h2>
+<div class="callout caveat">
+<p>The inner loop of bandwidth-bound work compiles through LLVM in Rust, C++ and Zig alike. The language does not make DRAM faster. Gains show up around the kernels and in the confidence to build more aggressive designs, and we do not want to claim more than that.</p>
+</div>
+<ul>
+<li><strong>The ecosystem is young.</strong> Most research ships PyTorch or CUDA reference code, so ideas from papers have to be ported by hand. Where a quick PyTorch run answers a question faster than a port would, we will use it and say so. A Python or C reference may serve as a <em>test oracle</em> that produces golden outputs the Rust version must match, never as the runtime.</li>
+<li><strong>Some hardware features lag.</strong> At the time we last checked, the ARM instructions that fast quantised matrix multiplication uses were still unstable in Rust's standard library. The options are a nightly toolchain, inline assembly, or calling existing C kernels at first.</li>
+</ul>
+
+<h2>How we choose per layer</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Layer</th><th>Default</th><th>Note</th></tr></thead>
+<tbody>
+<tr><td>System runtime: routing, stores, scheduling</td><td>Rust</td><td>Where <code>baby</code> lives today</td></tr>
+<tr><td>CPU kernels</td><td>Rust with <code>std::arch</code></td><td>Possibly C over FFI first for the hottest loop</td></tr>
+<tr><td>Portable GPU compute</td><td>CubeCL / wgpu</td><td>Unverified on phones</td></tr>
+<tr><td>Training and architecture research</td><td>Burn; PyTorch as a conscious exception</td><td>The planned transformer comparison is to be written in Rust so operations and joules count the same way</td></tr>
+<tr><td>Plots, notebooks, one-off analysis</td><td>Whatever is fastest</td><td>Never shipped</td></tr>
+</tbody>
+</table>
+</div>
+<p class="muted">Alternatives we would take up if they measured better: Mojo, Zig, and compiler stacks such as MLIR that generate kernels per target. The rule is to choose per layer from a micro-benchmark, not from allegiance. The longer version is <a href="https://github.com/DawsMacs/Transient/blob/main/docs/Direction.md" rel="noopener">docs/Direction.md</a>.</p>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-grid">
+<div>
+<div class="foot-brand"><img class="invertable" src="assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">TransientAI</span></div>
+<p class="small">An independent research effort, currently one person, behind the open Transient project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
+</div>
+<div>
+<h4>Project</h4>
+<ul>
+<li><a href="baby.html">Transient &amp; baby</a></li>
+<li><a href="docs.html">Documentation</a></li>
+<li><a href="progress.html">Progress &amp; roadmap</a></li>
+<li><a href="https://github.com/DawsMacs/Transient" rel="noopener">Source on GitHub ↗</a></li>
+</ul>
+</div>
+<div>
+<h4>Research</h4>
+<ul>
+<li><a href="adaptive-learning.html">Adaptive learning</a></li>
+<li><a href="efficiency.html">Efficiency &amp; joules</a></li>
+<li><a href="why-rust.html">Why Rust</a></li>
+<li><a href="method.html">How we judge results</a></li>
+<li><a href="hardware.html">Hardware</a></li>
+</ul>
+</div>
+<div>
+<h4>TransientAI</h4>
+<ul>
+<li><a href="about.html">About</a></li>
+<li><a href="blog/index.html">Blog</a></li>
+<li><a href="docs.html#contribute">Contribute</a></li>
+<li><a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">Issues ↗</a></li>
+</ul>
+</div>
+</div>
+<div class="foot-note">
+<span>© 2026 Daws Macs. The Transient code is AGPL-3.0-or-later; see the repository.</span>
+<span>Static HTML. No trackers, no cookies, no third-party requests.</span>
+</div>
+</div>
+</footer>
+</body>
+</html>

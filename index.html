@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TransientAI: research into learning systems for ordinary hardware</title>
+<meta name="description" content="TransientAI is an independent research effort building Transient: an open, experimental learning system in Rust that is meant to run on ordinary consumer hardware.">
+<meta property="og:title" content="TransientAI: research into learning systems for ordinary hardware">
+<meta property="og:description" content="TransientAI is an independent research effort building Transient: an open, experimental learning system in Rust that is meant to run on ordinary consumer hardware.">
+<meta property="og:type" content="website">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/Lexend.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/JosefinSans.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script>document.documentElement.classList.add("js")</script>
+<script src="js/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap bar">
+<a class="brand" href="index.html"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">TransientAI</span></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="baby.html">Project</a><a href="research.html">Research</a><a href="docs.html">Docs</a><a href="blog/index.html">Blog</a><a href="progress.html">Progress</a><a href="about.html">About</a><a class="gh" href="https://github.com/DawsMacs/Transient" rel="noopener">GitHub ↗</a></nav>
+</div>
+</header>
+<main id="main">
+
+<section class="hero">
+<div class="wrap hero-grid">
+<div>
+<p class="eyebrow">TransientAI · independent research</p>
+<h1>Learning systems that run on ordinary hardware.</h1>
+<p class="lead">TransientAI is a small research effort building <strong>Transient</strong>, an open, experimental learning system written in Rust. The aim is capable AI that almost anyone can run, study and teach on their own machine. We publish everything, mistakes included, so others can replicate it, check it and reuse it.</p>
+<div class="cta">
+<a class="btn primary" href="blog/beginning.html">Read the first post</a>
+<a class="btn" href="baby.html">Meet the prototype</a>
+<a class="btn" href="https://github.com/DawsMacs/Transient" rel="noopener">Source on GitHub ↗</a>
+</div>
+</div>
+<div class="hero-art" aria-hidden="true">
+<svg viewBox="-50 -50 100 100" xmlns="http://www.w3.org/2000/svg">
+<g class="ebb">
+<path style="--i:0" d="M0.00 -46.00 A21.28 21.28 0 0 1 11.48 -6.10 A66.53 66.53 0 0 0 0.00 -46.00 Z"/>
+<path style="--i:1" d="M39.84 -23.00 A21.28 21.28 0 0 1 11.02 6.89 A44.17 44.17 0 0 0 39.84 -23.00 Z"/>
+<path style="--i:2" d="M39.84 23.00 A21.28 21.28 0 0 1 -0.45 12.99 A34.12 34.12 0 0 0 39.84 23.00 Z"/>
+<path style="--i:3" d="M0.00 46.00 A21.28 21.28 0 0 1 -11.48 6.10 A28.65 28.65 0 0 0 0.00 46.00 Z"/>
+<path style="--i:4" d="M-39.84 23.00 A21.28 21.28 0 0 1 -11.02 -6.89 A25.40 25.40 0 0 0 -39.84 23.00 Z"/>
+<path style="--i:5" d="M-39.84 -23.00 A21.28 21.28 0 0 1 0.45 -12.99 A23.38 23.38 0 0 0 -39.84 -23.00 Z"/>
+</g>
+</svg>
+</div>
+</div>
+</section>
+
+<div class="wrap">
+<div class="statusbar">
+<span><span class="dot" aria-hidden="true"></span><b>Active research</b> · early stage</span>
+<span>Started <b>2026-10-15</b></span>
+<span><b>Rust</b>, zero dependencies</span>
+<span><b>AGPL-3.0-or-later</b></span>
+<span><b>92</b> tests, CI on every push</span>
+</div>
+</div>
+
+<section class="section">
+<div class="wrap">
+<div class="section-head reveal">
+<h2>What we are working on</h2>
+<p>Most AI today is trained once in a data centre, frozen, and served from one. We are looking at a different corner of the design space: small systems that keep learning on the device they run on, and whose cost we can count.</p>
+</div>
+<div class="grid g3">
+<a class="card reveal" href="adaptive-learning.html">
+<span class="num">01</span>
+<h3>Adaptive learning</h3>
+<p>A system that learns while it is used, and decides for itself <em>how</em> to learn each kind of thing: memorise it, fit a rule, or search for a small program.</p>
+<span class="more">Read more →</span>
+</a>
+<a class="card reveal" href="efficiency.html">
+<span class="num">02</span>
+<h3>Measured in joules</h3>
+<p>We count operations, memory traffic and estimated energy, not only parameters, because energy is what decides whether "on your own hardware" is real.</p>
+<span class="more">Read more →</span>
+</a>
+<a class="card reveal" href="method.html">
+<span class="num">03</span>
+<h3>Honest about being wrong</h3>
+<p>Wrong answers are reported apart from refusals. Guesses are labelled. Mistakes and rejected ideas are written down as they happen.</p>
+<span class="more">Read more →</span>
+</a>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<div class="section-head reveal">
+<h2>The prototype, in action</h2>
+<p><code>baby</code> is the first working piece of Transient. It is taught from scratch in about a third of a second, then answers a question and says <em>how it knew</em>, or refuses and says why. This is copied from a real run of the current build.</p>
+</div>
+<div class="term reveal" data-type role="img" aria-label="Terminal transcript of five questions put to the baby prototype">
+<div class="term-bar"><i></i><i></i><i></i><span>baby ask</span></div>
+<div class="term-body">
+<div class="t-line t-cmd">baby ask "what is two times four"</div>
+<div class="t-line t-out t-ans">eight</div>
+<div class="t-line t-out dim">  (unit 'times', worked out by an expression I built, (first x second) (100% on facts I held back))</div>
+<div class="t-gap"></div>
+<div class="t-line t-cmd">baby ask "the capital of peru"</div>
+<div class="t-line t-out t-ans">lima</div>
+<div class="t-line t-out dim">  (unit 'capital', recalled, not worked out: nothing I tried could work these out, so I only remember what I was told)</div>
+<div class="t-gap"></div>
+<div class="t-line t-cmd">baby ask "what is seven times one"</div>
+<div class="t-line t-out t-ans">probably seven</div>
+<div class="t-line t-out dim">  (a guess, not a fact: unit 'times', for this kind I was only taught (or have checked) numbers from 0 to 5, and this asks about 7: I won't state it as fact unchecked ...)</div>
+<div class="t-gap"></div>
+<div class="t-line t-cmd">baby ask "three minus five"</div>
+<div class="t-line t-out t-ans">?</div>
+<div class="t-line t-out dim">  I don't know this one: unit 'minus', I couldn't work it out: it has a word or a shape I haven't learned how to handle. Teach me: baby teach "three minus five" &lt;answer&gt;</div>
+<div class="t-gap"></div>
+<div class="t-line t-cmd">baby ask "what is -3 plus 5"</div>
+<div class="t-line t-out t-ans">?</div>
+<div class="t-line t-out dim">  I only read plain whole numbers, not '-3' (signs, decimals, fractions, percentages).</div>
+</div>
+</div>
+<p class="small muted" style="margin-top:1rem;max-width:70ch">Multiplication was taught on the numbers 0 to 5 only, so "seven times one" is a labelled guess and not stated as fact. The long explanation after it is trimmed here. The last two are refusals on purpose: a negative result and a number it cannot read are things it must not bluff.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<div class="section-head reveal">
+<h2>A few numbers, with their caveats</h2>
+<p>From the synthetic lesson set the prototype is developed on, on one CPU core of an ordinary laptop with no GPU. Energy figures are estimates from counted operations; trust the ratios, not the absolute joules.</p>
+</div>
+<div class="grid g4">
+<div class="stat reveal"><div class="v">0.0%</div><div class="l">wrong answers on every row of the scorecard (taught, reworded, never taught, beyond range). It refuses or labels a guess instead.</div></div>
+<div class="stat reveal"><div class="v">8,977 → 57</div><div class="l">operations per answer after changing how it finds the right kind of lesson: about 85× less estimated energy, same answers.</div></div>
+<div class="stat reveal"><div class="v">2.65 s</div><div class="l">to teach 25,776 lessons across 600 kinds of lesson (56 MB peak) in the scale test.</div></div>
+<div class="stat reveal"><div class="v">~0.5 ms</div><div class="l">to learn one more fact, at every size tested from 20 to 600 units.</div></div>
+</div>
+<p class="muted small" style="margin-top:1.2rem;max-width:70ch">These come from tidy, synthetic lessons. Nothing here shows behaviour on real text at scale, or that this approach can reach the quality of today's language models. <a href="progress.html#unknowns">What we do not know yet →</a></p>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<div class="grid g2">
+<div class="reveal">
+<h2 style="margin-top:0">Latest from the blog</h2>
+<a class="card has-thumb" href="blog/beginning.html">
+<img class="thumb invertable" src="assets/cover-beginning.svg" alt="" width="1200" height="630" loading="lazy">
+<span class="meta">2026-10-21</span>
+<h3 style="margin-top:.4rem">How Transient began, and where it stands</h3>
+<p>The starting hunch, the first week of work, what the prototype does and does not show, and what comes next.</p>
+<span class="more">Read the post →</span>
+</a>
+</div>
+<div class="reveal">
+<h2 style="margin-top:0">Open on purpose</h2>
+<p class="muted">Everything is public under the AGPL, so that anyone who runs a modified version, including as a service, has to share their changes. There is no contributor licence agreement: contributions stay under the same licence.</p>
+<p class="muted">Right now TransientAI is one person. There are no plans to grow the core team, but contributors to the repository are welcome.</p>
+<p><a href="docs.html#contribute">How to contribute →</a></p>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-grid">
+<div>
+<div class="foot-brand"><img class="invertable" src="assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">TransientAI</span></div>
+<p class="small">An independent research effort, currently one person, behind the open Transient project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
+</div>
+<div>
+<h4>Project</h4>
+<ul>
+<li><a href="baby.html">Transient &amp; baby</a></li>
+<li><a href="docs.html">Documentation</a></li>
+<li><a href="progress.html">Progress &amp; roadmap</a></li>
+<li><a href="https://github.com/DawsMacs/Transient" rel="noopener">Source on GitHub ↗</a></li>
+</ul>
+</div>
+<div>
+<h4>Research</h4>
+<ul>
+<li><a href="adaptive-learning.html">Adaptive learning</a></li>
+<li><a href="efficiency.html">Efficiency &amp; joules</a></li>
+<li><a href="why-rust.html">Why Rust</a></li>
+<li><a href="method.html">How we judge results</a></li>
+<li><a href="hardware.html">Hardware</a></li>
+</ul>
+</div>
+<div>
+<h4>TransientAI</h4>
+<ul>
+<li><a href="about.html">About</a></li>
+<li><a href="blog/index.html">Blog</a></li>
+<li><a href="docs.html#contribute">Contribute</a></li>
+<li><a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">Issues ↗</a></li>
+</ul>
+</div>
+</div>
+<div class="foot-note">
+<span>© 2026 Daws Macs. The Transient code is AGPL-3.0-or-later; see the repository.</span>
+<span>Static HTML. No trackers, no cookies, no third-party requests.</span>
+</div>
+</div>
+</footer>
+</body>
+</html>

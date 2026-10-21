@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How Transient began · TransientAI</title>
+<meta name="description" content="The starting hunch behind Transient, the first week of work, what the prototype does and does not show, and what comes next.">
+<meta property="og:title" content="How Transient began · TransientAI">
+<meta property="og:description" content="The starting hunch behind Transient, the first week of work, what the prototype does and does not show, and what comes next.">
+<meta property="og:type" content="website">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/Lexend.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../fonts/JosefinSans.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+<script>document.documentElement.classList.add("js")</script>
+<script src="../js/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap bar">
+<a class="brand" href="../index.html"><img class="invertable" src="../assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">TransientAI</span></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="../baby.html">Project</a><a href="../research.html">Research</a><a href="../docs.html">Docs</a><a href="../blog/index.html" aria-current="page">Blog</a><a href="../progress.html">Progress</a><a href="../about.html">About</a><a class="gh" href="https://github.com/DawsMacs/Transient" rel="noopener">GitHub ↗</a></nav>
+</div>
+</header>
+<main id="main">
+
+<section class="page-head">
+<div class="wrap">
+<p class="crumbs"><a href="index.html">Blog</a> / 2026-10-21</p>
+<h1>How Transient began, and where it stands</h1>
+<p class="meta">2026-10-21 · Daws Macs · 8 min read</p>
+</div>
+</section>
+
+<div class="wrap" style="margin-top:2rem">
+<figure class="cover">
+<img class="invertable" src="../assets/cover-beginning.svg" alt="Abstract cover: the TransientAI mark with fading rotated copies and concentric rings" width="1200" height="630">
+</figure>
+</div>
+
+<section class="section">
+<div class="wrap">
+<article class="post prose">
+
+<p class="lead">Transient began on 2026-10-15 as a hunch and a small Rust program. Six days later it is a prototype with 92 passing tests, a public repository, and a long list of things it cannot do. This first post says what the hunch is, what has been built, what the results do and do not show, and what is next.</p>
+
+<h2>The hunch</h2>
+<p>Computers keep getting smaller. In the 1960s you rented a machine the size of a room; a phone now outperforms what flew to the Moon. Hardware will keep improving, but we have already run into ceilings in how current designs are implemented, and the software side has had far less attention than the silicon.</p>
+<p>Most of today's large models descend from one design, the transformer of 2017. Since then the industry has mostly scaled it and refined it, with demand for GPUs and data-centre energy rising to match. Very little that is large has been started from scratch. If you were to rebuild from scratch and find a better implementation, the efficiency gain might not be an increment. It might be an iceberg.</p>
+<p><strong>That is a hunch, not a verified claim.</strong> It rests on judgement, not on what current research establishes, and there are good reasons it might be wrong: transformers win partly because they suit GPUs, and plenty of ideas that look good small fade at scale. We are following it anyway, for as long as it takes, and treating the difficulties as terrain to measure and not as reasons to stop.</p>
+
+<h2>What we decided</h2>
+<ul>
+<li><strong>Win differently, not bigger.</strong> We are not trying to out-scale cloud models. A personal system has advantages a provider cannot match by construction: it can spend unmetered time on a question, keep knowledge in storage instead of weights, learn from its owner privately, and work with no network.</li>
+<li><strong>Learning is a design question, not an inherited pipeline.</strong> "Pretrain, post-train, freeze" is a convention. We want a system that keeps learning while it is used, and whose way of learning adapts too.</li>
+<li><strong>Count joules.</strong> Parameters say how big something is. Operations, memory movement and energy say what it costs.</li>
+<li><strong>Rust, from scratch, no dependencies</strong>, to keep every byte visible.</li>
+<li><strong>Open.</strong> The code is AGPL-3.0-or-later, so that the work stays open and cannot be quietly closed behind a hosted service.</li>
+</ul>
+
+<h2>The first week</h2>
+<p>The first version was a 16,000-parameter network, written from scratch, that read a short query and answered with one word, along with a ledger that counts operations and memory traffic. Counting showed that about 91% of the estimated energy of answering was moving memory, not arithmetic. A plain fact store, with no training at all, kept learned lessons at roughly a nine-hundredth of the estimated energy of retraining.</p>
+<p>From there each step came from a limitation of the last. Readers that ignore word position mattered more than any learning trick. A system that could say it did not know. Rules instead of tables, so that a sum fitted from examples held beyond the numbers it was taught, where memorising networks fell to 5%. Then the idea that mattered most: don't pick the learning method in advance. For each group of lessons, try several on facts held back, and keep the one that generalises.</p>
+<p>That became <code>baby</code>: 13 groups of lessons, five mechanisms chosen per group by evidence, answers that say how they were known and refusals that say why. It found its own groups from 792 unlabelled lessons. It scaled to 600 groups and 25,776 lessons, where learning one more fact stayed at about half a millisecond. It tolerated a few percent of wrong lessons. It worked out 16 hidden numeric kinds nobody wrote a mechanism for, and asked a question when two explanations fit equally well.</p>
+
+<div class="grid g3" style="margin:1.8rem 0">
+<div class="stat"><div class="v">92</div><div class="l">tests, including batteries of questions that must be refused</div></div>
+<div class="stat"><div class="v">0.3 s</div><div class="l">to teach the 13-unit curriculum from nothing</div></div>
+<div class="stat"><div class="v">0.0%</div><div class="l">wrong answers on the scorecard</div></div>
+</div>
+
+<h2>A mistake worth telling</h2>
+<p>Careful, we found, is not the same as timid. A rule that fits everything it was taught can still change behaviour outside what it was taught: a sum that caps, or one that wraps around. Nothing in the lessons can reveal that, and the first prototype answered such questions confidently and wrongly, 53 wrong answers per run. So the default became careful: state a value as fact only inside the range taught or checked, and beyond it offer a <em>labelled guess</em> ("probably seven"), keeping a record of how often guesses at each distance turn out right.</p>
+<p>Then we tested that, and it was wrong too. Two confirmed guesses at the edges of a range were being allowed to vouch for an unchecked corner between them: 4 wrong facts out of 9,309. The fix was to stop treating the reach as a box and treat it as a staircase, at a measured cost in coverage (unseen questions answered fell from about 97% to about 95% at 60 units). That pattern, build the harder test, find a new hole, fix it, write it down, has repeated every time. It is why the project's rule is not "never wrong" but <em>never silently wrong</em>. The full list is on <a href="../method.html#mistakes">the method page</a>.</p>
+
+<h2>What the numbers do not show</h2>
+<p>Honestly: not as much as they appear to.</p>
+<ul>
+<li>Everything is a synthetic, tidy world: invented words, small numbers, a handful of phrasings. "0% wrong" is a spot check against hand-written must-refuse batteries, not a proof.</li>
+<li>The mechanisms, the expression language and the thresholds are ours. The prototype selects and builds inside them; it did not discover them.</li>
+<li>Energy is estimated from counted operations. Several big savings (answering fell from 8,977 operations to 57) come from an inefficient first design as the baseline.</li>
+<li>The prototype has never seen real text. It is not a language model, and nothing here shows that this kind of system can reach the quality of one.</li>
+</ul>
+
+<h2>What is next</h2>
+<ol>
+<li><strong>Real data.</strong> A harness for real text is built and tested on hand-written fixtures. The next step is to run it on a small public word-problem corpus. We expect it to refuse most of it; the reasons it refuses are the interesting result.</li>
+<li><strong>A controlled comparison.</strong> A matched small transformer against <code>baby</code>-style systems at several sizes, on quality at equal joules, retention after new learning, and how quickly each adapts to a correction. A rented GPU is planned for this, and the comparison model will be written in Rust so both sides are counted the same way.</li>
+<li><strong>Real joules.</strong> The CPU's own energy counter is readable now; it needs wiring into the ledger.</li>
+<li><strong>Corrections that teach.</strong> Today one correction stops a wrong guess. It should also let the system learn the right behaviour from a few points.</li>
+</ol>
+
+<h2>Following along, and helping</h2>
+<p>TransientAI is one person for now, and there are no plans to change that for the core of the work. The repository is public and contributions are welcome: replications on other hardware, bug reports, and especially questions it should refuse but answers. The <a href="../docs.html">documentation</a> shows how to build and run everything in a couple of minutes, offline. The <a href="../progress.html">progress page</a> keeps the roadmap and the list of what we do not know.</p>
+<p>Thanks for reading. We will report the next results here, including the ones that go badly.</p>
+
+</article>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-grid">
+<div>
+<div class="foot-brand"><img class="invertable" src="../assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">TransientAI</span></div>
+<p class="small">An independent research effort, currently one person, behind the open Transient project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
+</div>
+<div>
+<h4>Project</h4>
+<ul>
+<li><a href="../baby.html">Transient &amp; baby</a></li>
+<li><a href="../docs.html">Documentation</a></li>
+<li><a href="../progress.html">Progress &amp; roadmap</a></li>
+<li><a href="https://github.com/DawsMacs/Transient" rel="noopener">Source on GitHub ↗</a></li>
+</ul>
+</div>
+<div>
+<h4>Research</h4>
+<ul>
+<li><a href="../adaptive-learning.html">Adaptive learning</a></li>
+<li><a href="../efficiency.html">Efficiency &amp; joules</a></li>
+<li><a href="../why-rust.html">Why Rust</a></li>
+<li><a href="../method.html">How we judge results</a></li>
+<li><a href="../hardware.html">Hardware</a></li>
+</ul>
+</div>
+<div>
+<h4>TransientAI</h4>
+<ul>
+<li><a href="../about.html">About</a></li>
+<li><a href="../blog/index.html">Blog</a></li>
+<li><a href="../docs.html#contribute">Contribute</a></li>
+<li><a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">Issues ↗</a></li>
+</ul>
+</div>
+</div>
+<div class="foot-note">
+<span>© 2026 Daws Macs. The Transient code is AGPL-3.0-or-later; see the repository.</span>
+<span>Static HTML. No trackers, no cookies, no third-party requests.</span>
+</div>
+</div>
+</footer>
+</body>
+</html>

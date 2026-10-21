@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Progress and roadmap · TransientAI</title>
+<meta name="description" content="A dated timeline of Transient's progress, the roadmap with realistic status, and a plain list of what we do not know yet.">
+<meta property="og:title" content="Progress and roadmap · TransientAI">
+<meta property="og:description" content="A dated timeline of Transient's progress, the roadmap with realistic status, and a plain list of what we do not know yet.">
+<meta property="og:type" content="website">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/Lexend.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/JosefinSans.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="css/site.css">
+<script>document.documentElement.classList.add("js")</script>
+<script src="js/site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap bar">
+<a class="brand" href="index.html"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">TransientAI</span></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="baby.html">Project</a><a href="research.html">Research</a><a href="docs.html">Docs</a><a href="blog/index.html">Blog</a><a href="progress.html" aria-current="page">Progress</a><a href="about.html">About</a><a class="gh" href="https://github.com/DawsMacs/Transient" rel="noopener">GitHub ↗</a></nav>
+</div>
+</header>
+<main id="main">
+
+<section class="page-head">
+<div class="wrap">
+<p class="eyebrow">Progress</p>
+<h1>Where things stand, and what comes next</h1>
+<p class="lead">Transient started on 2026-10-15. This page has the roadmap first, with a status on each item, then the dated log. It is a summary; the full record with numbers is the repository's <a href="https://github.com/DawsMacs/Transient/blob/main/baby/README.md" rel="noopener">experiment log</a>.</p>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<div class="section-head">
+<h2>Roadmap</h2>
+<p>Ambitions here are kept in proportion to what has been shown. Items are checkpoints: after each we ask what the result taught, and a result that disappoints tells us where to look next. It does not end the work.</p>
+</div>
+<div class="table-wrap reveal">
+<table>
+<thead><tr><th>Step</th><th>What it is</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Prototype that chooses how to learn</td><td><code>baby</code>: units of lessons, mechanisms chosen from held-back evidence, honest refusals</td><td><span class="chip done">done</span></td></tr>
+<tr><td>Learning that stays light</td><td>Flat cost per new fact up to 600 units; noise handling; digits as numbers</td><td><span class="chip done">done, on synthetic data</span></td></tr>
+<tr><td>Careful by default, labelled guesses</td><td>States as fact only what it was taught or has checked; keeps a record of its own guessing</td><td><span class="chip done">done</span></td></tr>
+<tr><td>Bridge to real data</td><td>A harness for real text (a word-problem corpus, or question/answer files) is built and tested on hand-written fixtures. Not yet run on a real corpus. Expect it to refuse most of the first one; the reasons are the interesting result.</td><td><span class="chip next">next</span></td></tr>
+<tr><td>Controlled comparison</td><td>A matched small transformer against <code>baby</code>-style systems at three or more sizes: quality at equal joules, retention, adaptation speed, scaling slope. Needs a rented GPU.</td><td><span class="chip next">next</span></td></tr>
+<tr><td>Real energy readings</td><td>Wire the CPU's energy counter into the ledger</td><td><span class="chip next">next</span></td></tr>
+<tr><td>Corrections that teach the new regime</td><td>Today one correction stops a wrong guess; it should also let the system learn what is right from a few points</td><td><span class="chip open">open</span></td></tr>
+<tr><td>Mechanisms of a different kind</td><td>Not just formulas: something that is not an expression search</td><td><span class="chip open">not started</span></td></tr>
+<tr><td>Growth</td><td>A unit that starts tiny and adds capacity only when it saturates</td><td><span class="chip later">later</span></td></tr>
+<tr><td>Learning at a scale and quality that matter</td><td>Language-like tasks on a consumer device, judged in capability per joule. A long-term ambition. We do not know whether this architecture can get there, and the repository exists to find out by measurement.</td><td><span class="chip later">ambition</span></td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+
+<section class="section" id="unknowns">
+<div class="wrap">
+<div class="section-head">
+<h2>What we do not know yet</h2>
+<p>These are not boilerplate. Each is something we would want to know before believing the headline numbers.</p>
+</div>
+<div class="grid g2">
+<div class="card reveal"><h3>Real text</h3><p>Everything so far is synthetic and tidy. Nothing shows behaviour on millions of real sentences, or that an architecture like this can reach quality that matters.</p></div>
+<div class="card reveal"><h3>Whether "0% wrong" holds</h3><p>It is a spot check. Every harder test we built found a new way for it to fail, so we expect more.</p></div>
+<div class="card reveal"><h3>Whose language it is</h3><p>The mechanisms, operations and thresholds are our choices. The system builds and selects inside them. A system that finds mechanisms of a new kind is not yet shown.</p></div>
+<div class="card reveal"><h3>Real teachers</h3><p>The experiments use a teacher who is always right. A real teacher is sometimes wrong, and a wrong correction currently switches a unit's guessing off.</p></div>
+<div class="card reveal"><h3>Joules</h3><p>Energy is estimated from counted operations. Real measurements so far are wall time and peak memory on one laptop core.</p></div>
+<div class="card reveal"><h3>Data gaps</h3><p>A lone explanation that fits everything taught can still be wrong at a number nobody taught. Checks and review catch it in our batteries, but nothing structural prevents it.</p></div>
+</div>
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<div class="section-head">
+<h2>Timeline</h2>
+<p>Newest first. Dates are when the work landed; numbers come from the experiment log and carry its caveats.</p>
+</div>
+<ol class="timeline">
+<li class="reveal"><time>2026-10-21</time><h3>The bridge to real text, and the TransientAI name</h3><p>A harness that loads real corpora (SVAMP's JSON, or question/answer files), sets aside what the prototype cannot read and says why, teaches a share, and grades the rest, listing every wrong answer. Waiting on a corpus. The project is named Transient; TransientAI is its creator.</p></li>
+<li class="reveal"><time>2026-10-21</time><h3>Guessing like a scientist</h3><p>Careful became the default. Beyond what it was taught or has checked, the baby offers a <em>labelled guess</em>, keeps a record of how often its guesses at each distance are right, and stops guessing where they have been wrong more often than right. A correction ends the guessing in the region it contradicted. Testing this found a hole (a box-shaped reach vouching for an unchecked corner: 4 wrong facts of 9,309) that was fixed at a measured cost in coverage.</p></li>
+<li class="reveal"><time>2026-10-21</time><h3>A hole found, and a careful mode</h3><p>A rule that fits everything taught but changes behaviour outside it (a sum that caps or wraps) was answered confidently and wrongly: 53 wrong answers per seed. Careful mode removes them and, after two rounds of the baby's own self-checks, wins back 99.2% of genuine extrapolation with 0 wrong.</p></li>
+<li class="reveal"><time>2026-10-21</time><h3>Tuning its own bar, adapting its effort</h3><p>It measures the share of wrong lessons in its own data (it estimated 9.6% where the world had 9.7%) and sets how reliable a mechanism must be before answering. At 10% label noise, unseen questions answered went from 42% to 98%. Searches that find nothing now fail cheaply (battery 23.5 s to 14 s, same results).</p></li>
+<li class="reveal"><time>2026-10-20</time><h3>Asking, inventing, and noise</h3><p>The baby keeps competing explanations and asks the number that would separate them. It worked out all 16 hidden numeric kinds and 7 of 9 harder ones, with 0 false inventions. With 2% wrong lessons it answers 0% wrong and 97 to 100% of unseen questions right.</p></li>
+<li class="reveal"><time>2026-10-20</time><h3>Scale</h3><p>The world grew to 600 units, 25,776 lessons and a 10,000-word vocabulary. Learning one fact stayed at about half a millisecond; teaching 26k lessons fell from 127 s to 2.65 s after the per-lesson tables were made incremental.</p></li>
+<li class="reveal"><time>2026-10-20</time><h3>Published, open</h3><p>The work went public under the AGPL, with a technical README, CI that fails if the scorecard's WRONG column rises above 0.0%, and a developer certificate of origin instead of a contributor licence agreement.</p></li>
+<li class="reveal"><time>2026-10-20</time><h3>Storage, discovery, light learning, less effort</h3><p>The baby found units itself from unlabelled lessons (9 from 792). It can forget what is already explained (49% of the file kept, still answering every lesson). Answering fell from 8,977 operations to double digits, and a rule is fit exactly rather than iterated (392× fewer operations).</p></li>
+<li class="reveal"><time>2026-10-20</time><h3>One baby</h3><p>The separate experiments were unified: 13 units, five mechanisms chosen per unit by evidence, a pipeline that answers with a reason or refuses with one. Scorecard on five seeds: 0% wrong.</p></li>
+<li class="reveal"><time>2026-10-19</time><h3>Readers, refusal, rules, and a library of ways to learn</h3><p>Position-free readers mattered more than any learning trick. The baby learned to say it does not know, fitted a rule for sums from examples (right beyond the range it was taught, where memorising networks got 5%), and began choosing among mechanisms from held-back evidence.</p></li>
+<li class="reveal"><time>2026-10-15</time><h3>The first baby</h3><p>A 16k-parameter, from-scratch, zero-dependency Rust network that answers a query with one word, plus a joule ledger. A fact store matched retraining's retention at roughly 1/900 of the estimated energy.</p></li>
+</ol>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-grid">
+<div>
+<div class="foot-brand"><img class="invertable" src="assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">TransientAI</span></div>
+<p class="small">An independent research effort, currently one person, behind the open Transient project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
+</div>
+<div>
+<h4>Project</h4>
+<ul>
+<li><a href="baby.html">Transient &amp; baby</a></li>
+<li><a href="docs.html">Documentation</a></li>
+<li><a href="progress.html">Progress &amp; roadmap</a></li>
+<li><a href="https://github.com/DawsMacs/Transient" rel="noopener">Source on GitHub ↗</a></li>
+</ul>
+</div>
+<div>
+<h4>Research</h4>
+<ul>
+<li><a href="adaptive-learning.html">Adaptive learning</a></li>
+<li><a href="efficiency.html">Efficiency &amp; joules</a></li>
+<li><a href="why-rust.html">Why Rust</a></li>
+<li><a href="method.html">How we judge results</a></li>
+<li><a href="hardware.html">Hardware</a></li>
+</ul>
+</div>
+<div>
+<h4>TransientAI</h4>
+<ul>
+<li><a href="about.html">About</a></li>
+<li><a href="blog/index.html">Blog</a></li>
+<li><a href="docs.html#contribute">Contribute</a></li>
+<li><a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">Issues ↗</a></li>
+</ul>
+</div>
+</div>
+<div class="foot-note">
+<span>© 2026 Daws Macs. The Transient code is AGPL-3.0-or-later; see the repository.</span>
+<span>Static HTML. No trackers, no cookies, no third-party requests.</span>
+</div>
+</div>
+</footer>
+</body>
+</html>
