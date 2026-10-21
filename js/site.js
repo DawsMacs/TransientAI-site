@@ -6,15 +6,21 @@
   // mobile navigation
   var toggle = document.querySelector(".nav-toggle");
   var nav = document.getElementById("site-nav");
+  function setMenuIcon(open) {
+    var use = toggle.querySelector("use");
+    if (use) use.setAttribute("href", open ? "#x" : "#menu");
+  }
   if (toggle && nav) {
     toggle.addEventListener("click", function () {
       var open = nav.classList.toggle("open");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      setMenuIcon(open);
     });
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && nav.classList.contains("open")) {
         nav.classList.remove("open");
         toggle.setAttribute("aria-expanded", "false");
+        setMenuIcon(false);
         toggle.focus();
       }
     });
@@ -39,13 +45,16 @@
     var btn = document.createElement("button");
     btn.type = "button";
     btn.className = "copy-btn";
-    btn.textContent = "Copy";
+    var label = function (done) {
+      btn.innerHTML = '<svg class="icon" aria-hidden="true"><use href="#' + (done ? "check" : "copy") + '"></use></svg><span>' + (done ? "Copied" : "Copy") + "</span>";
+    };
+    label(false);
     btn.addEventListener("click", function () {
       var text = pre.querySelector("code").innerText.replace(/^\$ /gm, "");
       if (navigator.clipboard) {
         navigator.clipboard.writeText(text).then(function () {
-          btn.textContent = "Copied";
-          setTimeout(function () { btn.textContent = "Copy"; }, 1400);
+          label(true);
+          setTimeout(function () { label(false); }, 1400);
         });
       }
     });

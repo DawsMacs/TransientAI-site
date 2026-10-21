@@ -19,7 +19,7 @@ blog/index.html            blog index
 blog/beginning.html        first post
 404.html
 css/site.css  js/site.js   styling (dark first, light via prefers-color-scheme) and progressive enhancements
-assets/                    logo mark, favicon, blog art (cover-beginning.svg, blog-banner.svg: plain SVG built from the mark)
+assets/                    logo mark, favicon, social preview, blog art (cover-beginning.svg, blog-banner.svg: plain SVG built from the mark)
 ```
 
 All links are relative, so the site works from any folder or sub-path.
@@ -45,6 +45,11 @@ then open <http://127.0.0.1:8765/>.
 - Domain: `CNAME` holds `transientai.org`. `<link rel="canonical">`, `og:` tags, `sitemap.xml`, `feed.xml` and `robots.txt` use that absolute URL.
 - `assets/og-image.png` (1200x630) is the social preview; it was rendered from an SVG with the brand fonts and is not regenerated automatically.
 
+## Icons
+
+Icons are Lucide, with Phosphor (regular weight) only where Lucide has no equivalent (the GitHub mark). They live in an inline SVG sprite at the top of every page
+(`<svg ...><symbol id="zap">...`) and are used as `<svg class="icon"><use href="#zap"/></svg>`. To add an icon, copy its symbol into the sprite on every page.
+
 ## Licensing
 
 - **Code** (HTML, CSS, JS): MIT, see `LICENSE`.
@@ -52,6 +57,7 @@ then open <http://127.0.0.1:8765/>.
 - **The TransientAI mark and wordmark, and the names "TransientAI" and "Transient"**: not licensed, all rights reserved.
   Quote and link freely; do not present your work as TransientAI's. The blog art contains the mark; remove or replace it if you adapt the art.
 - **Fonts**: SIL OFL 1.1 (`fonts/`).
+- **Icons**: [Lucide](https://lucide.dev) (ISC) and, for the GitHub mark only, [Phosphor](https://phosphoricons.com) regular (MIT); see `LICENSE-icons`.
 - The **Transient** project's code is a separate repository under AGPL-3.0-or-later.
 
 ## Hosting
