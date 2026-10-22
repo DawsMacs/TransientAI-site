@@ -58,7 +58,7 @@ Icons are Lucide, with Phosphor (regular weight) only where Lucide has no equiva
   Quote and link freely; do not present your work as TransientAI's. The blog art contains the mark; remove or replace it if you adapt the art.
 - **Fonts**: SIL OFL 1.1 (`fonts/`).
 - **Icons**: [Lucide](https://lucide.dev) (ISC) and, for the GitHub mark only, [Phosphor](https://phosphoricons.com) regular (MIT); see `LICENSE-icons`.
-- The **Transient** project's code is a separate repository under AGPL-3.0-or-later.
+- The **Transient** project's code is a separate repository under AGPL-3.0-only.
 
 ## Hosting
 
