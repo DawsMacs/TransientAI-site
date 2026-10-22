@@ -2,14 +2,14 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
   <title>TransientAI blog</title>
-  <link>https://transientai.org/blog/index.html</link>
+  <link>https://transientai.org/blog/</link>
   <atom:link href="https://transientai.org/feed.xml" rel="self" type="application/rss+xml"/>
   <description>Progress, results, mistakes and plans from TransientAI, the creator of the open Transient project.</description>
   <language>en</language>
   <item>
     <title>How Transient began, and where it stands</title>
-    <link>https://transientai.org/blog/beginning.html</link>
-    <guid isPermaLink="true">https://transientai.org/blog/beginning.html</guid>
+    <link>https://transientai.org/blog/beginning</link>
+    <guid isPermaLink="true">https://transientai.org/blog/beginning</guid>
     <pubDate>Wed, 21 Oct 2026 00:00:00 +0000</pubDate>
     <description>The starting hunch, the first week of work, what the prototype does and does not show, and what comes next.</description>
   </item>

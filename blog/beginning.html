@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>How Transient began · TransientAI</title>
 <meta name="description" content="The starting hunch behind Transient, the first week of work, what the prototype does and does not show, and what comes next.">
-<link rel="canonical" href="https://transientai.org/blog/beginning.html">
+<link rel="canonical" href="https://transientai.org/blog/beginning">
 <meta property="og:site_name" content="TransientAI">
 <meta property="og:title" content="How Transient began · TransientAI">
 <meta property="og:description" content="The starting hunch behind Transient, the first week of work, what the prototype does and does not show, and what comes next.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://transientai.org/blog/beginning.html">
+<meta property="og:url" content="https://transientai.org/blog/beginning">
 <meta property="og:image" content="https://transientai.org/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -62,16 +62,16 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
 <div class="wrap bar">
-<a class="brand" href="../index.html"><img class="invertable" src="../assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">TransientAI</span></a>
+<a class="brand" href="../"><img class="invertable" src="../assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">TransientAI</span></a>
 <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg class="icon" aria-hidden="true"><use href="#menu"/></svg><span>Menu</span></button>
-<nav class="nav" id="site-nav" aria-label="Main"><a href="../baby.html">Project</a><a href="../research.html">Research</a><a href="../docs.html">Docs</a><a href="../blog/index.html" aria-current="page">Blog</a><a href="../progress.html">Progress</a><a href="../about.html">About</a><a class="gh" href="https://github.com/DawsMacs/Transient" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="../baby">Project</a><a href="../research">Research</a><a href="../docs">Docs</a><a href="../blog/" aria-current="page">Blog</a><a href="../progress">Progress</a><a href="../about">About</a><a class="gh" href="https://github.com/DawsMacs/Transient" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
 </div>
 </header>
 <main id="main">
 
 <section class="page-head">
 <div class="wrap">
-<p class="crumbs"><a href="index.html">Blog</a> / 2026-10-21</p>
+<p class="crumbs"><a href="./">Blog</a> / 2026-10-21</p>
 <h1>How Transient began, and where it stands</h1>
 <p class="meta">2026-10-21 · Daws Macs · 8 min read</p>
 </div>
@@ -116,7 +116,7 @@
 
 <h2>A mistake worth telling</h2>
 <p>Careful, we found, is not the same as timid. A rule that fits everything it was taught can still change behaviour outside what it was taught: a sum that caps, or one that wraps around. Nothing in the lessons can reveal that, and the first prototype answered such questions confidently and wrongly, 53 wrong answers per run. So the default became careful: state a value as fact only inside the range taught or checked, and beyond it offer a <em>labelled guess</em> ("probably seven"), keeping a record of how often guesses at each distance turn out right.</p>
-<p>Then we tested that, and it was wrong too. Two confirmed guesses at the edges of a range were being allowed to vouch for an unchecked corner between them: 4 wrong facts out of 9,309. The fix was to stop treating the reach as a box and treat it as a staircase, at a measured cost in coverage (unseen questions answered fell from about 97% to about 95% at 60 units). That pattern, build the harder test, find a new hole, fix it, write it down, has repeated every time. It is why the project's rule is not "never wrong" but <em>never silently wrong</em>. The full list is on <a href="../method.html#mistakes">the method page</a>.</p>
+<p>Then we tested that, and it was wrong too. Two confirmed guesses at the edges of a range were being allowed to vouch for an unchecked corner between them: 4 wrong facts out of 9,309. The fix was to stop treating the reach as a box and treat it as a staircase, at a measured cost in coverage (unseen questions answered fell from about 97% to about 95% at 60 units). That pattern, build the harder test, find a new hole, fix it, write it down, has repeated every time. It is why the project's rule is not "never wrong" but <em>never silently wrong</em>. The full list is on <a href="../method#mistakes">the method page</a>.</p>
 
 <h2>What the numbers do not show</h2>
 <p>Honestly: not as much as they appear to.</p>
@@ -136,7 +136,7 @@
 </ol>
 
 <h2>Following along, and helping</h2>
-<p>TransientAI is one person for now, and there are no plans to change that for the core of the work. The repository is public and contributions are welcome: replications on other hardware, bug reports, and especially questions it should refuse but answers. The <a href="../docs.html">documentation</a> shows how to build and run everything in a couple of minutes, offline. The <a href="../progress.html">progress page</a> keeps the roadmap and the list of what we do not know.</p>
+<p>TransientAI is one person for now, and there are no plans to change that for the core of the work. The repository is public and contributions are welcome: replications on other hardware, bug reports, and especially questions it should refuse but answers. The <a href="../docs">documentation</a> shows how to build and run everything in a couple of minutes, offline. The <a href="../progress">progress page</a> keeps the roadmap and the list of what we do not know.</p>
 <p>Thanks for reading. We will report the next results here, including the ones that go badly.</p>
 
 </article>
@@ -155,28 +155,28 @@
 <div>
 <h4>Project</h4>
 <ul>
-<li><a href="../baby.html">Transient &amp; baby</a></li>
-<li><a href="../docs.html">Documentation</a></li>
-<li><a href="../progress.html">Progress &amp; roadmap</a></li>
+<li><a href="../baby">Transient &amp; baby</a></li>
+<li><a href="../docs">Documentation</a></li>
+<li><a href="../progress">Progress &amp; roadmap</a></li>
 <li><a href="https://github.com/DawsMacs/Transient" rel="noopener">Source on GitHub<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
 </ul>
 </div>
 <div>
 <h4>Research</h4>
 <ul>
-<li><a href="../adaptive-learning.html">Adaptive learning</a></li>
-<li><a href="../efficiency.html">Efficiency &amp; joules</a></li>
-<li><a href="../why-rust.html">Why Rust</a></li>
-<li><a href="../method.html">How we judge results</a></li>
-<li><a href="../hardware.html">Hardware</a></li>
+<li><a href="../adaptive-learning">Adaptive learning</a></li>
+<li><a href="../efficiency">Efficiency &amp; joules</a></li>
+<li><a href="../why-rust">Why Rust</a></li>
+<li><a href="../method">How we judge results</a></li>
+<li><a href="../hardware">Hardware</a></li>
 </ul>
 </div>
 <div>
 <h4>TransientAI</h4>
 <ul>
-<li><a href="../about.html">About</a></li>
-<li><a href="../blog/index.html">Blog</a></li>
-<li><a href="../docs.html#contribute">Contribute</a></li>
+<li><a href="../about">About</a></li>
+<li><a href="../blog/">Blog</a></li>
+<li><a href="../docs#contribute">Contribute</a></li>
 <li><a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">Issues<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
 </ul>
 </div>

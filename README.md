@@ -32,6 +32,10 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 then open <http://127.0.0.1:8765/>.
 
+Internal links have no `.html` extension (`/about`, `/blog/`), which GitHub Pages resolves to the matching file. Python's
+`http.server` does not, so on that local server the nav links will 404 unless you add `.html` by hand; the home page,
+styling and any direct `*.html` URL still work.
+
 ## Editing notes
 
 - The header and footer are repeated in every page (no templating), so a navigation change means editing each file

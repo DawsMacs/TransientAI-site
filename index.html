@@ -62,9 +62,9 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
 <div class="wrap bar">
-<a class="brand" href="index.html"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">TransientAI</span></a>
+<a class="brand" href="./"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">TransientAI</span></a>
 <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg class="icon" aria-hidden="true"><use href="#menu"/></svg><span>Menu</span></button>
-<nav class="nav" id="site-nav" aria-label="Main"><a href="baby.html">Project</a><a href="research.html">Research</a><a href="docs.html">Docs</a><a href="blog/index.html">Blog</a><a href="progress.html">Progress</a><a href="about.html">About</a><a class="gh" href="https://github.com/DawsMacs/Transient" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="baby">Project</a><a href="research">Research</a><a href="docs">Docs</a><a href="blog/">Blog</a><a href="progress">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/DawsMacs/Transient" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
 </div>
 </header>
 <main id="main">
@@ -76,8 +76,8 @@
 <h1>Learning systems that run on ordinary hardware.</h1>
 <p class="lead">TransientAI is a small research effort building <strong>Transient</strong>, an open, experimental learning system written in Rust. The aim is capable AI that almost anyone can run, study and teach on their own machine. We publish everything, mistakes included, so others can replicate it, check it and reuse it.</p>
 <div class="cta">
-<a class="btn primary" href="blog/beginning.html">Read the first post<svg class="icon" aria-hidden="true"><use href="#arrow-right"/></svg></a>
-<a class="btn" href="baby.html">Meet the prototype</a>
+<a class="btn primary" href="blog/beginning">Read the first post<svg class="icon" aria-hidden="true"><use href="#arrow-right"/></svg></a>
+<a class="btn" href="baby">Meet the prototype</a>
 <a class="btn" href="https://github.com/DawsMacs/Transient" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>Source on GitHub</a>
 </div>
 </div>
@@ -113,19 +113,19 @@
 <p>Most AI today is trained once in a data centre, frozen, and served from one. We are looking at a different corner of the design space: small systems that keep learning on the device they run on, and whose cost we can count.</p>
 </div>
 <div class="grid g3">
-<a class="card reveal" href="adaptive-learning.html">
+<a class="card reveal" href="adaptive-learning">
 <span class="ico"><svg class="icon" aria-hidden="true"><use href="#brain-circuit"/></svg></span>
 <h3>Adaptive learning</h3>
 <p>A system that learns while it is used, and decides for itself <em>how</em> to learn each kind of thing: memorise it, fit a rule, or search for a small program.</p>
 <span class="more">Read more<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-right"/></svg></span>
 </a>
-<a class="card reveal" href="efficiency.html">
+<a class="card reveal" href="efficiency">
 <span class="ico"><svg class="icon" aria-hidden="true"><use href="#zap"/></svg></span>
 <h3>Measured in joules</h3>
 <p>We count operations, memory traffic and estimated energy, not only parameters, because energy is what decides whether "on your own hardware" is real.</p>
 <span class="more">Read more<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-right"/></svg></span>
 </a>
-<a class="card reveal" href="method.html">
+<a class="card reveal" href="method">
 <span class="ico"><svg class="icon" aria-hidden="true"><use href="#shield-check"/></svg></span>
 <h3>Honest about being wrong</h3>
 <p>Wrong answers are reported apart from refusals. Guesses are labelled. Mistakes and rejected ideas are written down as they happen.</p>
@@ -181,7 +181,7 @@
 <div class="stat reveal"><div class="v">2.65 s</div><div class="l">to teach 25,776 lessons across 600 kinds of lesson (56 MB peak) in the scale test.</div></div>
 <div class="stat reveal"><div class="v">~0.5 ms</div><div class="l">to learn one more fact, at every size tested from 20 to 600 units.</div></div>
 </div>
-<p class="muted small" style="margin-top:1.2rem;max-width:70ch">These come from tidy, synthetic lessons. Nothing here shows behaviour on real text at scale, or that this approach can reach the quality of today's language models. <a href="progress.html#unknowns">What we do not know yet<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-right"/></svg></a></p>
+<p class="muted small" style="margin-top:1.2rem;max-width:70ch">These come from tidy, synthetic lessons. Nothing here shows behaviour on real text at scale, or that this approach can reach the quality of today's language models. <a href="progress#unknowns">What we do not know yet<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-right"/></svg></a></p>
 </div>
 </section>
 
@@ -190,7 +190,7 @@
 <div class="grid g2">
 <div class="reveal">
 <h2 style="margin-top:0">Latest from the blog</h2>
-<a class="card has-thumb" href="blog/beginning.html">
+<a class="card has-thumb" href="blog/beginning">
 <img class="thumb invertable" src="assets/cover-beginning.svg" alt="" width="1200" height="630" loading="lazy">
 <span class="meta">2026-10-21</span>
 <h3 style="margin-top:.4rem">How Transient began, and where it stands</h3>
@@ -202,7 +202,7 @@
 <h2 style="margin-top:0">Open on purpose</h2>
 <p class="muted">Everything is public under the AGPL, so that anyone who runs a modified version, including as a service, has to share their changes. There is no contributor licence agreement: contributions stay under the same licence.</p>
 <p class="muted">Right now TransientAI is one person. There are no plans to grow the core team, but contributors to the repository are welcome.</p>
-<p><a href="docs.html#contribute">How to contribute<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-right"/></svg></a></p>
+<p><a href="docs#contribute">How to contribute<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-right"/></svg></a></p>
 </div>
 </div>
 </div>
@@ -220,28 +220,28 @@
 <div>
 <h4>Project</h4>
 <ul>
-<li><a href="baby.html">Transient &amp; baby</a></li>
-<li><a href="docs.html">Documentation</a></li>
-<li><a href="progress.html">Progress &amp; roadmap</a></li>
+<li><a href="baby">Transient &amp; baby</a></li>
+<li><a href="docs">Documentation</a></li>
+<li><a href="progress">Progress &amp; roadmap</a></li>
 <li><a href="https://github.com/DawsMacs/Transient" rel="noopener">Source on GitHub<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
 </ul>
 </div>
 <div>
 <h4>Research</h4>
 <ul>
-<li><a href="adaptive-learning.html">Adaptive learning</a></li>
-<li><a href="efficiency.html">Efficiency &amp; joules</a></li>
-<li><a href="why-rust.html">Why Rust</a></li>
-<li><a href="method.html">How we judge results</a></li>
-<li><a href="hardware.html">Hardware</a></li>
+<li><a href="adaptive-learning">Adaptive learning</a></li>
+<li><a href="efficiency">Efficiency &amp; joules</a></li>
+<li><a href="why-rust">Why Rust</a></li>
+<li><a href="method">How we judge results</a></li>
+<li><a href="hardware">Hardware</a></li>
 </ul>
 </div>
 <div>
 <h4>TransientAI</h4>
 <ul>
-<li><a href="about.html">About</a></li>
-<li><a href="blog/index.html">Blog</a></li>
-<li><a href="docs.html#contribute">Contribute</a></li>
+<li><a href="about">About</a></li>
+<li><a href="blog/">Blog</a></li>
+<li><a href="docs#contribute">Contribute</a></li>
 <li><a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">Issues<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
 </ul>
 </div>
