@@ -28,7 +28,7 @@
   --text-2: #a6a6ae;
   --text-3: #7a7a83;
   --link: #b4cdff;
-  --link-hover: #fff;
+  --link-hover: color-mix(in srgb, var(--link) 80%, #fff);
   --glow: rgba(255, 255, 255, 0.05);
   --ok: #7ddc9f;
   --next: #8fb8ff;
@@ -55,7 +55,7 @@
     --text-2: #4a4a53;
     --text-3: #6c6c76;
     --link: #1c4fd1;
-    --link-hover: #000;
+    --link-hover: color-mix(in srgb, var(--link) 80%, #fff);
     --glow: rgba(0, 0, 0, 0.04);
     --ok: #17753d;
     --next: #1c4fd1;
@@ -81,7 +81,7 @@ body {
 }
 img, svg { max-width: 100%; display: block; }
 a { color: var(--link); text-decoration-thickness: 1px; text-underline-offset: 3px; text-decoration-color: color-mix(in srgb, var(--link) 40%, transparent); }
-a:hover { color: var(--link-hover); text-decoration-color: currentColor; }
+a:hover, a:active { color: var(--link-hover); text-decoration-color: currentColor; }
 :focus-visible { outline: 2px solid var(--link); outline-offset: 3px; border-radius: 4px; }
 ::selection { background: var(--text); color: var(--bg); }
 
