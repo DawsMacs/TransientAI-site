@@ -301,7 +301,7 @@ td code { white-space: nowrap; }
 
 /* ---------- docs layout ---------- */
 .docs-layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 3rem; padding-top: 2.5rem; padding-bottom: 4rem; }
-.docs-nav { position: sticky; top: 88px; align-self: start; max-height: calc(100vh - 110px); overflow-y: auto; font-size: 0.88rem; }
+.docs-nav { position: sticky; top: 88px; align-self: start; max-height: calc(100vh - 110px); overflow-y: auto; font-size: 0.88rem; margin-left: -0.7rem; padding-left: 0.7rem; }
 .docs-nav p { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-3); margin: 1.2rem 0 0.4rem; }
 .docs-nav p:first-child { margin-top: 0; }
 .docs-nav a { display: block; padding: 0.28rem 0.7rem; margin-left: -0.7rem; color: var(--text-2); text-decoration: none; border-radius: 4px; }
