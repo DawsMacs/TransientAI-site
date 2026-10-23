@@ -58,7 +58,11 @@
         });
       }
     });
-    pre.appendChild(btn);
+    var wrap = document.createElement("div");
+    wrap.className = "code-wrap";
+    pre.parentNode.insertBefore(wrap, pre);
+    wrap.appendChild(pre);
+    wrap.appendChild(btn);
   });
 
   // typed terminal demo: the full transcript is in the HTML; this only replays it

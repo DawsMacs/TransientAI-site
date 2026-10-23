@@ -102,12 +102,14 @@ pre {
   padding: 1rem 1.1rem; overflow-x: auto; margin: 0 0 1.4em;
 }
 pre code { background: none; border: 0; padding: 0; font-size: inherit; }
+.code-wrap { position: relative; margin: 0 0 1.4em; }
+.code-wrap pre { margin: 0; }
 .copy-btn {
   position: absolute; top: 8px; right: 8px; font: 500 0.72rem var(--font);
   background: var(--bg-3); color: var(--text-2); border: 1px solid var(--line-2); border-radius: 5px;
   padding: 3px 9px; cursor: pointer; opacity: 0; transition: opacity 0.15s;
 }
-pre:hover .copy-btn, .copy-btn:focus-visible { opacity: 1; }
+.code-wrap:hover .copy-btn, .copy-btn:focus-visible { opacity: 1; }
 .copy-btn:hover { color: var(--text); }
 
 .skip { position: absolute; left: -999px; top: 8px; background: var(--text); color: var(--bg); padding: 8px 14px; border-radius: 5px; z-index: 100; }
