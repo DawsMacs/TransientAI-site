@@ -102,7 +102,7 @@
 <pre data-copy><code>git clone https://github.com/DawsMacs/Transient.git
 cd Transient
 cargo build --release --offline
-cargo test --release --offline        # 92 tests, about 13 s
+cargo test --release --offline        # 139 tests, about 21 s
 ./target/release/baby school          # teach 13 units, print how each was learned and the scorecard
 ./target/release/baby ask "how far apart are two and nine"</code></pre>
 
@@ -185,7 +185,10 @@ cargo test --release --offline        # 92 tests, about 13 s
 <tr><td><code>discover.rs</code></td><td>Unit discovery from unlabelled lessons.</td></tr>
 <tr><td><code>invent.rs</code></td><td>The invention experiment: hidden kinds, deceptive kinds, kinds that must stay unexplained.</td></tr>
 <tr><td><code>scale.rs</code></td><td>The scale test generator and measurements.</td></tr>
-<tr><td><code>bridge.rs</code></td><td>The harness for real text.</td></tr>
+<tr><td><code>bridge.rs</code></td><td>The harness for real text (SVAMP and ASDiv word problems).</td></tr>
+<tr><td><code>selector.rs</code></td><td>Which numbers in a real question matter.</td></tr>
+<tr><td><code>exam.rs</code></td><td>The entry exam: plain files and a line protocol any system can be taught and judged by.</td></tr>
+<tr><td><code>tutor.rs</code></td><td>The baby asks, a person answers.</td></tr>
 <tr><td><code>kinds.rs</code></td><td>The synthetic curriculum.</td></tr>
 <tr><td><code>ledger.rs</code></td><td>Counted operations and words moved, priced with published figures; optional RAPL reader.</td></tr>
 <tr><td><code>memory.rs</code> · <code>store.rs</code> · <code>net.rs</code> · <code>model.rs</code> · <code>data.rs</code> · <code>know.rs</code> · <code>life.rs</code> · <code>curious.rs</code> · <code>rules.rs</code> · <code>rng.rs</code> · <code>main.rs</code></td><td>Taught facts, the earlier network and its experiments, plumbing, and the command-line interface.</td></tr>

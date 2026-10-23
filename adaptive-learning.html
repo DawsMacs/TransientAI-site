@@ -120,7 +120,7 @@
 <p>In the scale test, learning one more fact stayed at roughly half a millisecond from 20 to 600 units. <a href="efficiency">More in efficiency<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-right"/></svg></a></p>
 
 <h2>Learning in real time</h2>
-<p>One advantage we hope to keep is that a user's correction can change behaviour <em>immediately</em>, without a training run. A concrete case: when <code>baby</code> guesses beyond what it was taught and a teacher says it was wrong, it stops guessing in that region right away. Before this was built, after one correction 303 of the 305 other wrong guesses stayed wrong and 2 became wrong <em>facts</em>; after it, none stayed wrong and none became wrong facts (they were all refused). It stops; it does not yet learn the new regime from one point, so the right guesses nearby are refused too. Doing that is on the roadmap.</p>
+<p>One advantage we hope to keep is that a user's correction can change behaviour <em>immediately</em>, without a training run. A concrete case: when <code>baby</code> guesses beyond what it was taught and a teacher says it was wrong, it stops guessing in that region right away. Before this was built, after one correction 303 of the 305 other wrong guesses stayed wrong and 2 became wrong <em>facts</em>; after it, none stayed wrong and none became wrong facts (they were all refused). At first it only stopped; it did not learn the new regime from one point, so the right guesses nearby were refused too. It now rebuilds the law from the numbers the correcting lessons name, and in our test all 157 of the wrong guesses became right guesses after one correction. That comes with a price: it is careful about overruling the old law, so some coverage is lost when the teacher is sometimes wrong.</p>
 
 <h2>Vocabulary</h2>
 <p>These terms are the founder's, used as directions. They may shift.</p>
@@ -136,8 +136,8 @@
 
 <h2>Next steps on this thread</h2>
 <ul>
-<li>Run on real data (small factoid and word-problem corpora) to see which of this survives contact with messy text.</li>
-<li>Let a correction teach the <em>new</em> regime, not only stop the old guess.</li>
+<li>Run on a factoid corpus as well as word problems (word problems have had a first look) to see which of this survives contact with messy text.</li>
+<li>Win back the coverage the repair guard costs, without letting wrong facts return.</li>
 <li>Adapt more of the remaining constants from measurement.</li>
 <li>A unit that starts tiny and grows capacity only when it saturates.</li>
 </ul>

@@ -73,7 +73,7 @@
 <div class="wrap">
 <p class="eyebrow">The project</p>
 <h1>Transient, and its first working piece: baby</h1>
-<p class="lead">Transient is an experiment in building a light, adaptive learning system that runs on ordinary hardware. <code>baby</code> is the prototype we have so far: about 11,000 lines of Rust with no dependencies. It is a research prototype tested on a synthetic curriculum. It is not a language model, and makes no claim to be one yet.</p>
+<p class="lead">Transient is an experiment in building a light, adaptive learning system that runs on ordinary hardware. <code>baby</code> is the prototype we have so far: about 17,000 lines of Rust with no dependencies. It is a research prototype tested mostly on a synthetic curriculum, with a first look at real word problems. It is not a language model, and makes no claim to be one yet.</p>
 </div>
 </section>
 
@@ -175,8 +175,8 @@
 <h2>Limits we state plainly</h2>
 <ul>
 <li>The mechanisms, the expression language, the number line and the thresholds are our design choices. <code>baby</code> selects and fits among them; "invention" here means building expressions and vocabulary, not a new kind of learner.</li>
-<li>It has not yet been run on real text, on millions of lessons, or at the quality of today's language models. Those are the open questions the roadmap exists to answer.</li>
-<li>The experiments use a simulated teacher who is always right. A real teacher is sometimes wrong.</li>
+<li>Real text has had only a first look (two small word-problem corpora), not millions of lessons, and nothing here is at the quality of today's language models. Those are the open questions the roadmap exists to answer.</li>
+<li>Most experiments use a simulated teacher. We have also tested teachers that are sometimes wrong, and a repair step that guards against them, but only simulated ones so far; a person who is sometimes wrong is not yet tested at scale.</li>
 </ul>
 
 <h2>Try it</h2>
