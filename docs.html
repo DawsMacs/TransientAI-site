@@ -92,7 +92,7 @@
 <a href="#documents">Repository documents</a>
 <p>Join</p>
 <a href="#contribute">Contribute</a>
-<a href="#licence">Licence</a>
+<a href="#license">License</a>
 </nav>
 
 <div class="docs-body">
@@ -111,7 +111,7 @@ cargo test --release --offline        # 139 tests, about 21 s
 <pre data-copy><code>cargo test --release --offline
 ./target/release/baby school
 ./target/release/baby ask "what is two times four"       # eight, with how it knew
-./target/release/baby ask "what is seven times one"      # probably seven: a labelled guess
+./target/release/baby ask "what is seven times one"      # probably seven: a labeled guess
 ./target/release/baby ask "three minus five"             # ?  (must refuse)
 ./target/release/baby ask "what is -3 plus 5"            # ?  (unreadable number: must refuse)</code></pre>
 <div class="callout good">
@@ -125,12 +125,12 @@ cargo test --release --offline        # 139 tests, about 21 s
 <thead><tr><th>Command</th><th>What it does</th></tr></thead>
 <tbody>
 <tr><td><code>baby school [--permissive]</code></td><td>Teaches the 13-unit synthetic curriculum, prints the mechanism chosen for each unit and the honest scorecard, and saves the school.</td></tr>
-<tr><td><code>baby ask "..." [--permissive]</code></td><td>Asks a question. Prints the answer and how it knew, a labelled guess, or a refusal and why.</td></tr>
+<tr><td><code>baby ask "..." [--permissive]</code></td><td>Asks a question. Prints the answer and how it knew, a labeled guess, or a refusal and why.</td></tr>
 <tr><td><code>baby learn "&lt;q&gt;" &lt;a&gt; [--unit NAME] [--wondered]</code></td><td>Keeps learning after school: a new phrasing, a correction, or a whole new unit.</td></tr>
 <tr><td><code>baby teach "&lt;q&gt;" &lt;a&gt;</code></td><td>Tells it something new in open vocabulary; kept in a file you can read.</td></tr>
 <tr><td><code>baby wonder [--check] [--limit N]</code></td><td>What would it like to be told? With <code>--check</code>, where would it test its own explanations?</td></tr>
-<tr><td><code>baby sleep [--compact]</code></td><td>Reorganises: merges units that follow one rule, splits ones that stopped. <code>--compact</code> forgets lessons that are fully explained.</td></tr>
-<tr><td><code>baby discover [--out FILE]</code></td><td>Finds the units itself from a heap of unlabelled lessons.</td></tr>
+<tr><td><code>baby sleep [--compact]</code></td><td>Reorganizes: merges units that follow one rule, splits ones that stopped. <code>--compact</code> forgets lessons that are fully explained.</td></tr>
+<tr><td><code>baby discover [--out FILE]</code></td><td>Finds the units itself from a heap of unlabeled lessons.</td></tr>
 <tr><td><code>baby grade</code></td><td>Re-runs the scorecard on a saved school.</td></tr>
 <tr><td><code>baby cost</code> · <code>baby effort</code> · <code>baby storage</code></td><td>What learning costs (time and memory); what answering costs (counted operations and estimated energy); what it keeps (lessons versus what was learned).</td></tr>
 </tbody>
@@ -158,19 +158,19 @@ cargo test --release --offline        # 139 tests, about 21 s
 <tr><th>Lesson</th><td>A question and its answer.</td></tr>
 <tr><th>Unit</th><td>A group of related lessons (sums, capitals, comparisons). Given by a teacher, or found by <code>baby discover</code>.</td></tr>
 <tr><th>Mechanism</th><td>How a unit is learned: <code>remember</code>, <code>rule</code>, <code>select</code>, <code>program</code> or <code>network</code>. Chosen per unit from facts held back.</td></tr>
-<tr><th>Held back</th><td>Facts kept out of the fitting to test how well a mechanism generalises.</td></tr>
+<tr><th>Held back</th><td>Facts kept out of the fitting to test how well a mechanism generalizes.</td></tr>
 <tr><th>Reliability bar</th><td>How well a mechanism must do on held-back facts before it may answer. Set from the noise the baby measures in its own lessons (0.8 to 0.9).</td></tr>
 <tr><th>Pen</th><td>Where lessons that fit no unit wait; a new unit opens when enough gather.</td></tr>
 <tr><th>Surprise gate</th><td>A lesson it can already work out is neither learned from nor stored.</td></tr>
 <tr><th>Careful</th><td>Default mode: state a value as fact only inside the range taught or checked.</td></tr>
-<tr><th>Guess</th><td>A labelled answer beyond that range, with its distance and a stated hit rate. Never counted as an answer.</td></tr>
+<tr><th>Guess</th><td>A labeled answer beyond that range, with its distance and a stated hit rate. Never counted as an answer.</td></tr>
 <tr><th>Reach</th><td>The set of questions a unit may answer as fact: a staircase over the operands, not a box.</td></tr>
 </tbody>
 </table>
 </div>
 
 <h2 id="scorecard">Reading the scorecard</h2>
-<p>The scorecard grades four kinds of question: <strong>taught</strong> (asked exactly as taught), <strong>reworded</strong> (same fact, new phrasing), <strong>never taught</strong> (a new fact of a known kind), and <strong>beyond the taught range</strong>. For each it reports the share <em>right</em>, <em>refused</em> and <em>WRONG</em>, then, of the refused, how many came with a labelled guess and whether that guess was right. A refusal is acceptable. A wrong answer is not, and is reported on its own so that accuracy cannot hide it.</p>
+<p>The scorecard grades four kinds of question: <strong>taught</strong> (asked exactly as taught), <strong>reworded</strong> (same fact, new phrasing), <strong>never taught</strong> (a new fact of a known kind), and <strong>beyond the taught range</strong>. For each it reports the share <em>right</em>, <em>refused</em> and <em>WRONG</em>, then, of the refused, how many came with a labeled guess and whether that guess was right. A refusal is acceptable. A wrong answer is not, and is reported on its own so that accuracy cannot hide it.</p>
 
 <h2 id="codemap">Code map</h2>
 <p>All under <code>baby/src/</code>.</p>
@@ -178,11 +178,11 @@ cargo test --release --offline        # 139 tests, about 21 s
 <table>
 <thead><tr><th>File</th><th>Role</th></tr></thead>
 <tbody>
-<tr><td><code>school.rs</code></td><td>The unified system: units, sparse incremental routing, <code>ask</code>, <code>learn</code>, the pen, <code>reorganise</code>, <code>compact</code>, save and load.</td></tr>
+<tr><td><code>school.rs</code></td><td>The unified system: units, sparse incremental routing, <code>ask</code>, <code>learn</code>, the pen, <code>reorganize</code>, <code>compact</code>, save and load.</td></tr>
 <tr><td><code>mechanisms.rs</code></td><td>The mechanisms, cross-validation, mechanism choice, the voting memory, the reliability bar.</td></tr>
-<tr><td><code>program.rs</code></td><td>Expression search, the learned library, ambiguity detection by behaviour.</td></tr>
+<tr><td><code>program.rs</code></td><td>Expression search, the learned library, ambiguity detection by behavior.</td></tr>
 <tr><td><code>quantity.rs</code></td><td>Number line, digits as numbers, exact ridge fit (plain and robust).</td></tr>
-<tr><td><code>discover.rs</code></td><td>Unit discovery from unlabelled lessons.</td></tr>
+<tr><td><code>discover.rs</code></td><td>Unit discovery from unlabeled lessons.</td></tr>
 <tr><td><code>invent.rs</code></td><td>The invention experiment: hidden kinds, deceptive kinds, kinds that must stay unexplained.</td></tr>
 <tr><td><code>scale.rs</code></td><td>The scale test generator and measurements.</td></tr>
 <tr><td><code>bridge.rs</code></td><td>The harness for real text (SVAMP and ASDiv word problems).</td></tr>
@@ -212,7 +212,7 @@ cargo test --release --offline        # 139 tests, about 21 s
 </div>
 
 <h2 id="contribute">Contribute</h2>
-<p>Contributions are welcome under the project's licence. TransientAI is a very small team, so patience helps; the most useful things are replications, bug reports and adversarial questions.</p>
+<p>Contributions are welcome under the project's license. TransientAI is a very small team, so patience helps; the most useful things are replications, bug reports and adversarial questions.</p>
 <ul>
 <li><strong>Replicate something</strong> on your own machine and tell us what you measured, especially if it differs.</li>
 <li><strong>Break it.</strong> A question it should refuse but answers is the most valuable bug report. Open an <a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">issue</a> with the exact question.</li>
@@ -230,9 +230,9 @@ cargo test --release --offline        # 139 tests, about 21 s
 <pre data-copy><code>cargo build --release --offline
 cargo test --release --offline
 ./target/release/baby school      # WRONG must read 0.0% on every row</code></pre>
-<p class="small muted">The repository's <a href="https://github.com/DawsMacs/Transient/blob/main/CONTRIBUTING.md" rel="noopener">CONTRIBUTING.md</a> has the same rules and the licence header for new files.</p>
+<p class="small muted">The repository's <a href="https://github.com/DawsMacs/Transient/blob/main/CONTRIBUTING.md" rel="noopener">CONTRIBUTING.md</a> has the same rules and the license header for new files.</p>
 
-<h2 id="licence">Licence</h2>
+<h2 id="license">License</h2>
 <p>The Transient code is <strong>AGPL-3.0-only</strong>. Anyone may use, study, change and share it. Anyone who distributes it, or lets others use a modified version over a network, must offer those users the corresponding source under the same terms. That network clause is the reason for choosing it: the aim is that this work stays open and is not quietly closed behind a service. See the repository's <a href="https://github.com/DawsMacs/Transient/blob/main/LICENSE" rel="noopener">LICENSE</a>.</p>
 
 </div>

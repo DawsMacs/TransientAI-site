@@ -91,8 +91,8 @@
 
 <h2>The hunch</h2>
 <p>Computers keep getting smaller. In the 1960s you rented a machine the size of a room; a phone now outperforms what flew to the Moon. Hardware will keep improving, but we have already run into ceilings in how current designs are implemented, and the software side has had far less attention than the silicon.</p>
-<p>Most of today's large models descend from one design, the transformer of 2017. Since then the industry has mostly scaled it and refined it, with demand for GPUs and data-centre energy rising to match. Very little that is large has been started from scratch. If you were to rebuild from scratch and find a better implementation, the efficiency gain might not be an increment. It might be an iceberg.</p>
-<p><strong>That is a hunch, not a verified claim.</strong> It rests on judgement, not on what current research establishes, and there are good reasons it might be wrong: transformers win partly because they suit GPUs, and plenty of ideas that look good small fade at scale. We are following it anyway, for as long as it takes, and treating the difficulties as terrain to measure and not as reasons to stop.</p>
+<p>Most of today's large models descend from one design, the transformer of 2017. Since then the industry has mostly scaled it and refined it, with demand for GPUs and data-center energy rising to match. Very little that is large has been started from scratch. If you were to rebuild from scratch and find a better implementation, the efficiency gain might not be an increment. It might be an iceberg.</p>
+<p><strong>That is a hunch, not a verified claim.</strong> It rests on judgment, not on what current research establishes, and there are good reasons it might be wrong: transformers win partly because they suit GPUs, and plenty of ideas that look good small fade at scale. We are following it anyway, for as long as it takes, and treating the difficulties as terrain to measure and not as reasons to stop.</p>
 
 <h2>What we decided</h2>
 <ul>
@@ -105,8 +105,8 @@
 
 <h2>The first week</h2>
 <p>The first version was a 16,000-parameter network, written from scratch, that read a short query and answered with one word, along with a ledger that counts operations and memory traffic. Counting showed that about 91% of the estimated energy of answering was moving memory, not arithmetic. A plain fact store, with no training at all, kept learned lessons at roughly a nine-hundredth of the estimated energy of retraining.</p>
-<p>From there each step came from a limitation of the last. Readers that ignore word position mattered more than any learning trick. A system that could say it did not know. Rules instead of tables, so that a sum fitted from examples held beyond the numbers it was taught, where memorising networks fell to 5%. Then the idea that mattered most: don't pick the learning method in advance. For each group of lessons, try several on facts held back, and keep the one that generalises.</p>
-<p>That became <code>baby</code>: 13 groups of lessons, five mechanisms chosen per group by evidence, answers that say how they were known and refusals that say why. It found its own groups from 792 unlabelled lessons. It scaled to 600 groups and 25,776 lessons, where learning one more fact stayed at about half a millisecond. It tolerated a few percent of wrong lessons. It worked out 16 hidden numeric kinds nobody wrote a mechanism for, and asked a question when two explanations fit equally well.</p>
+<p>From there each step came from a limitation of the last. Readers that ignore word position mattered more than any learning trick. A system that could say it did not know. Rules instead of tables, so that a sum fitted from examples held beyond the numbers it was taught, where memorizing networks fell to 5%. Then the idea that mattered most: don't pick the learning method in advance. For each group of lessons, try several on facts held back, and keep the one that generalizes.</p>
+<p>That became <code>baby</code>: 13 groups of lessons, five mechanisms chosen per group by evidence, answers that say how they were known and refusals that say why. It found its own groups from 792 unlabeled lessons. It scaled to 600 groups and 25,776 lessons, where learning one more fact stayed at about half a millisecond. It tolerated a few percent of wrong lessons. It worked out 16 hidden numeric kinds nobody wrote a mechanism for, and asked a question when two explanations fit equally well.</p>
 
 <div class="grid g3" style="margin:1.8rem 0">
 <div class="stat"><div class="v">92</div><div class="l">tests, including batteries of questions that must be refused</div></div>
@@ -115,7 +115,7 @@
 </div>
 
 <h2>A mistake worth telling</h2>
-<p>Careful, we found, is not the same as timid. A rule that fits everything it was taught can still change behaviour outside what it was taught: a sum that caps, or one that wraps around. Nothing in the lessons can reveal that, and the first prototype answered such questions confidently and wrongly, 53 wrong answers per run. So the default became careful: state a value as fact only inside the range taught or checked, and beyond it offer a <em>labelled guess</em> ("probably seven"), keeping a record of how often guesses at each distance turn out right.</p>
+<p>Careful, we found, is not the same as timid. A rule that fits everything it was taught can still change behavior outside what it was taught: a sum that caps, or one that wraps around. Nothing in the lessons can reveal that, and the first prototype answered such questions confidently and wrongly, 53 wrong answers per run. So the default became careful: state a value as fact only inside the range taught or checked, and beyond it offer a <em>labeled guess</em> ("probably seven"), keeping a record of how often guesses at each distance turn out right.</p>
 <p>Then we tested that, and it was wrong too. Two confirmed guesses at the edges of a range were being allowed to vouch for an unchecked corner between them: 4 wrong facts out of 9,309. The fix was to stop treating the reach as a box and treat it as a staircase, at a measured cost in coverage (unseen questions answered fell from about 97% to about 95% at 60 units). That pattern, build the harder test, find a new hole, fix it, write it down, has repeated every time. It is why the project's rule is not "never wrong" but <em>never silently wrong</em>. The full list is on <a href="../method#mistakes">the method page</a>.</p>
 
 <h2>What the numbers do not show</h2>
@@ -132,7 +132,7 @@
 <li><strong>Real data.</strong> A harness for real text is built and tested on hand-written fixtures. The next step is to run it on a small public word-problem corpus. We expect it to refuse most of it; the reasons it refuses are the interesting result.</li>
 <li><strong>A controlled comparison.</strong> A matched small transformer against <code>baby</code>-style systems at several sizes, on quality at equal joules, retention after new learning, and how quickly each adapts to a correction. A rented GPU is planned for this, and the comparison model will be written in Rust so both sides are counted the same way.</li>
 <li><strong>Real joules.</strong> The CPU's own energy counter is readable now; it needs wiring into the ledger.</li>
-<li><strong>Corrections that teach.</strong> Today one correction stops a wrong guess. It should also let the system learn the right behaviour from a few points.</li>
+<li><strong>Corrections that teach.</strong> Today one correction stops a wrong guess. It should also let the system learn the right behavior from a few points.</li>
 </ol>
 
 <h2>Following along, and helping</h2>

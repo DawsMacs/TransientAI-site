@@ -4,7 +4,7 @@ The website of **TransientAI**, the creator of the open [Transient](https://gith
 Plain static HTML, one stylesheet, one small script. No framework, no build step.
 The pages themselves load nothing from other sites (Lexend and Josefin Sans are self-hosted under the SIL OFL, see `fonts/`; Josefin Sans is used only for the TransientAI wordmark, everything else is Lexend).
 
-This is a separate repository from `Transient` on purpose: the project is the research, this is the organisation's site.
+This is a separate repository from `Transient` on purpose: the project is the research, this is the organization's site.
 
 ## Layout
 

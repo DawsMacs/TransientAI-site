@@ -82,7 +82,7 @@
 <div class="prose">
 <h2>The case for it</h2>
 <ul>
-<li><strong>The cost is around the kernels.</strong> In our regime, small systems taking many small steps, the interpreter, allocation, tokenising, process start-up and glue code are a larger share of the total than they are for giant GPU-bound models. A language with no runtime and predictable memory attacks that share directly.</li>
+<li><strong>The cost is around the kernels.</strong> In our regime, small systems taking many small steps, the interpreter, allocation, tokenizing, process start-up and glue code are a larger share of the total than they are for giant GPU-bound models. A language with no runtime and predictable memory attacks that share directly.</li>
 <li><strong>One static binary.</strong> Nothing to install on the target machine, no Python environment, no framework version to match. That matters if "anyone can run it" is to be literal.</li>
 <li><strong>Predictable memory.</strong> Light on RAM is a design goal, and we want to know where every byte goes. Peak memory of the whole teach-from-nothing session is about 12 MB, of which about 3 MB is the program itself.</li>
 <li><strong>Zero dependencies.</strong> <code>baby</code> builds offline with the standard library alone, about 11,000 lines. Every dependency would have to earn its place with a measurement. It also means the whole thing can be read, audited and rebuilt without trusting a supply chain.</li>
@@ -93,7 +93,7 @@
 <h2>What we measured</h2>
 <p>Not much about the language itself, and we would rather say so. What we have is small and concrete:</p>
 <ul>
-<li>A dot product written as eight independent accumulators let the compiler vectorise a loop in safe code, with no flags: 32 µs to 13 µs per question, same answers. That is an implementation choice that the language made easy to reach, not a property of Rust.</li>
+<li>A dot product written as eight independent accumulators let the compiler vectorize a loop in safe code, with no flags: 32 µs to 13 µs per question, same answers. That is an implementation choice that the language made easy to reach, not a property of Rust.</li>
 <li>The release build is one binary under 3 MB; the test suite (139 tests, including batteries of questions that must be refused) runs in about 21 seconds; teaching from nothing takes about a third of a second.</li>
 </ul>
 
@@ -104,7 +104,7 @@
 </div>
 <ul>
 <li><strong>The ecosystem is young.</strong> Most research ships PyTorch or CUDA reference code, so ideas from papers have to be ported by hand. Where a quick PyTorch run answers a question faster than a port would, we will use it and say so. A Python or C reference may serve as a <em>test oracle</em> that produces golden outputs the Rust version must match, never as the runtime.</li>
-<li><strong>Some hardware features lag.</strong> At the time we last checked, the ARM instructions that fast quantised matrix multiplication uses were still unstable in Rust's standard library. The options are a nightly toolchain, inline assembly, or calling existing C kernels at first.</li>
+<li><strong>Some hardware features lag.</strong> At the time we last checked, the ARM instructions that fast quantized matrix multiplication uses were still unstable in Rust's standard library. The options are a nightly toolchain, inline assembly, or calling existing C kernels at first.</li>
 </ul>
 
 <h2>How we choose per layer</h2>

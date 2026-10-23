@@ -81,15 +81,15 @@
 <div class="wrap">
 <div class="prose">
 <h2>What it does</h2>
-<p>You teach <code>baby</code> <em>lessons</em>: question and answer pairs, such as "what is two plus three → five" or "the capital of peru → lima". Lessons come in groups called <em>units</em> (sums, capitals, "which is bigger"). A teacher can group them, or <code>baby discover</code> can find the units itself from an unlabelled heap.</p>
-<p>The interesting part is that nobody tells it <em>how</em> to learn a unit. For each one it tries several mechanisms on facts it has held back, and keeps whichever generalises best, preferring the cheaper one on a tie.</p>
+<p>You teach <code>baby</code> <em>lessons</em>: question and answer pairs, such as "what is two plus three → five" or "the capital of peru → lima". Lessons come in groups called <em>units</em> (sums, capitals, "which is bigger"). A teacher can group them, or <code>baby discover</code> can find the units itself from an unlabeled heap.</p>
+<p>The interesting part is that nobody tells it <em>how</em> to learn a unit. For each one it tries several mechanisms on facts it has held back, and keeps whichever generalizes best, preferring the cheaper one on a tie.</p>
 </div>
 
 <div class="table-wrap reveal" style="margin-top:1.6rem">
 <table>
 <thead><tr><th>Mechanism</th><th>What it does</th><th>Typical use</th></tr></thead>
 <tbody>
-<tr><td><code>remember</code></td><td>Stores the lessons and answers by weighted similarity, using an inverted index. Voting among matching lessons; a tie refuses.</td><td>Facts: capitals, colours, codes</td></tr>
+<tr><td><code>remember</code></td><td>Stores the lessons and answers by weighted similarity, using an inverted index. Voting among matching lessons; a tie refuses.</td><td>Facts: capitals, colors, codes</td></tr>
 <tr><td><code>rule</code></td><td>Exact (ridge) fit of a linear combination of the quantities in the question, with outlier-robust fitting.</td><td>Sums, differences, doubling, halving</td></tr>
 <tr><td><code>select</code></td><td>Picks the larger or the smaller of two numbers.</td><td>Comparisons</td></tr>
 <tr><td><code>program</code></td><td>Searches small expressions (<code>+ − × max min apart div mod half</code>, constants, up to 7 pieces) and keeps the smallest ones that agree.</td><td>Multiplication, "how far apart", digit tricks</td></tr>
@@ -108,15 +108,15 @@
 <div class="arrow"><svg class="icon" aria-hidden="true"><use href="#chevron-right"/></svg></div>
 <div class="step"><b><svg class="icon" aria-hidden="true"><use href="#cog"/></svg>3. Mechanism</b><span>The unit's chosen mechanism answers, or declines.</span></div>
 <div class="arrow"><svg class="icon" aria-hidden="true"><use href="#chevron-right"/></svg></div>
-<div class="step"><b><svg class="icon" aria-hidden="true"><use href="#message-square-text"/></svg>4. Reply</b><span>An answer with how it knew, a <em>labelled guess</em>, or a refusal with the reason.</span></div>
+<div class="step"><b><svg class="icon" aria-hidden="true"><use href="#message-square-text"/></svg>4. Reply</b><span>An answer with how it knew, a <em>labeled guess</em>, or a refusal with the reason.</span></div>
 </div>
 
 <div class="prose">
 <h2>Every answer says how it knew</h2>
-<p>A reply is never a bare value. It says whether the answer was worked out by an expression it built, by a fitted rule, or simply recalled. A refusal says why: a word it has never met, a kind of question it does not recognise, a unit it can only memorise, or a negative result it cannot state.</p>
+<p>A reply is never a bare value. It says whether the answer was worked out by an expression it built, by a fitted rule, or simply recalled. A refusal says why: a word it has never met, a kind of question it does not recognize, a unit it can only memorize, or a negative result it cannot state.</p>
 
 <h2>Careful by default, and still willing to guess</h2>
-<p>A rule that is exact on everything it was taught can still change behaviour outside that range (a sum that saturates, a sum that wraps). Nothing in the lessons can reveal that. So, since 2026-10-21, <code>baby</code> states a value <em>as fact</em> only inside the range it was taught or has had checked. Beyond that it offers a <strong>labelled guess</strong> ("probably seven") and keeps a record of how often its guesses at each distance have turned out right. Where they have been wrong more often than right, it stops guessing.</p>
+<p>A rule that is exact on everything it was taught can still change behavior outside that range (a sum that saturates, a sum that wraps). Nothing in the lessons can reveal that. So, since 2026-10-21, <code>baby</code> states a value <em>as fact</em> only inside the range it was taught or has had checked. Beyond that it offers a <strong>labeled guess</strong> ("probably seven") and keeps a record of how often its guesses at each distance have turned out right. Where they have been wrong more often than right, it stops guessing.</p>
 <p>A correction from the teacher ends the guessing in the region it contradicted. The goal is the rule we call <em>never silently wrong</em>: a guess may be wrong, because being wrong and updating is how learning works, but a wrong answer must never be presented as a fact.</p>
 
 <h2>It keeps learning after school</h2>
@@ -143,18 +143,18 @@
 <tr><td><code>compare</code></td><td>select</td><td class="num">100%</td><td></td></tr>
 <tr><td><code>times</code></td><td>program</td><td class="num">100%</td><td>built <code>first × second</code></td></tr>
 <tr><td><code>apart</code></td><td>program</td><td class="num">100%</td><td>built <code>first apart second</code></td></tr>
-<tr><td><code>capital</code></td><td>remember</td><td class="num">0%</td><td>memorise only: nothing here can be worked out</td></tr>
-<tr><td><code>color</code></td><td>remember</td><td class="num">0%</td><td>memorise only</td></tr>
-<tr><td><code>sound</code></td><td>remember</td><td class="num">0%</td><td>memorise only</td></tr>
-<tr><td><code>opposite</code></td><td>remember</td><td class="num">0%</td><td>memorise only</td></tr>
-<tr><td><code>code</code></td><td>remember</td><td class="num">11%</td><td>memorise only (arbitrary codes)</td></tr>
+<tr><td><code>capital</code></td><td>remember</td><td class="num">0%</td><td>memorize only: nothing here can be worked out</td></tr>
+<tr><td><code>color</code></td><td>remember</td><td class="num">0%</td><td>memorize only</td></tr>
+<tr><td><code>sound</code></td><td>remember</td><td class="num">0%</td><td>memorize only</td></tr>
+<tr><td><code>opposite</code></td><td>remember</td><td class="num">0%</td><td>memorize only</td></tr>
+<tr><td><code>code</code></td><td>remember</td><td class="num">11%</td><td>memorize only (arbitrary codes)</td></tr>
 </tbody>
 </table>
 </div>
-<p class="small muted">"Held back" is the share of facts held out of the fitting that the chosen mechanism then got right. For memorise-only units it is low by design: you cannot work out an arbitrary capital from other capitals, so it says so instead of bluffing.</p>
+<p class="small muted">"Held back" is the share of facts held out of the fitting that the chosen mechanism then got right. For memorize-only units it is low by design: you cannot work out an arbitrary capital from other capitals, so it says so instead of bluffing.</p>
 
 <h2>The scorecard</h2>
-<p class="muted">Share of questions, current default (careful) mode, from <code>baby school</code>. "Of the refused: a guess" counts the refusals that came with a labelled guess, and whether that guess was right.</p>
+<p class="muted">Share of questions, current default (careful) mode, from <code>baby school</code>. "Of the refused: a guess" counts the refusals that came with a labeled guess, and whether that guess was right.</p>
 <div class="table-wrap reveal">
 <table>
 <thead><tr><th>Questions</th><th class="num">Right</th><th class="num">Refused</th><th class="num">WRONG</th><th class="num">Refused, guess right</th><th class="num">Refused, guess wrong</th></tr></thead>

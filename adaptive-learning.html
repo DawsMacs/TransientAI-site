@@ -93,14 +93,14 @@
 <ol>
 <li><strong>Adapting the knowledge.</strong> New facts, new words, corrections. <code>baby</code> does this in real time: one new lesson costs about half a millisecond.</li>
 <li><strong>Adapting how much and when it learns.</strong> Steps per lesson, when to sleep, what to ask, how far to trust a match. Our first versions had these as constants chosen by hand; the move is to make each a quantity the system measures from its own experience. So far: the reliability bar (set from the noise it measures in its own lessons) and how boldly it guesses (set from its own track record). Several others remain constants.</li>
-<li><strong>Adapting the learning mechanism itself.</strong> For each kind of thing it meets, try different ways of learning it and keep whichever generalises, judged on facts it held back. This is the level that most distinguishes the work, and the one where the prototype is both most interesting and most limited.</li>
+<li><strong>Adapting the learning mechanism itself.</strong> For each kind of thing it meets, try different ways of learning it and keep whichever generalizes, judged on facts it held back. This is the level that most distinguishes the work, and the one where the prototype is both most interesting and most limited.</li>
 </ol>
 
 <h2>What the prototype does at level 3</h2>
 <p>Given groups of lessons and no instructions, <code>baby</code> chooses per group among remembering, fitting a rule, selecting, searching for a small program, or training a small network. Some outcomes from the synthetic curriculum:</p>
 <ul>
-<li>Sums, differences and doubling became <em>rules</em>; "which is bigger" became a <em>selection</em>; multiplication and "how far apart" became <em>programs</em> it built (<code>first × second</code>, <code>first apart second</code>) and that stayed right beyond the numbers it was taught; capitals and colours stayed <em>memorised</em> because nothing could be worked out.</li>
-<li>Given a heap of 792 unlabelled lessons, it found 9 units itself (the teacher had named 13; some followed one rule and were merged), with a scorecard identical to the teacher-organised version.</li>
+<li>Sums, differences and doubling became <em>rules</em>; "which is bigger" became a <em>selection</em>; multiplication and "how far apart" became <em>programs</em> it built (<code>first × second</code>, <code>first apart second</code>) and that stayed right beyond the numbers it was taught; capitals and colors stayed <em>memorized</em> because nothing could be worked out.</li>
+<li>Given a heap of 792 unlabeled lessons, it found 9 units itself (the teacher had named 13; some followed one rule and were merged), with a scorecard identical to the teacher-organized version.</li>
 <li>In the invention battery it worked out all 16 hidden numeric kinds nobody wrote a mechanism for, and 7 of 9 harder ones by reusing constants and programs learned from earlier kinds as vocabulary. Taught in the wrong order, the harder ones failed more often (8 of 72), so the gain came from learning and not luck. It explained 0 of 120 unexplainable kinds (random codes, primes) and answered 0 wrongly.</li>
 <li>It asks. Where two explanations both fit, it names the number that would tell them apart. With digit sum taught on 0 to 15, one such question took it from 88.9% to 100% of unseen questions; random questions needed three.</li>
 </ul>
@@ -111,7 +111,7 @@
 </div>
 
 <h2>Learning that stays light</h2>
-<p>Learning should be light enough that nearly anyone can do it, without a data centre. Three things measurably help:</p>
+<p>Learning should be light enough that nearly anyone can do it, without a data center. Three things measurably help:</p>
 <ul>
 <li><strong>A surprise gate.</strong> A lesson the unit can already work out is neither learned from nor stored.</li>
 <li><strong>Refit, do not re-decide.</strong> A lesson consistent with a settled rule just refits it exactly; the expensive cross-validation of all mechanisms only runs when something structural changed.</li>
@@ -120,7 +120,7 @@
 <p>In the scale test, learning one more fact stayed at roughly half a millisecond from 20 to 600 units. <a href="efficiency">More in efficiency<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-right"/></svg></a></p>
 
 <h2>Learning in real time</h2>
-<p>One advantage we hope to keep is that a user's correction can change behaviour <em>immediately</em>, without a training run. A concrete case: when <code>baby</code> guesses beyond what it was taught and a teacher says it was wrong, it stops guessing in that region right away. Before this was built, after one correction 303 of the 305 other wrong guesses stayed wrong and 2 became wrong <em>facts</em>; after it, none stayed wrong and none became wrong facts (they were all refused). At first it only stopped; it did not learn the new regime from one point, so the right guesses nearby were refused too. It now rebuilds the law from the numbers the correcting lessons name, and in our test all 157 of the wrong guesses became right guesses after one correction. That comes with a price: it is careful about overruling the old law, so some coverage is lost when the teacher is sometimes wrong.</p>
+<p>One advantage we hope to keep is that a user's correction can change behavior <em>immediately</em>, without a training run. A concrete case: when <code>baby</code> guesses beyond what it was taught and a teacher says it was wrong, it stops guessing in that region right away. Before this was built, after one correction 303 of the 305 other wrong guesses stayed wrong and 2 became wrong <em>facts</em>; after it, none stayed wrong and none became wrong facts (they were all refused). At first it only stopped; it did not learn the new regime from one point, so the right guesses nearby were refused too. It now rebuilds the law from the numbers the correcting lessons name, and in our test all 157 of the wrong guesses became right guesses after one correction. That comes with a price: it is careful about overruling the old law, so some coverage is lost when the teacher is sometimes wrong.</p>
 
 <h2>Vocabulary</h2>
 <p>These terms are the founder's, used as directions. They may shift.</p>
@@ -128,7 +128,7 @@
 <table>
 <tbody>
 <tr><th>Adaptive Learning</th><td>Learning that goes beyond conventional machine learning: continuous, from interaction, with internals that change, and with a learning process that itself adapts.</td></tr>
-<tr><th>Maximization</th><td>Optimising a system for the most capability in a given computational space. We report capability against parameters, bytes and estimated joules as separate numbers.</td></tr>
+<tr><th>Maximization</th><td>Optimizing a system for the most capability in a given computational space. We report capability against parameters, bytes and estimated joules as separate numbers.</td></tr>
 <tr><th>UMA</th><td>"Ultragenerative Maximized Architecture": the architecture Transient is aiming at. A <em>bare</em> UMA is the tiny starting unit; a <em>learned</em> UMA has accumulated what it learned. Not yet built.</td></tr>
 </tbody>
 </table>

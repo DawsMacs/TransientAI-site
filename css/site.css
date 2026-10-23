@@ -130,7 +130,7 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; }
 }
 .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 64px; }
 .brand { display: inline-flex; align-items: center; gap: 0.7rem; color: var(--text); text-decoration: none; }
-.wordmark { font-family: var(--brand-font); font-weight: 400; font-size: 1.5rem; line-height: 1; letter-spacing: 0.005em; position: relative; top: 0.125em; } /* Josefin sits high in its line box; 0.125em centres the letters on the mark */
+.wordmark { font-family: var(--brand-font); font-weight: 400; font-size: 1.5rem; line-height: 1; letter-spacing: 0.005em; position: relative; top: 0.125em; } /* Josefin sits high in its line box; 0.125em centers the letters on the mark */
 .brand:hover { color: var(--text); }
 .brand img { width: 28px; height: 28px; transition: transform 0.9s cubic-bezier(.2,.7,.2,1); }
 .brand:hover img { transform: rotate(60deg); }

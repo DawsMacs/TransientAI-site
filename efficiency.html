@@ -83,7 +83,7 @@
 <h2>How we count</h2>
 <p>The code has a ledger that counts every multiply-add and every 4-byte memory access. It prices them with the widely cited 45 nm figures from Horowitz (ISSCC 2014): about 3.7 pJ for a 32-bit float multiply, 0.9 pJ for an add, and 640 pJ for a 32-bit read from DRAM. A modern chip spends less in absolute terms, so <strong>treat the joules as an estimate and trust the ratios</strong>.</p>
 <p>What counting showed early on, with the first small neural network: answering one question cost about 14,000 multiply-adds, and about <strong>91% of the estimated energy was moving memory, not arithmetic</strong>. Even a 63 KB network is a data-movement problem. A 7-billion-parameter model does roughly 500,000× more arithmetic per token and cannot keep its weights in cache at all.</p>
-<p>The same counting showed that implementation is a real lever: writing a dot product as eight independent sums instead of one let the compiler vectorise it with no unsafe code and no special flags, taking a question from 32 µs to 13 µs with identical answers.</p>
+<p>The same counting showed that implementation is a real lever: writing a dot product as eight independent sums instead of one let the compiler vectorize it with no unsafe code and no special flags, taking a question from 32 µs to 13 µs with identical answers.</p>
 
 <h2>Answering: fewer operations, same answers</h2>
 <p>Using the mathematics of the computation, the prototype now finds the right kind of lesson with a precomputed table of how telling each word's shape is for each unit, instead of comparing the question with every lesson it was ever taught. Remembered lessons are found through an index of their content words, and networks are no longer trained where cheaper mechanisms already work.</p>
@@ -91,7 +91,7 @@
 
 <div class="bars reveal" role="img" aria-label="Bar chart of operations per question: the slow way 8,977, one small network 7,104, baby 57">
 <div class="bar-row"><div class="name">The slow way</div><div class="bar-track"><div class="bar-fill" style="width:100%"></div></div><div class="bar-val">8,977 operations / question</div></div>
-<div class="bar-row"><div class="name">One small network</div><div class="bar-track"><div class="bar-fill" style="width:79.1%"></div></div><div class="bar-val">7,104 (memorises; cannot work out a new sum)</div></div>
+<div class="bar-row"><div class="name">One small network</div><div class="bar-track"><div class="bar-fill" style="width:79.1%"></div></div><div class="bar-val">7,104 (memorizes; cannot work out a new sum)</div></div>
 <div class="bar-row"><div class="name">What baby does</div><div class="bar-track"><div class="bar-fill" style="width:0.64%"></div></div><div class="bar-val">57, about 159× fewer, ~85× less estimated energy, same answers</div></div>
 </div>
 
@@ -102,7 +102,7 @@
 
 <div class="prose">
 <h2>Learning: light enough for one laptop core</h2>
-<p>The claim worth testing is that learning should not need a data centre. On one CPU core of an ordinary laptop, with no GPU:</p>
+<p>The claim worth testing is that learning should not need a data center. On one CPU core of an ordinary laptop, with no GPU:</p>
 </div>
 <div class="table-wrap reveal">
 <table>
@@ -115,7 +115,7 @@
 <tr><td>Fit a rule: exact solve vs 800-pass gradient descent</td><td class="num">392× fewer operations, about 60× faster</td></tr>
 <tr><td>Scale test: 25,776 lessons, 600 units, 10,000-word vocabulary</td><td class="num">2.65 s, 56 MB peak</td></tr>
 <tr><td>Learn one more fact, from 20 to 600 units</td><td class="num">0.4 to 0.6 ms at every size</td></tr>
-<tr><td>Reorganise (merge and split) at 600 units</td><td class="num">1.35 s</td></tr>
+<tr><td>Reorganize (merge and split) at 600 units</td><td class="num">1.35 s</td></tr>
 </tbody>
 </table>
 </div>
