@@ -200,14 +200,6 @@ pre:hover .copy-btn, .copy-btn:focus-visible { opacity: 1; }
 .section-head h2 { margin-top: 0; }
 .section-head p { color: var(--text-2); margin: 0; }
 
-.statusbar {
-  display: flex; flex-wrap: wrap; gap: 0.5rem 1.6rem; padding: 1rem 0; border-block: 1px solid var(--line);
-  font-size: 0.86rem; color: var(--text-2);
-}
-.statusbar b { color: var(--text); font-weight: 500; }
-.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: var(--ok); margin-right: 0.5rem; vertical-align: 0.05em; box-shadow: 0 0 0 0 var(--ok); animation: pulse 2.6s ease-out infinite; }
-@keyframes pulse { 0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--ok) 50%, transparent); } 70%, 100% { box-shadow: 0 0 0 9px transparent; } }
-
 .grid { display: grid; gap: 1rem; }
 .g2 { grid-template-columns: repeat(2, 1fr); }
 .g3 { grid-template-columns: repeat(3, 1fr); }
@@ -343,6 +335,7 @@ td code { white-space: nowrap; }
 .foot-grid a:hover { color: var(--text); }
 .foot-brand { display: flex; align-items: center; gap: 0.65rem; color: var(--text); margin-bottom: 0.8rem; }
 .foot-brand .wordmark { font-size: 1.35rem; }
+.foot-brand .foundation { font-family: var(--font); font-weight: 300; letter-spacing: 0; }
 .foot-brand img { width: 24px; height: 24px; }
 .foot-note { margin-top: 2.2rem; padding-top: 1.4rem; border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--text-3); display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; justify-content: space-between; }
 @media (max-width: 760px) { .foot-grid { grid-template-columns: 1fr 1fr; } .foot-grid > :first-child { grid-column: 1 / -1; } }
@@ -354,7 +347,7 @@ td code { white-space: nowrap; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .ebb, .ebb path, .dot, .caret { animation: none; }
+  .ebb, .ebb path, .caret { animation: none; }
   .js .reveal { opacity: 1; transform: none; transition: none; }
   .js .reveal .bar-fill { transform: none; transition: none; }
   .brand img, .btn, .card { transition: none; }
