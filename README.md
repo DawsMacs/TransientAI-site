@@ -14,7 +14,7 @@ baby.html                  the project and its first prototype
 research.html              research hub, then: adaptive-learning, efficiency, why-rust, hardware, method
 docs.html                  build, commands, concepts, code map, contributing
 progress.html              roadmap, what we do not know yet, timeline
-about.html                 TransientAI, the one-person team, how we work
+about.html                 TransientAI, the founder and founding member, how we work
 blog/index.html            blog index
 blog/beginning.html        first post
 404.html
