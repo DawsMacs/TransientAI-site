@@ -206,6 +206,12 @@ pre code { background: none; border: 0; padding: 0; font-size: inherit; }
 .g2 { grid-template-columns: repeat(2, 1fr); }
 .g3 { grid-template-columns: repeat(3, 1fr); }
 .g4 { grid-template-columns: repeat(4, 1fr); }
+.g2.roomy { gap: 3rem; }
+.g2.roomy > div { display: flex; flex-direction: column; }
+.g2.roomy > div > h2 { margin-bottom: 1.25rem; }
+.g2.roomy > div > .card { flex: 1; }
+.g2.roomy .card p + p { margin-top: 0.9rem; }
+@media (max-width: 900px) { .g2.roomy { gap: 2rem; } }
 @media (max-width: 900px) { .g3, .g4 { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 600px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
 
