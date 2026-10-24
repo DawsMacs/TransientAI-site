@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thirteen platforms, one set of answers · TransientAI</title>
+<meta name="description" content="We ran the same exam on Linux, macOS, Windows, three BSDs, WebAssembly, and 32-bit and big-endian machines. The answers were identical; the math libraries were not. What we checked, and what that does and does not show.">
+<link rel="canonical" href="https://transientai.org/blog/platforms">
+<meta property="og:site_name" content="TransientAI">
+<meta property="og:title" content="Thirteen platforms, one set of answers · TransientAI">
+<meta property="og:description" content="We ran the same exam on Linux, macOS, Windows, three BSDs, WebAssembly, and 32-bit and big-endian machines. The answers were identical; the math libraries were not. What we checked, and what that does and does not show.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://transientai.org/blog/platforms">
+<meta property="og:image" content="https://transientai.org/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="TransientAI blog" href="https://transientai.org/feed.xml">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="../fonts/Lexend.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="../fonts/JosefinSans.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="../css/site.css">
+<script>document.documentElement.classList.add("js")</script>
+<script src="../js/site.js" defer></script>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<!-- Icons: Lucide (ISC) and Phosphor regular (MIT); see LICENSE-icons -->
+<symbol id="brain-circuit" viewBox="0 0 24 24"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M9 13a4.5 4.5 0 0 0 3-4"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M12 13h4"/><path d="M12 18h6a2 2 0 0 1 2 2v1"/><path d="M12 8h8"/><path d="M16 8V5a2 2 0 0 1 2-2"/><circle cx="16" cy="13" r=".5"/><circle cx="18" cy="3" r=".5"/><circle cx="20" cy="21" r=".5"/><circle cx="20" cy="8" r=".5"/></symbol>
+<symbol id="zap" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></symbol>
+<symbol id="shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="cog" viewBox="0 0 24 24"><path d="M11 10.27 7 3.34"/><path d="m11 13.73-4 6.93"/><path d="M12 22v-2"/><path d="M12 2v2"/><path d="M14 12h8"/><path d="m17 20.66-1-1.73"/><path d="m17 3.34-1 1.73"/><path d="M2 12h2"/><path d="m20.66 17-1.73-1"/><path d="m20.66 7-1.73 1"/><path d="m3.34 17 1.73-1"/><path d="m3.34 7 1.73 1"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="12" r="8"/></symbol>
+<symbol id="flask-conical" viewBox="0 0 24 24"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></symbol>
+<symbol id="cpu" viewBox="0 0 24 24"><path d="M12 20v2"/><path d="M12 2v2"/><path d="M17 20v2"/><path d="M17 2v2"/><path d="M2 12h2"/><path d="M2 17h2"/><path d="M2 7h2"/><path d="M20 12h2"/><path d="M20 17h2"/><path d="M20 7h2"/><path d="M7 20v2"/><path d="M7 2v2"/><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8" rx="1"/></symbol>
+<symbol id="milestone" viewBox="0 0 24 24"><path d="M12 13v8"/><path d="M12 3v3"/><path d="M18.172 6a2 2 0 0 1 1.414.586l2.06 2.06a1.207 1.207 0 0 1 0 1.708l-2.06 2.06a2 2 0 0 1-1.414.586H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z"/></symbol>
+<symbol id="message-circle-question-mark" viewBox="0 0 24 24"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
+<symbol id="route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+<symbol id="message-square-text" viewBox="0 0 24 24"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/><path d="M7 11h10"/><path d="M7 15h6"/><path d="M7 7h8"/></symbol>
+<symbol id="triangle-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+<symbol id="info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+<symbol id="circle-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="circle-dot" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="1"/></symbol>
+<symbol id="circle-question-mark" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+<symbol id="circle-arrow-right" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m12 16 4-4-4-4"/><path d="M8 12h8"/></symbol>
+<symbol id="arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+<symbol id="arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
+<symbol id="chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+<symbol id="copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="menu" viewBox="0 0 24 24"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></symbol>
+<symbol id="x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+<symbol id="laptop" viewBox="0 0 24 24"><path d="M18 5a2 2 0 0 1 2 2v8.526a2 2 0 0 0 .212.897l1.068 2.127a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45l1.068-2.127A2 2 0 0 0 4 15.526V7a2 2 0 0 1 2-2z"/><path d="M20.054 15.987H3.946"/></symbol>
+<symbol id="memory-stick" viewBox="0 0 24 24"><path d="M12 12v-2"/><path d="M12 18v-2"/><path d="M16 12v-2"/><path d="M16 18v-2"/><path d="M2 11h1.5"/><path d="M20 18v-2"/><path d="M20.5 11H22"/><path d="M4 18v-2"/><path d="M8 12v-2"/><path d="M8 18v-2"/><rect x="2" y="6" width="20" height="10" rx="2"/></symbol>
+<symbol id="ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M4.929 4.929 19.07 19.071"/></symbol>
+<symbol id="compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></symbol>
+<symbol id="github" viewBox="0 0 256 256" class="ph"><path d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.72,41.72,0,0,1,200,104Z"/></symbol>
+</svg>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap bar">
+<a class="brand" href="../"><img class="invertable" src="../assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">TransientAI</span></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg class="icon" aria-hidden="true"><use href="#menu"/></svg><span>Menu</span></button>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="../baby">Project</a><a href="../research">Research</a><a href="../docs">Docs</a><a href="../blog/" aria-current="page">Blog</a><a href="../progress">Progress</a><a href="../about">About</a><a class="gh" href="https://github.com/DawsMacs/Transient" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
+</div>
+</header>
+<main id="main">
+
+<section class="page-head">
+<div class="wrap">
+<p class="crumbs"><a href="./">Blog</a> / 2026-10-24</p>
+<h1>Thirteen platforms, one set of answers</h1>
+<p class="meta">2026-10-24 · The TransientAI team · 5 min read</p>
+</div>
+</section>
+
+<div class="wrap" style="margin-top:2rem">
+<figure class="cover">
+<img class="invertable" src="../assets/cover-platforms.svg" alt="Abstract cover: thirteen small circles with check marks beside concentric rings" width="1200" height="630">
+</figure>
+</div>
+
+<section class="section">
+<div class="wrap">
+<article class="post prose">
+
+<p class="lead">A system that is honest on one machine is not automatically honest on another. The math functions a program calls are allowed to differ in their last bit between platforms, and some of our decisions compare numbers computed with them. So we ran the same exam on thirteen platform configurations and compared the answers byte for byte.</p>
+
+<h2>What we ran</h2>
+<p>Every change to the repository is now built and tested on GitHub's machines on Linux (x86_64 with two different C libraries, aarch64, 32-bit x86, big-endian s390x and riscv64, the last two under emulation), macOS (Apple silicon and Intel), Windows, FreeBSD, NetBSD, OpenBSD, and WebAssembly under a sandboxed runtime. The code that decides what the baby answers was not changed for any of them. We pinned what the baby answers on the reference platform (Linux x86_64): the 4,832 predictions of the static exam, the 787 replies of the adaptive stream with their stated rates, and the scorecard. Every other platform has to reproduce those files exactly. A difference on the reference platform now fails the build; on any other platform it is reported as a finding.</p>
+
+<h2>What came out</h2>
+<ul>
+<li><strong>The answers were identical on all thirteen rows.</strong> The 150 tests pass on each, the scorecard reads 0.0% wrong on each, and the pinned answers match byte for byte. An older build, made from a commit before our recent work, produced the same files.</li>
+<li><strong>The math libraries were not identical.</strong> A fingerprint of the functions we use (<code>ln</code>, <code>log2</code>, <code>exp</code>, <code>tanh</code>, <code>powi</code>) over the ranges the code reaches differs on macOS, Windows and the BSDs, and on some functions elsewhere. An audit against a higher-precision value says by how much: every <code>ln</code>, <code>log2</code> and <code>exp</code> result, on every platform, is at most one last-bit step from the correctly rounded value.</li>
+<li><strong>Our reference is not the most accurate one.</strong> On the word-weight logarithm, the Linux library we pinned gets about 0.9% of inputs one step off, FreeBSD and OpenBSD about 7.4%, Windows 0.26%, macOS on Apple silicon 0.003%, and NetBSD and Intel macOS none. A platform that differs from the reference is not therefore wrong.</li>
+<li><strong>WebAssembly ran with no change to the logic.</strong> The same source compiles to a 2 MB file that runs in a sandbox, passes all 150 tests and reproduces the pinned answers. Its logarithms match the Linux reference bit for bit, which fits a program that carries its own math library instead of borrowing the host's. We have only tried one runtime, so we do not claim that holds on every host.</li>
+<li><strong>DragonFly BSD did not work.</strong> Its tests passed, but the program itself crashed at startup inside the standard library of that system's packaged Rust. We dropped the row and said so.</li>
+</ul>
+
+<h2>Mistakes along the way</h2>
+<p>We counted the platform-dependent math calls wrongly twice before a review caught it (32, then "about 13" on the decision path; the real figures are 24 and 11). One of our own tests assumed that a file that exists must contain a memory line, which two BSDs disproved. A green check on a platform does not mean its math is identical, so the page that explains how to run Transient says "CI-tested", never "supported". And the passing tests on DragonFly were a reminder that a test run is not the same thing as the program running.</p>
+
+<h2>What this does not show</h2>
+<p>The machines are virtual machines with one image each, and the two exotic architectures are emulated, not real hardware. The pinned answers cover one exam and one clean stream, plus two streams with a wrong teacher that are re-checked weekly. A difference of one last bit that never flipped a decision in these runs could still do so on an input we did not try, and two places in the code depend on the order of a hash map, which is a known and unfixed source of rare non-determinism. Measured joules exist only on Linux with a readable energy counter; elsewhere the report says it is unavailable.</p>
+
+<h2>Try it</h2>
+<p>How to get, build and run Transient on each of these platforms, and what we did not try, is in the <a href="../docs#platforms">documentation</a>. If it behaves differently on yours, especially if a pinned answer differs, we would like to hear about it: that is the most useful report there is.</p>
+
+</article>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-grid">
+<div>
+<div class="foot-brand"><img class="invertable" src="../assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">TransientAI<span class="foundation"> Foundation</span></span></div>
+<p class="small">An independent research effort, run by its founder and a founding member, behind the open Transient project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
+</div>
+<div>
+<h4>Project</h4>
+<ul>
+<li><a href="../baby">Transient &amp; baby</a></li>
+<li><a href="../docs">Documentation</a></li>
+<li><a href="../progress">Progress &amp; roadmap</a></li>
+<li><a href="https://github.com/DawsMacs/Transient" rel="noopener">Source on GitHub<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
+</ul>
+</div>
+<div>
+<h4>Research</h4>
+<ul>
+<li><a href="../adaptive-learning">Adaptive learning</a></li>
+<li><a href="../efficiency">Efficiency &amp; joules</a></li>
+<li><a href="../why-rust">Why Rust</a></li>
+<li><a href="../method">How we judge results</a></li>
+<li><a href="../hardware">Hardware</a></li>
+</ul>
+</div>
+<div>
+<h4>TransientAI</h4>
+<ul>
+<li><a href="../about">About</a></li>
+<li><a href="../blog/">Blog</a></li>
+<li><a href="../docs#contribute">Contribute</a></li>
+<li><a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">Issues<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
+</ul>
+</div>
+</div>
+<div class="foot-note">
+<span>© 2026 Daws Macs. Site code MIT; text and blog art CC BY 4.0; the TransientAI mark and names are reserved. The Transient project's code is AGPL-3.0-only.</span>
+</div>
+</div>
+</footer>
+</body>
+</html>
