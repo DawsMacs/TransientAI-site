@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://transientai.org/sitemap.xml
+Sitemap: https://matterworm.github.io/sitemap.xml

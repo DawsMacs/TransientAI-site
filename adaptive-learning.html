@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Adaptive learning · TransientAI</title>
+<title>Adaptive learning · Matterworm</title>
 <meta name="description" content="What we mean by adaptive learning: a system that learns during use, and whose way of learning adapts too. What the prototype does today and where it stops.">
-<link rel="canonical" href="https://transientai.org/adaptive-learning">
-<meta property="og:site_name" content="TransientAI">
-<meta property="og:title" content="Adaptive learning · TransientAI">
+<link rel="canonical" href="https://matterworm.github.io/adaptive-learning">
+<meta property="og:site_name" content="Matterworm">
+<meta property="og:title" content="Adaptive learning · Matterworm">
 <meta property="og:description" content="What we mean by adaptive learning: a system that learns during use, and whose way of learning adapts too. What the prototype does today and where it stops.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://transientai.org/adaptive-learning">
-<meta property="og:image" content="https://transientai.org/assets/og-image.png">
+<meta property="og:url" content="https://matterworm.github.io/adaptive-learning">
+<meta property="og:image" content="https://matterworm.github.io/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="alternate" type="application/rss+xml" title="TransientAI blog" href="https://transientai.org/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Matterworm blog" href="https://matterworm.github.io/feed.xml">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
@@ -62,9 +62,9 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
 <div class="wrap bar">
-<a class="brand" href="./"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">TransientAI</span></a>
+<a class="brand" href="./"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">Matterworm</span></a>
 <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg class="icon" aria-hidden="true"><use href="#menu"/></svg><span>Menu</span></button>
-<nav class="nav" id="site-nav" aria-label="Main"><a href="baby">Project</a><a href="research" aria-current="page">Research</a><a href="docs">Docs</a><a href="blog/">Blog</a><a href="progress">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/DawsMacs/Transient" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="baby">Project</a><a href="research" aria-current="page">Research</a><a href="docs">Docs</a><a href="blog/">Blog</a><a href="progress">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/Matterworm/Matter" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
 </div>
 </header>
 <main id="main">
@@ -122,14 +122,13 @@
 <h2>Learning in real time</h2>
 <p>One advantage we hope to keep is that a user's correction can change behavior <em>immediately</em>, without a training run. A concrete case: when <code>baby</code> guesses beyond what it was taught and a teacher says it was wrong, it stops guessing in that region right away. Before this was built, after one correction 303 of the 305 other wrong guesses stayed wrong and 2 became wrong <em>facts</em>; after it, none stayed wrong and none became wrong facts (they were all refused). At first it only stopped; it did not learn the new regime from one point, so the right guesses nearby were refused too. It now rebuilds the law from the numbers the correcting lessons name, and in our test all 157 of the wrong guesses became right guesses after one correction. That comes with a price: it is careful about overruling the old law, so some coverage is lost when the teacher is sometimes wrong.</p>
 
-<h2>Vocabulary</h2>
-<p>These terms are the founder's, used as directions. They may shift.</p>
+<h2>Terms</h2>
+<p>Adaptive Learning is the project's own term, used as a direction and not an exact definition. It may shift as the work does. The second row is how we compare systems.</p>
 <div class="table-wrap">
 <table>
 <tbody>
 <tr><th>Adaptive Learning</th><td>Learning that goes beyond conventional machine learning: continuous, from interaction, with internals that change, and with a learning process that itself adapts.</td></tr>
-<tr><th>Maximization</th><td>Optimizing a system for the most capability in a given computational space. We report capability against parameters, bytes and estimated joules as separate numbers.</td></tr>
-<tr><th>UMA</th><td>"Ultragenerative Maximized Architecture": the architecture Transient is aiming at. A <em>bare</em> UMA is the tiny starting unit; a <em>learned</em> UMA has accumulated what it learned. Not yet built.</td></tr>
+<tr><th>Capability per resource</th><td>A score on a fixed set of questions, reported against parameters, bytes and estimated joules as separate numbers, never blended into one figure.</td></tr>
 </tbody>
 </table>
 </div>
@@ -153,16 +152,16 @@
 <div class="wrap">
 <div class="foot-grid">
 <div>
-<div class="foot-brand"><img class="invertable" src="assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">TransientAI<span class="foundation"> Foundation</span></span></div>
-<p class="small">An independent research effort, run by its founder and a founding member, behind the open Transient project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
+<div class="foot-brand"><img class="invertable" src="assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">Matterworm<span class="foundation"> Foundation</span></span></div>
+<p class="small">An independent research effort, run by its founder and a founding member, behind the open Matter project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
 </div>
 <div>
 <h4>Project</h4>
 <ul>
-<li><a href="baby">Transient &amp; baby</a></li>
+<li><a href="baby">Matter &amp; baby</a></li>
 <li><a href="docs">Documentation</a></li>
 <li><a href="progress">Progress &amp; roadmap</a></li>
-<li><a href="https://github.com/DawsMacs/Transient" rel="noopener">Source on GitHub<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
+<li><a href="https://github.com/Matterworm/Matter" rel="noopener">Source on GitHub<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
 </ul>
 </div>
 <div>
@@ -176,17 +175,17 @@
 </ul>
 </div>
 <div>
-<h4>TransientAI</h4>
+<h4>Matterworm</h4>
 <ul>
 <li><a href="about">About</a></li>
 <li><a href="blog/">Blog</a></li>
 <li><a href="docs#contribute">Contribute</a></li>
-<li><a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">Issues<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
+<li><a href="https://github.com/Matterworm/Matter/issues" rel="noopener">Issues<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
 </ul>
 </div>
 </div>
 <div class="foot-note">
-<span>© 2026 Daws Macs. Site code MIT; text and blog art CC BY 4.0; the TransientAI mark and names are reserved. The Transient project's code is AGPL-3.0-only.</span>
+<span>© 2026 Daws Macs. Site code MIT; text and blog art CC BY 4.0; the Matterworm mark and names are reserved. The Matter project's code is AGPL-3.0-only.</span>
 </div>
 </div>
 </footer>

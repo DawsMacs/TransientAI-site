@@ -1,29 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-  <title>TransientAI blog</title>
-  <link>https://transientai.org/blog/</link>
-  <atom:link href="https://transientai.org/feed.xml" rel="self" type="application/rss+xml"/>
-  <description>Progress, results, mistakes and plans from TransientAI, the creator of the open Transient project.</description>
+  <title>Matterworm blog</title>
+  <link>https://matterworm.github.io/blog/</link>
+  <atom:link href="https://matterworm.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+  <description>Progress, results, mistakes and plans from the Matterworm Foundation, the creator of the open Matter project.</description>
   <language>en</language>
   <item>
     <title>Thirteen platforms, one set of answers</title>
-    <link>https://transientai.org/blog/platforms</link>
-    <guid isPermaLink="true">https://transientai.org/blog/platforms</guid>
+    <link>https://matterworm.github.io/blog/platforms</link>
+    <guid isPermaLink="true">https://matterworm.github.io/blog/platforms</guid>
     <pubDate>Sat, 24 Oct 2026 00:00:00 +0000</pubDate>
     <description>The same exam on Linux, macOS, Windows, three BSDs, WebAssembly, and 32-bit and big-endian machines: identical answers, different math libraries, and one system that did not work.</description>
   </item>
   <item>
     <title>An exam any system can take, and two mistakes it found in ours</title>
-    <link>https://transientai.org/blog/entry-exam</link>
-    <guid isPermaLink="true">https://transientai.org/blog/entry-exam</guid>
+    <link>https://matterworm.github.io/blog/entry-exam</link>
+    <guid isPermaLink="true">https://matterworm.github.io/blog/entry-exam</guid>
     <pubDate>Fri, 23 Oct 2026 00:00:00 +0000</pubDate>
     <description>The entry exam we built so any future version is judged the same way, the baby's scores on it, and two honesty mistakes of our own that only showed up when we changed the test.</description>
   </item>
   <item>
-    <title>How Transient began, and where it stands</title>
-    <link>https://transientai.org/blog/beginning</link>
-    <guid isPermaLink="true">https://transientai.org/blog/beginning</guid>
+    <title>How Matter began, and where it stands</title>
+    <link>https://matterworm.github.io/blog/beginning</link>
+    <guid isPermaLink="true">https://matterworm.github.io/blog/beginning</guid>
     <pubDate>Wed, 21 Oct 2026 00:00:00 +0000</pubDate>
     <description>The starting hunch, the first week of work, what the prototype does and does not show, and what comes next.</description>
   </item>

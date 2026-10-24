@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Progress and roadmap · TransientAI</title>
-<meta name="description" content="A dated timeline of Transient's progress, the roadmap with realistic status, and a plain list of what we do not know yet.">
-<link rel="canonical" href="https://transientai.org/progress">
-<meta property="og:site_name" content="TransientAI">
-<meta property="og:title" content="Progress and roadmap · TransientAI">
-<meta property="og:description" content="A dated timeline of Transient's progress, the roadmap with realistic status, and a plain list of what we do not know yet.">
+<title>Progress and roadmap · Matterworm</title>
+<meta name="description" content="A dated timeline of Matter's progress, the roadmap with realistic status, and a plain list of what we do not know yet.">
+<link rel="canonical" href="https://matterworm.github.io/progress">
+<meta property="og:site_name" content="Matterworm">
+<meta property="og:title" content="Progress and roadmap · Matterworm">
+<meta property="og:description" content="A dated timeline of Matter's progress, the roadmap with realistic status, and a plain list of what we do not know yet.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://transientai.org/progress">
-<meta property="og:image" content="https://transientai.org/assets/og-image.png">
+<meta property="og:url" content="https://matterworm.github.io/progress">
+<meta property="og:image" content="https://matterworm.github.io/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="alternate" type="application/rss+xml" title="TransientAI blog" href="https://transientai.org/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Matterworm blog" href="https://matterworm.github.io/feed.xml">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
@@ -62,9 +62,9 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
 <div class="wrap bar">
-<a class="brand" href="./"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">TransientAI</span></a>
+<a class="brand" href="./"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">Matterworm</span></a>
 <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg class="icon" aria-hidden="true"><use href="#menu"/></svg><span>Menu</span></button>
-<nav class="nav" id="site-nav" aria-label="Main"><a href="baby">Project</a><a href="research">Research</a><a href="docs">Docs</a><a href="blog/">Blog</a><a href="progress" aria-current="page">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/DawsMacs/Transient" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="baby">Project</a><a href="research">Research</a><a href="docs">Docs</a><a href="blog/">Blog</a><a href="progress" aria-current="page">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/Matterworm/Matter" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
 </div>
 </header>
 <main id="main">
@@ -73,7 +73,7 @@
 <div class="wrap">
 <p class="eyebrow">Progress</p>
 <h1>Where things stand, and what comes next</h1>
-<p class="lead">Transient started on 2026-10-15. This page has the roadmap first, with a status on each item, then the dated log. It is a summary; the full record with numbers is the repository's <a href="https://github.com/DawsMacs/Transient/blob/main/baby/README.md" rel="noopener">experiment log</a>.</p>
+<p class="lead">Matter started on 2026-10-15. This page has the roadmap first, with a status on each item, then the dated log. It is a summary; the full record with numbers is the repository's <a href="https://github.com/Matterworm/Matter/blob/main/baby/README.md" rel="noopener">experiment log</a>.</p>
 </div>
 </section>
 
@@ -144,7 +144,7 @@
 <li class="reveal"><time>2026-10-22</time><h3>Real text, a second corpus, and learning from being told</h3><p>A learned correction layer lifted the routing of a problem's kind from about 50 to 57% to 70 to 76%; a selector learns which numbers of a story matter from the baby's own programs; a second, differently built corpus (ASDiv) gave the same picture with nothing retuned. On real text it only guesses, and is right a little over half the time, with figures that swing between splits. A person can now answer the baby's own questions (<code>baby tutor</code>).</p></li>
 <li class="reveal"><time>2026-10-22</time><h3>After a miss, the new regime; and a teacher who is sometimes wrong</h3><p>One correction of a sum that caps or wraps now rebuilds the law: all 157 wrong guesses became right guesses. A skeptical baby holds an answer that contradicts a rule it is sure of until it is repeated: with independent slips up to 20% it stays 99.9 to 100% right, against 76.8% for a trusting one. Consistent errors cannot be caught from inside (88% at 20%).</p></li>
 <li class="reveal"><time>2026-10-21</time><h3>The controlled comparison</h3><p>A plain attention transformer written in this repository, and a tuned PyTorch one, against the baby on the same lessons, with energy read from the CPU's own counter. The baby is never wrong on unseen questions where they are wrong 0.1 to 40%, and extrapolates as labeled guesses where they stay at 14 to 28%. The transformers are more accurate on unseen questions from about 60 units, because the baby refuses about 9%. An early claim of ours that its energy advantage shrinks with scale was an artifact of noisy readings and is withdrawn.</p></li>
-<li class="reveal"><time>2026-10-21</time><h3>The bridge to real text, and the TransientAI name</h3><p>A harness that loads real corpora (SVAMP's JSON, or question/answer files), sets aside what the prototype cannot read and says why, teaches a share, and grades the rest, listing every wrong answer. Waiting on a corpus. The project is named Transient; TransientAI is its creator.</p></li>
+<li class="reveal"><time>2026-10-21</time><h3>The bridge to real text, and the project's name</h3><p>A harness that loads real corpora (SVAMP's JSON, or question/answer files), sets aside what the prototype cannot read and says why, teaches a share, and grades the rest, listing every wrong answer. Waiting on a corpus. The project is named Matter; the Matterworm Foundation is its creator.</p></li>
 <li class="reveal"><time>2026-10-21</time><h3>Guessing like a scientist</h3><p>Careful became the default. Beyond what it was taught or has checked, the baby offers a <em>labeled guess</em>, keeps a record of how often its guesses at each distance are right, and stops guessing where they have been wrong more often than right. A correction ends the guessing in the region it contradicted. Testing this found a hole (a box-shaped reach vouching for an unchecked corner: 4 wrong facts of 9,309) that was fixed at a measured cost in coverage.</p></li>
 <li class="reveal"><time>2026-10-21</time><h3>A hole found, and a careful mode</h3><p>A rule that fits everything taught but changes behavior outside it (a sum that caps or wraps) was answered confidently and wrongly: 53 wrong answers per seed. Careful mode removes them and, after two rounds of the baby's own self-checks, wins back 99.2% of genuine extrapolation with 0 wrong.</p></li>
 <li class="reveal"><time>2026-10-21</time><h3>Tuning its own bar, adapting its effort</h3><p>It measures the share of wrong lessons in its own data (it estimated 9.6% where the world had 9.7%) and sets how reliable a mechanism must be before answering. At 10% label noise, unseen questions answered went from 42% to 98%. Searches that find nothing now fail cheaply (battery 23.5 s to 14 s, same results).</p></li>
@@ -165,16 +165,16 @@
 <div class="wrap">
 <div class="foot-grid">
 <div>
-<div class="foot-brand"><img class="invertable" src="assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">TransientAI<span class="foundation"> Foundation</span></span></div>
-<p class="small">An independent research effort, run by its founder and a founding member, behind the open Transient project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
+<div class="foot-brand"><img class="invertable" src="assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">Matterworm<span class="foundation"> Foundation</span></span></div>
+<p class="small">An independent research effort, run by its founder and a founding member, behind the open Matter project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
 </div>
 <div>
 <h4>Project</h4>
 <ul>
-<li><a href="baby">Transient &amp; baby</a></li>
+<li><a href="baby">Matter &amp; baby</a></li>
 <li><a href="docs">Documentation</a></li>
 <li><a href="progress">Progress &amp; roadmap</a></li>
-<li><a href="https://github.com/DawsMacs/Transient" rel="noopener">Source on GitHub<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
+<li><a href="https://github.com/Matterworm/Matter" rel="noopener">Source on GitHub<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
 </ul>
 </div>
 <div>
@@ -188,17 +188,17 @@
 </ul>
 </div>
 <div>
-<h4>TransientAI</h4>
+<h4>Matterworm</h4>
 <ul>
 <li><a href="about">About</a></li>
 <li><a href="blog/">Blog</a></li>
 <li><a href="docs#contribute">Contribute</a></li>
-<li><a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">Issues<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
+<li><a href="https://github.com/Matterworm/Matter/issues" rel="noopener">Issues<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
 </ul>
 </div>
 </div>
 <div class="foot-note">
-<span>© 2026 Daws Macs. Site code MIT; text and blog art CC BY 4.0; the TransientAI mark and names are reserved. The Transient project's code is AGPL-3.0-only.</span>
+<span>© 2026 Daws Macs. Site code MIT; text and blog art CC BY 4.0; the Matterworm mark and names are reserved. The Matter project's code is AGPL-3.0-only.</span>
 </div>
 </div>
 </footer>

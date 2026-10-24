@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Research · TransientAI</title>
-<meta name="description" content="The research threads behind Transient: adaptive learning, efficiency measured in joules, why Rust, how we judge results, and the hardware experiments run on.">
-<link rel="canonical" href="https://transientai.org/research">
-<meta property="og:site_name" content="TransientAI">
-<meta property="og:title" content="Research · TransientAI">
-<meta property="og:description" content="The research threads behind Transient: adaptive learning, efficiency measured in joules, why Rust, how we judge results, and the hardware experiments run on.">
+<title>Research · Matterworm</title>
+<meta name="description" content="The research threads behind Matter: adaptive learning, efficiency measured in joules, why Rust, how we judge results, and the hardware experiments run on.">
+<link rel="canonical" href="https://matterworm.github.io/research">
+<meta property="og:site_name" content="Matterworm">
+<meta property="og:title" content="Research · Matterworm">
+<meta property="og:description" content="The research threads behind Matter: adaptive learning, efficiency measured in joules, why Rust, how we judge results, and the hardware experiments run on.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://transientai.org/research">
-<meta property="og:image" content="https://transientai.org/assets/og-image.png">
+<meta property="og:url" content="https://matterworm.github.io/research">
+<meta property="og:image" content="https://matterworm.github.io/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="alternate" type="application/rss+xml" title="TransientAI blog" href="https://transientai.org/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Matterworm blog" href="https://matterworm.github.io/feed.xml">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
@@ -62,9 +62,9 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
 <div class="wrap bar">
-<a class="brand" href="./"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">TransientAI</span></a>
+<a class="brand" href="./"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">Matterworm</span></a>
 <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg class="icon" aria-hidden="true"><use href="#menu"/></svg><span>Menu</span></button>
-<nav class="nav" id="site-nav" aria-label="Main"><a href="baby">Project</a><a href="research" aria-current="page">Research</a><a href="docs">Docs</a><a href="blog/">Blog</a><a href="progress">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/DawsMacs/Transient" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="baby">Project</a><a href="research" aria-current="page">Research</a><a href="docs">Docs</a><a href="blog/">Blog</a><a href="progress">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/Matterworm/Matter" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
 </div>
 </header>
 <main id="main">
@@ -95,18 +95,17 @@
 <div class="prose">
 <h2>The working hypothesis, stated modestly</h2>
 <p>Today's large models descend from one design, the 2017 transformer, and the industry's progress since has mostly been scaling it and refining it. Hardware has had far more attention than the software that runs on it. The hypothesis is that some of the efficiency that remains is in software and representation rather than in new chips, and that low-end hardware may be underestimated because of it.</p>
-<p><strong>This is a hunch, not a verified claim.</strong> Some evidence points the same way (for example, the compute needed to reach a fixed image-classification accuracy fell 44× between 2012 and 2019, faster than hardware improvement alone would give), and some points the other way (transformers won partly because they map well onto GPUs, and many ideas that look good small fade at scale). We treat the difficulties as terrain: they tell us what to measure first, not whether to continue.</p>
-<p>If the hunch is right, then roughly: some design reaches a given quality using far less energy per answer than a dense transformer; the gain comes mostly from software; and it runs on a phone or an old laptop. Those are things that can be tested one at a time. The controlled comparison that would test them properly (a matched small transformer against <code>baby</code>-style systems, at several sizes) has only partly been done: a first controlled comparison exists, and the matched transformer at several sizes (which needs a rented GPU) has not. See the <a href="progress">roadmap</a>.</p>
+<p><strong>This is a working hypothesis, not a verified result.</strong> Some evidence points the same way (for example, the compute needed to reach a fixed image-classification accuracy fell 44× between 2012 and 2019, faster than hardware improvement alone would give), and some points the other way (transformers won partly because they map well onto GPUs, and many ideas that look good small fade at scale). We treat the difficulties as terrain: they tell us what to measure first, not whether to continue.</p>
+<p>If the hypothesis is right, then roughly: some design reaches a given quality using far less energy per answer than a dense transformer; the gain comes mostly from software; and it runs on a phone or an old laptop. Those are things that can be tested one at a time. The controlled comparison that would test them properly (a matched small transformer against <code>baby</code>-style systems, at several sizes) has only partly been done: a first controlled comparison exists, and the matched transformer at several sizes (which needs a rented GPU) has not. See the <a href="progress">roadmap</a>.</p>
 
-<h2>TransientAI Copernicus</h2>
-<p>Copernicus is a planned competing branch of the Transient project. Its job is to look at AI research beyond our own work, and to propose alternatives to our core approach where that research points somewhere different. A proposal that passes a review process can be folded back into Transient, so both sides gain: we keep our main objectives and mission, and we do not neglect what the rest of the field has found. It is an idea at this stage, not yet running.</p>
+<h2>Matterworm Copernicus</h2>
+<p>Copernicus is a planned competing branch of the Matter project. Its job is to look at AI research beyond our own work, and to propose alternatives to our core approach where that research points somewhere different. A proposal that passes a review process can be folded back into Matter, so both sides gain: we keep our main objectives and mission, and we do not neglect what the rest of the field has found. It is an idea at this stage, not yet running.</p>
 
 <h2>Where to read more</h2>
 <ul>
-<li><a href="https://github.com/DawsMacs/Transient/blob/main/baby/README.md" rel="noopener">baby/README.md</a>: the experiment log, newest first, including the dead ends.</li>
-<li><a href="https://github.com/DawsMacs/Transient/blob/main/LEARNING.md" rel="noopener">LEARNING.md</a>: notes and sources on learning efficiently on small hardware.</li>
-<li><a href="https://github.com/DawsMacs/Transient/blob/main/docs/Direction.md" rel="noopener">docs/Direction.md</a>: strategy, hardware terrain and the language choice.</li>
-<li><a href="https://github.com/DawsMacs/Transient/blob/main/TransientVision.md" rel="noopener">TransientVision.md</a>: the founder's dated entries on why the project exists, in his own words.</li>
+<li><a href="https://github.com/Matterworm/Matter/blob/main/baby/README.md" rel="noopener">baby/README.md</a>: the experiment log, newest first, including the dead ends.</li>
+<li><a href="https://github.com/Matterworm/Matter/blob/main/LEARNING.md" rel="noopener">LEARNING.md</a>: notes and sources on learning efficiently on small hardware.</li>
+<li><a href="https://github.com/Matterworm/Matter/blob/main/docs/Direction.md" rel="noopener">docs/Direction.md</a>: strategy, hardware terrain and the language choice.</li>
 </ul>
 </div>
 </div>
@@ -118,16 +117,16 @@
 <div class="wrap">
 <div class="foot-grid">
 <div>
-<div class="foot-brand"><img class="invertable" src="assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">TransientAI<span class="foundation"> Foundation</span></span></div>
-<p class="small">An independent research effort, run by its founder and a founding member, behind the open Transient project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
+<div class="foot-brand"><img class="invertable" src="assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">Matterworm<span class="foundation"> Foundation</span></span></div>
+<p class="small">An independent research effort, run by its founder and a founding member, behind the open Matter project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
 </div>
 <div>
 <h4>Project</h4>
 <ul>
-<li><a href="baby">Transient &amp; baby</a></li>
+<li><a href="baby">Matter &amp; baby</a></li>
 <li><a href="docs">Documentation</a></li>
 <li><a href="progress">Progress &amp; roadmap</a></li>
-<li><a href="https://github.com/DawsMacs/Transient" rel="noopener">Source on GitHub<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
+<li><a href="https://github.com/Matterworm/Matter" rel="noopener">Source on GitHub<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
 </ul>
 </div>
 <div>
@@ -141,17 +140,17 @@
 </ul>
 </div>
 <div>
-<h4>TransientAI</h4>
+<h4>Matterworm</h4>
 <ul>
 <li><a href="about">About</a></li>
 <li><a href="blog/">Blog</a></li>
 <li><a href="docs#contribute">Contribute</a></li>
-<li><a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">Issues<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
+<li><a href="https://github.com/Matterworm/Matter/issues" rel="noopener">Issues<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
 </ul>
 </div>
 </div>
 <div class="foot-note">
-<span>© 2026 Daws Macs. Site code MIT; text and blog art CC BY 4.0; the TransientAI mark and names are reserved. The Transient project's code is AGPL-3.0-only.</span>
+<span>© 2026 Daws Macs. Site code MIT; text and blog art CC BY 4.0; the Matterworm mark and names are reserved. The Matter project's code is AGPL-3.0-only.</span>
 </div>
 </div>
 </footer>
