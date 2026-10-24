@@ -387,6 +387,7 @@ td code { white-space: nowrap; }
 .card.has-thumb .thumb { margin-bottom: 1rem; }
 .cover { margin: 0; }
 .cover img { width: 100%; height: auto; max-height: 420px; object-fit: cover; border: 1px solid var(--line); border-radius: 8px; background: #000; }
+.cover img.cover-art { object-fit: contain; }
 
 /* ---------- icons (Lucide, plus Phosphor regular for the GitHub mark) ---------- */
 .icon { width: 1.1em; height: 1.1em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; vertical-align: -0.2em; }
