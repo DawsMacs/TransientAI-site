@@ -1,4 +1,4 @@
-/* TransientAI site: small progressive enhancements. Everything works without this file. */
+/* Matterworm site: small progressive enhancements. Everything works without this file. */
 (function () {
   "use strict";
   var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;

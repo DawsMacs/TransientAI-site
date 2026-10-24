@@ -1,4 +1,4 @@
-/* TransientAI site. Hand-written, no framework, no build step.
+/* Matterworm site. Hand-written, no framework, no build step.
    Lexend and Josefin Sans are self-hosted (SIL OFL, see fonts/): the site makes no third-party requests. */
 
 @font-face {
@@ -9,7 +9,7 @@
   font-display: swap;
 }
 
-/* Brand font: used only for the TransientAI / Transient wordmark. Everything else is Lexend. */
+/* Brand font: used only for the Matterworm / Matter wordmark. Everything else is Lexend. */
 @font-face {
   font-family: "Josefin Sans";
   src: url("../fonts/JosefinSans.ttf") format("truetype");

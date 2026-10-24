@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Transient and baby · TransientAI</title>
-<meta name="description" content="Transient is the project; baby is its first working prototype: a small Rust system that works out how to learn each kind of lesson, says how it knew, and refuses when it should.">
-<link rel="canonical" href="https://transientai.org/baby">
-<meta property="og:site_name" content="TransientAI">
-<meta property="og:title" content="Transient and baby · TransientAI">
-<meta property="og:description" content="Transient is the project; baby is its first working prototype: a small Rust system that works out how to learn each kind of lesson, says how it knew, and refuses when it should.">
+<title>Matter and baby · Matterworm</title>
+<meta name="description" content="Matter is the project; baby is its first working prototype: a small Rust system that works out how to learn each kind of lesson, says how it knew, and refuses when it should.">
+<link rel="canonical" href="https://matterworm.github.io/baby">
+<meta property="og:site_name" content="Matterworm">
+<meta property="og:title" content="Matter and baby · Matterworm">
+<meta property="og:description" content="Matter is the project; baby is its first working prototype: a small Rust system that works out how to learn each kind of lesson, says how it knew, and refuses when it should.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://transientai.org/baby">
-<meta property="og:image" content="https://transientai.org/assets/og-image.png">
+<meta property="og:url" content="https://matterworm.github.io/baby">
+<meta property="og:image" content="https://matterworm.github.io/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="alternate" type="application/rss+xml" title="TransientAI blog" href="https://transientai.org/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Matterworm blog" href="https://matterworm.github.io/feed.xml">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
@@ -62,9 +62,9 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
 <div class="wrap bar">
-<a class="brand" href="./"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">TransientAI</span></a>
+<a class="brand" href="./"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">Matterworm</span></a>
 <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg class="icon" aria-hidden="true"><use href="#menu"/></svg><span>Menu</span></button>
-<nav class="nav" id="site-nav" aria-label="Main"><a href="baby" aria-current="page">Project</a><a href="research">Research</a><a href="docs">Docs</a><a href="blog/">Blog</a><a href="progress">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/DawsMacs/Transient" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="baby" aria-current="page">Project</a><a href="research">Research</a><a href="docs">Docs</a><a href="blog/">Blog</a><a href="progress">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/Matterworm/Matter" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
 </div>
 </header>
 <main id="main">
@@ -72,8 +72,8 @@
 <section class="page-head">
 <div class="wrap">
 <p class="eyebrow">The project</p>
-<h1>Transient, and its first working piece: baby</h1>
-<p class="lead">Transient is an experiment in building a light, adaptive learning system that runs on ordinary hardware. <code>baby</code> is the prototype we have so far: about 18,000 lines of Rust with no dependencies. It is a research prototype tested mostly on a synthetic curriculum, with a first look at real word problems. It is not a language model, and makes no claim to be one yet.</p>
+<h1>Matter, and its first working piece: baby</h1>
+<p class="lead">Matter is an experiment in building a light, adaptive learning system that runs on ordinary hardware. <code>baby</code> is the prototype we have so far: about 18,000 lines of Rust with no dependencies. It is a research prototype tested mostly on a synthetic curriculum, with a first look at real word problems. It is not a language model, and makes no claim to be one yet.</p>
 </div>
 </section>
 
@@ -181,12 +181,12 @@
 
 <h2>Try it</h2>
 <p>You need a stable Rust toolchain and nothing else; it builds offline.</p>
-<pre data-copy><code>git clone https://github.com/DawsMacs/Transient.git
-cd Transient
+<pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
+cd Matter
 cargo build --release --offline
 ./target/release/baby school
 ./target/release/baby ask "how far apart are two and nine"</code></pre>
-<p>On Windows, macOS, the BSDs or WebAssembly, see <a href="docs#platforms">running it on your platform</a> (it is tested on thirteen CI rows). More in the <a href="docs">documentation</a>, and the full experiment log, newest first, is the repository's <a href="https://github.com/DawsMacs/Transient/blob/main/baby/README.md" rel="noopener">baby/README.md</a>.</p>
+<p>On Windows, macOS, the BSDs or WebAssembly, see <a href="docs#platforms">running it on your platform</a> (it is tested on thirteen CI rows). More in the <a href="docs">documentation</a>, and the full experiment log, newest first, is the repository's <a href="https://github.com/Matterworm/Matter/blob/main/baby/README.md" rel="noopener">baby/README.md</a>.</p>
 </div>
 </div>
 </section>
@@ -197,16 +197,16 @@ cargo build --release --offline
 <div class="wrap">
 <div class="foot-grid">
 <div>
-<div class="foot-brand"><img class="invertable" src="assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">TransientAI<span class="foundation"> Foundation</span></span></div>
-<p class="small">An independent research effort, run by its founder and a founding member, behind the open Transient project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
+<div class="foot-brand"><img class="invertable" src="assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">Matterworm<span class="foundation"> Foundation</span></span></div>
+<p class="small">An independent research effort, run by its founder and a founding member, behind the open Matter project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
 </div>
 <div>
 <h4>Project</h4>
 <ul>
-<li><a href="baby">Transient &amp; baby</a></li>
+<li><a href="baby">Matter &amp; baby</a></li>
 <li><a href="docs">Documentation</a></li>
 <li><a href="progress">Progress &amp; roadmap</a></li>
-<li><a href="https://github.com/DawsMacs/Transient" rel="noopener">Source on GitHub<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
+<li><a href="https://github.com/Matterworm/Matter" rel="noopener">Source on GitHub<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
 </ul>
 </div>
 <div>
@@ -220,17 +220,17 @@ cargo build --release --offline
 </ul>
 </div>
 <div>
-<h4>TransientAI</h4>
+<h4>Matterworm</h4>
 <ul>
 <li><a href="about">About</a></li>
 <li><a href="blog/">Blog</a></li>
 <li><a href="docs#contribute">Contribute</a></li>
-<li><a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">Issues<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
+<li><a href="https://github.com/Matterworm/Matter/issues" rel="noopener">Issues<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
 </ul>
 </div>
 </div>
 <div class="foot-note">
-<span>© 2026 Daws Macs. Site code MIT; text and blog art CC BY 4.0; the TransientAI mark and names are reserved. The Transient project's code is AGPL-3.0-only.</span>
+<span>© 2026 Daws Macs. Site code MIT; text and blog art CC BY 4.0; the Matterworm mark and names are reserved. The Matter project's code is AGPL-3.0-only.</span>
 </div>
 </div>
 </footer>

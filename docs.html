@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Documentation · TransientAI</title>
-<meta name="description" content="How to build, run and read the Transient prototype: quick start, commands, concepts, code map, how to read the scorecard, and how to contribute.">
-<link rel="canonical" href="https://transientai.org/docs">
-<meta property="og:site_name" content="TransientAI">
-<meta property="og:title" content="Documentation · TransientAI">
-<meta property="og:description" content="How to build, run and read the Transient prototype: quick start, commands, concepts, code map, how to read the scorecard, and how to contribute.">
+<title>Documentation · Matterworm</title>
+<meta name="description" content="How to build, run and read the Matter prototype: quick start, commands, concepts, code map, how to read the scorecard, and how to contribute.">
+<link rel="canonical" href="https://matterworm.github.io/docs">
+<meta property="og:site_name" content="Matterworm">
+<meta property="og:title" content="Documentation · Matterworm">
+<meta property="og:description" content="How to build, run and read the Matter prototype: quick start, commands, concepts, code map, how to read the scorecard, and how to contribute.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://transientai.org/docs">
-<meta property="og:image" content="https://transientai.org/assets/og-image.png">
+<meta property="og:url" content="https://matterworm.github.io/docs">
+<meta property="og:image" content="https://matterworm.github.io/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="alternate" type="application/rss+xml" title="TransientAI blog" href="https://transientai.org/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Matterworm blog" href="https://matterworm.github.io/feed.xml">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
@@ -62,9 +62,9 @@
 <a class="skip" href="#main">Skip to content</a>
 <header class="site-header">
 <div class="wrap bar">
-<a class="brand" href="./"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">TransientAI</span></a>
+<a class="brand" href="./"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">Matterworm</span></a>
 <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg class="icon" aria-hidden="true"><use href="#menu"/></svg><span>Menu</span></button>
-<nav class="nav" id="site-nav" aria-label="Main"><a href="baby">Project</a><a href="research">Research</a><a href="docs" aria-current="page">Docs</a><a href="blog/">Blog</a><a href="progress">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/DawsMacs/Transient" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="baby">Project</a><a href="research">Research</a><a href="docs" aria-current="page">Docs</a><a href="blog/">Blog</a><a href="progress">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/Matterworm/Matter" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
 </div>
 </header>
 <main id="main">
@@ -73,7 +73,7 @@
 <div class="wrap">
 <p class="eyebrow">Documentation</p>
 <h1>Build it, run it, read it</h1>
-<p class="lead">A guide to the <code>baby</code> prototype in the <a href="https://github.com/DawsMacs/Transient" rel="noopener">Transient repository</a>. The repository's own markdown files are the source of truth and move faster than this page; where they disagree, trust them.</p>
+<p class="lead">A guide to the <code>baby</code> prototype in the <a href="https://github.com/Matterworm/Matter" rel="noopener">Matter repository</a>. The repository's own markdown files are the source of truth and move faster than this page; where they disagree, trust them.</p>
 </div>
 </section>
 
@@ -109,13 +109,13 @@
 
 <h2 id="quickstart">Quick start</h2>
 <p>You need a stable Rust toolchain (edition 2021). There are no other dependencies, and no network is needed to build. There are no prebuilt binaries or releases yet: you build from source, which takes about a minute and a half on a recent desktop.</p>
-<pre data-copy><code>git clone https://github.com/DawsMacs/Transient.git
-cd Transient
+<pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
+cd Matter
 cargo build --release --offline
 cargo test --release --offline        # 150 tests, about 15 s
 ./target/release/baby school          # teach 13 units, print how each was learned and the scorecard
 ./target/release/baby ask "how far apart are two and nine"</code></pre>
-<p>Three ways to get the code, all tried: <code>git clone</code> (about 1.5 MB with the whole history, no account needed), GitHub's "Download ZIP" (about 0.5 MB), or <code>cargo install --git https://github.com/DawsMacs/Transient baby</code>, which builds in about a minute and puts a <code>baby</code> command in <code>~/.cargo/bin</code> (it installs only the program, not the tests or the Python tools). The full guide for every platform is <a href="https://github.com/DawsMacs/Transient/blob/main/docs/Running.md" rel="noopener">docs/Running.md</a> in the repository.</p>
+<p>Three ways to get the code, all tried: <code>git clone</code> (about 1.5 MB with the whole history, no account needed), GitHub's "Download ZIP" (about 0.5 MB), or <code>cargo install --git https://github.com/Matterworm/Matter baby</code>, which builds in about a minute and puts a <code>baby</code> command in <code>~/.cargo/bin</code> (it installs only the program, not the tests or the Python tools). The full guide for every platform is <a href="https://github.com/Matterworm/Matter/blob/main/docs/Running.md" rel="noopener">docs/Running.md</a> in the repository.</p>
 
 <h2 id="verify">Check your build</h2>
 <p>The two-minute check: tests pass, and the scorecard's WRONG column reads 0.0% on every row.</p>
@@ -131,7 +131,7 @@ bash golden/check.sh                                   # about 1.5 min: the exam
 <p>If <code>WRONG</code> is ever above 0.0%, or a refusal battery in the tests starts answering, treat it as a regression: honesty is the property this project protects first. The <code>golden/</code> check pins what the baby answers on the reference platform (Linux x86_64); on another platform, a difference is a finding to report, not something to patch over.</p></div>
 
 <h2 id="platforms">Run it on your platform</h2>
-<p>One section per system. Every system listed is built and tested by CI on GitHub's runners on every change. That is a result of testing, not a promise of support: other versions and other hardware were not tried. The package commands are each system's standard ones, not something we ran on a fresh machine; the Transient commands are the ones CI runs.</p>
+<p>One section per system. Every system listed is built and tested by CI on GitHub's runners on every change. That is a result of testing, not a promise of support: other versions and other hardware were not tried. The package commands are each system's standard ones, not something we ran on a fresh machine; the Matter commands are the ones CI runs.</p>
 <div class="table-wrap">
 <table>
 <thead><tr><th>Your system</th><th>Go to</th><th>How it is tested</th></tr></thead>
@@ -152,8 +152,8 @@ bash golden/check.sh                                   # about 1.5 min: the exam
 <li><strong>Install the build tools and git.</strong> Debian or Ubuntu: <code>sudo apt update &amp;&amp; sudo apt install -y git curl build-essential</code>. Fedora: <code>sudo dnf install -y git curl gcc</code>. Arch: <code>sudo pacman -S --needed git curl base-devel</code>. Alpine: <code>apk add git curl build-base</code>.</li>
 <li><strong>Install Rust</strong> with <a href="https://rustup.rs" rel="noopener">rustup</a>:<pre data-copy><code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh     # accept the defaults, then open a new terminal</code></pre>
 (Your distribution's <code>rust</code> and <code>cargo</code> packages work if they are recent enough; on Alpine, <code>apk add rust cargo</code> gives the musl build.)</li>
-<li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/DawsMacs/Transient.git
-cd Transient
+<li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
+cd Matter
 cargo build --release --offline
 cargo test --release --offline        # 150 tests, about 15 s
 ./target/release/baby school
@@ -167,8 +167,8 @@ cargo test --release --offline        # 150 tests, about 15 s
 <li><strong>Install the command line tools</strong> (the linker, and git): <code>xcode-select --install</code>, then accept the dialog.</li>
 <li><strong>Install Rust:</strong><pre data-copy><code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh     # accept the defaults, then open a new terminal</code></pre>
 Or, with Homebrew: <code>brew install rust</code>.</li>
-<li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/DawsMacs/Transient.git
-cd Transient
+<li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
+cd Matter
 cargo build --release --offline
 cargo test --release --offline        # 150 tests, about 15 s
 ./target/release/baby school
@@ -190,8 +190,8 @@ target\release\baby.exe ask "how far apart are two and nine"</code></pre>
 <p><strong>Tested in CI:</strong> FreeBSD 15.1, x86_64, in a virtual machine, with the packaged Rust (1.98.1). Peak memory prints <code>n/a</code> when the system does not report it.</p>
 <ol>
 <li><strong>Install Rust and git</strong> from the system's packages: <code>sudo pkg install -y rust git</code></li>
-<li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/DawsMacs/Transient.git
-cd Transient
+<li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
+cd Matter
 cargo build --release --offline
 cargo test --release --offline        # 150 tests, about 15 s
 ./target/release/baby school
@@ -202,8 +202,8 @@ cargo test --release --offline        # 150 tests, about 15 s
 <p><strong>Tested in CI:</strong> NetBSD 10.1, x86_64, in a virtual machine, with the packaged Rust (1.96.1). This needs <code>pkgin</code>; set it up first if it is not there. NetBSD's <code>/proc/self/status</code> is in a different format from Linux's, so peak memory prints <code>n/a</code>.</p>
 <ol>
 <li><strong>Install Rust and git</strong> from the system's packages: <code>sudo pkgin -y install rust git</code></li>
-<li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/DawsMacs/Transient.git
-cd Transient
+<li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
+cd Matter
 cargo build --release --offline
 cargo test --release --offline        # 150 tests, about 15 s
 ./target/release/baby school
@@ -214,8 +214,8 @@ cargo test --release --offline        # 150 tests, about 15 s
 <p><strong>Tested in CI:</strong> OpenBSD 7.9, x86_64, in a virtual machine, with the packaged Rust (1.94.1). OpenBSD is a "tier 3" Rust target (no official builds), so use the system's package, as CI does.</p>
 <ol>
 <li><strong>Install Rust and git</strong> from the system's packages: <code>doas pkg_add rust git</code></li>
-<li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/DawsMacs/Transient.git
-cd Transient
+<li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
+cd Matter
 cargo build --release --offline
 cargo test --release --offline        # 150 tests, about 15 s
 ./target/release/baby school
@@ -223,7 +223,7 @@ cargo test --release --offline        # 150 tests, about 15 s
 </li>
 </ol>
 <h3 id="p-wasi">WebAssembly (WASI)</h3>
-<p><strong>Tested in CI:</strong> <code>wasm32-wasip1</code> under <a href="https://wasmtime.dev" rel="noopener">Wasmtime</a> 50.0.0, on Linux. It runs Transient in a sandbox that sees only the folders you give it, with no code changes.</p>
+<p><strong>Tested in CI:</strong> <code>wasm32-wasip1</code> under <a href="https://wasmtime.dev" rel="noopener">Wasmtime</a> 50.0.0, on Linux. It runs Matter in a sandbox that sees only the folders you give it, with no code changes.</p>
 <ol>
 <li><strong>Install Rust</strong> as for your system above, then <code>rustup target add wasm32-wasip1</code>.</li>
 <li><strong>Install Wasmtime</strong> from its <a href="https://github.com/bytecodealliance/wasmtime/releases" rel="noopener">releases page</a>, and check the SHA-256 that GitHub shows for the file. CI pins version 50.0.0 and verifies it.</li>
@@ -244,16 +244,16 @@ cargo test --release --offline --target riscv64gc-unknown-linux-gnu</code></pre>
 <p>What CI found, on all 13 rows that run: the 150 tests pass, the scorecard reads 0.0% wrong, and the exam answers (4,832 predictions and 787 adaptive replies) are byte-identical to the Linux x86_64 reference. The platforms' math libraries do differ in the last bit of some results, never by more than one step from the correctly rounded value, and no answer changed because of it on anything tested.</p>
 <div class="callout caveat">
 <p class="callout-label"><svg class="icon" aria-hidden="true"><use href="#triangle-alert"/></svg>Caveat</p>
-<p>The runners are virtual machines running the real operating systems, or QEMU emulation, not real s390x or riscv64 hardware. Measured joules need Linux on hardware that exposes the CPU's energy counter (not a virtual machine); the counter is root-only by default, so Transient never changes that for you, and the command is in the <a href="https://github.com/DawsMacs/Transient/blob/main/docs/Running.md#energy-and-memory" rel="noopener">repository guide</a>. Elsewhere the energy report says it is unavailable and peak memory prints <code>n/a</code>.</p></div>
+<p>The runners are virtual machines running the real operating systems, or QEMU emulation, not real s390x or riscv64 hardware. Measured joules need Linux on hardware that exposes the CPU's energy counter (not a virtual machine); the counter is root-only by default, so Matter never changes that for you, and the command is in the <a href="https://github.com/Matterworm/Matter/blob/main/docs/Running.md#energy-and-memory" rel="noopener">repository guide</a>. Elsewhere the energy report says it is unavailable and peak memory prints <code>n/a</code>.</p></div>
 
 <h3 id="p-trouble">Troubleshooting</h3>
 <ul>
 <li><code>cargo: command not found</code> right after installing Rust: open a new terminal, or run <code>source "$HOME/.cargo/env"</code>.</li>
 <li><code>linker cc not found</code> (Linux, the BSDs) or <code>link.exe not found</code> (Windows): install the build tools from your system's steps above.</li>
 <li><code>bash golden/check.sh</code> fails on Windows: run it in Git Bash, not PowerShell.</li>
-<li>A test fails: run it alone with <code>cargo test --release --offline NAME -- --nocapture</code> and <a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">open an issue</a> with the system, the output of <code>rustc -Vv</code> and the output. A platform that works is as useful to hear about as one that does not.</li>
+<li>A test fails: run it alone with <code>cargo test --release --offline NAME -- --nocapture</code> and <a href="https://github.com/Matterworm/Matter/issues" rel="noopener">open an issue</a> with the system, the output of <code>rustc -Vv</code> and the output. A platform that works is as useful to hear about as one that does not.</li>
 </ul>
-<p>To update, run <code>git pull --ff-only</code> and build again. To remove, delete the folder you cloned (or run <code>cargo uninstall baby</code> if you used <code>cargo install</code>). More detail: the <a href="https://github.com/DawsMacs/Transient/blob/main/docs/Running.md" rel="noopener">repository guide</a>.</p>
+<p>To update, run <code>git pull --ff-only</code> and build again. To remove, delete the folder you cloned (or run <code>cargo uninstall baby</code> if you used <code>cargo install</code>). More detail: the <a href="https://github.com/Matterworm/Matter/blob/main/docs/Running.md" rel="noopener">repository guide</a>.</p>
 
 <h3 id="p-later">Coming later</h3>
 <p><strong>DragonFly BSD</strong> is planned for later. We tried it: the tests pass, but the program built with its packaged Rust crashes at startup, inside the standard library, so it is not in the tested list. We intend to bring it back once there is a Rust toolchain there that runs it. Prebuilt binaries and a first release are not decided yet; until then, build from source.</p>
@@ -336,7 +336,7 @@ cargo test --release --offline --target riscv64gc-unknown-linux-gnu</code></pre>
 <tr><td><code>exam.rs</code></td><td>The entry exam: plain files and a line protocol any system can be taught and judged by.</td></tr>
 <tr><td><code>tutor.rs</code></td><td>The baby asks, a person answers.</td></tr>
 <tr><td><code>transformer.rs</code> · <code>compare.rs</code></td><td>A from-scratch attention transformer with a hand-written, gradient-checked backward pass, and the controlled comparison against it.</td></tr>
-<tr><td><code>platform.rs</code></td><td>What Transient asks the operating system (memory, energy availability, temporary files); says <code>n/a</code> where the system cannot answer.</td></tr>
+<tr><td><code>platform.rs</code></td><td>What Matter asks the operating system (memory, energy availability, temporary files); says <code>n/a</code> where the system cannot answer.</td></tr>
 <tr><td><code>kinds.rs</code></td><td>The synthetic curriculum.</td></tr>
 <tr><td><code>ledger.rs</code></td><td>Counted operations and words moved, priced with published figures; optional RAPL reader.</td></tr>
 <tr><td><code>memory.rs</code> · <code>store.rs</code> · <code>net.rs</code> · <code>model.rs</code> · <code>data.rs</code> · <code>know.rs</code> · <code>life.rs</code> · <code>curious.rs</code> · <code>rules.rs</code> · <code>rng.rs</code> · <code>main.rs</code></td><td>Taught facts, the earlier network and its experiments, plumbing, and the command-line interface.</td></tr>
@@ -353,22 +353,21 @@ cargo test --release --offline --target riscv64gc-unknown-linux-gnu</code></pre>
 <div class="table-wrap">
 <table>
 <tbody>
-<tr><td><a href="https://github.com/DawsMacs/Transient/blob/main/README.md" rel="noopener">README.md</a></td><td>The technical overview.</td></tr>
-<tr><td><a href="https://github.com/DawsMacs/Transient/blob/main/docs/Running.md" rel="noopener">docs/Running.md</a></td><td>Get, build, run and check Transient on each platform; what is tested where.</td></tr>
-<tr><td><a href="https://github.com/DawsMacs/Transient/blob/main/baby/README.md" rel="noopener">baby/README.md</a></td><td>The experiment log: every result, dead end and bug, newest first.</td></tr>
-<tr><td><a href="https://github.com/DawsMacs/Transient/blob/main/LEARNING.md" rel="noopener">LEARNING.md</a></td><td>Learning-efficiency research notes and sources.</td></tr>
-<tr><td><a href="https://github.com/DawsMacs/Transient/blob/main/docs/Direction.md" rel="noopener">docs/Direction.md</a></td><td>Strategy, hardware terrain, language choice.</td></tr>
-<tr><td><a href="https://github.com/DawsMacs/Transient/blob/main/TransientVision.md" rel="noopener">TransientVision.md</a></td><td>The founder's dated entries on why the project exists.</td></tr>
-<tr><td><a href="https://github.com/DawsMacs/Transient/blob/main/TransientHandover.md" rel="noopener">TransientHandover.md</a></td><td>Current state and next steps, for picking the work up.</td></tr>
+<tr><td><a href="https://github.com/Matterworm/Matter/blob/main/README.md" rel="noopener">README.md</a></td><td>The technical overview.</td></tr>
+<tr><td><a href="https://github.com/Matterworm/Matter/blob/main/docs/Running.md" rel="noopener">docs/Running.md</a></td><td>Get, build, run and check Matter on each platform; what is tested where.</td></tr>
+<tr><td><a href="https://github.com/Matterworm/Matter/blob/main/baby/README.md" rel="noopener">baby/README.md</a></td><td>The experiment log: every result, dead end and bug, newest first.</td></tr>
+<tr><td><a href="https://github.com/Matterworm/Matter/blob/main/LEARNING.md" rel="noopener">LEARNING.md</a></td><td>Learning-efficiency research notes and sources.</td></tr>
+<tr><td><a href="https://github.com/Matterworm/Matter/blob/main/docs/Direction.md" rel="noopener">docs/Direction.md</a></td><td>Strategy, hardware terrain, language choice.</td></tr>
+<tr><td><a href="https://github.com/Matterworm/Matter/blob/main/MatterHandover.md" rel="noopener">MatterHandover.md</a></td><td>Current state and next steps, for picking the work up.</td></tr>
 </tbody>
 </table>
 </div>
 
 <h2 id="contribute">Contribute</h2>
-<p>Contributions are welcome under the project's license. TransientAI is a very small team, so patience helps; the most useful things are replications, bug reports and adversarial questions.</p>
+<p>Contributions are welcome under the project's license. The Matterworm Foundation is a very small team, so patience helps; the most useful things are replications, bug reports and adversarial questions.</p>
 <ul>
 <li><strong>Replicate something</strong> on your own machine and tell us what you measured, especially if it differs.</li>
-<li><strong>Break it.</strong> A question it should refuse but answers is the most valuable bug report. Open an <a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">issue</a> with the exact question.</li>
+<li><strong>Break it.</strong> A question it should refuse but answers is the most valuable bug report. Open an <a href="https://github.com/Matterworm/Matter/issues" rel="noopener">issue</a> with the exact question.</li>
 <li><strong>Send a patch.</strong> Sign off each commit with the <a href="https://developercertificate.org/" rel="noopener">Developer Certificate of Origin</a> (<code>git commit -s</code>). There is no CLA, and that is deliberate.</li>
 </ul>
 <p>Ground rules that protect the results:</p>
@@ -385,10 +384,10 @@ cargo test --release --offline --target riscv64gc-unknown-linux-gnu</code></pre>
 cargo test --release --offline
 ./target/release/baby school      # WRONG must read 0.0% on every row
 bash golden/check.sh              # the pinned exam answers must still match</code></pre>
-<p class="small muted">The repository's <a href="https://github.com/DawsMacs/Transient/blob/main/CONTRIBUTING.md" rel="noopener">CONTRIBUTING.md</a> has the same rules and the license header for new files.</p>
+<p class="small muted">The repository's <a href="https://github.com/Matterworm/Matter/blob/main/CONTRIBUTING.md" rel="noopener">CONTRIBUTING.md</a> has the same rules and the license header for new files.</p>
 
 <h2 id="license">License</h2>
-<p>The Transient code is <strong>AGPL-3.0-only</strong>. Anyone may use, study, change and share it. Anyone who distributes it, or lets others use a modified version over a network, must offer those users the corresponding source under the same terms. That network clause is the reason for choosing it: the aim is that this work stays open and is not quietly closed behind a service. See the repository's <a href="https://github.com/DawsMacs/Transient/blob/main/LICENSE" rel="noopener">LICENSE</a>.</p>
+<p>The Matter code is <strong>AGPL-3.0-only</strong>. Anyone may use, study, change and share it. Anyone who distributes it, or lets others use a modified version over a network, must offer those users the corresponding source under the same terms. That network clause is the reason for choosing it: the aim is that this work stays open and is not quietly closed behind a service. See the repository's <a href="https://github.com/Matterworm/Matter/blob/main/LICENSE" rel="noopener">LICENSE</a>.</p>
 
 </div>
 </div>
@@ -399,16 +398,16 @@ bash golden/check.sh              # the pinned exam answers must still match</co
 <div class="wrap">
 <div class="foot-grid">
 <div>
-<div class="foot-brand"><img class="invertable" src="assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">TransientAI<span class="foundation"> Foundation</span></span></div>
-<p class="small">An independent research effort, run by its founder and a founding member, behind the open Transient project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
+<div class="foot-brand"><img class="invertable" src="assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">Matterworm<span class="foundation"> Foundation</span></span></div>
+<p class="small">An independent research effort, run by its founder and a founding member, behind the open Matter project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
 </div>
 <div>
 <h4>Project</h4>
 <ul>
-<li><a href="baby">Transient &amp; baby</a></li>
+<li><a href="baby">Matter &amp; baby</a></li>
 <li><a href="docs">Documentation</a></li>
 <li><a href="progress">Progress &amp; roadmap</a></li>
-<li><a href="https://github.com/DawsMacs/Transient" rel="noopener">Source on GitHub<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
+<li><a href="https://github.com/Matterworm/Matter" rel="noopener">Source on GitHub<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
 </ul>
 </div>
 <div>
@@ -422,17 +421,17 @@ bash golden/check.sh              # the pinned exam answers must still match</co
 </ul>
 </div>
 <div>
-<h4>TransientAI</h4>
+<h4>Matterworm</h4>
 <ul>
 <li><a href="about">About</a></li>
 <li><a href="blog/">Blog</a></li>
 <li><a href="docs#contribute">Contribute</a></li>
-<li><a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">Issues<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
+<li><a href="https://github.com/Matterworm/Matter/issues" rel="noopener">Issues<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
 </ul>
 </div>
 </div>
 <div class="foot-note">
-<span>© 2026 Daws Macs. Site code MIT; text and blog art CC BY 4.0; the TransientAI mark and names are reserved. The Transient project's code is AGPL-3.0-only.</span>
+<span>© 2026 Daws Macs. Site code MIT; text and blog art CC BY 4.0; the Matterworm mark and names are reserved. The Matter project's code is AGPL-3.0-only.</span>
 </div>
 </div>
 </footer>

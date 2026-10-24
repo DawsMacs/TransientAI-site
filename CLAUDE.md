@@ -1,6 +1,6 @@
-# TransientAI site instructions
+# Matterworm site instructions
 
-Static site for TransientAI (live at transientai.org). See `README.md` for layout, preview and conventions.
+Static site for the Matterworm Foundation (live at matterworm.github.io). See `README.md` for layout, preview and conventions.
 
 ## Communication protocol
 

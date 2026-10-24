@@ -11,17 +11,17 @@ Attribution 4.0 International license (CC BY 4.0):
     Full legal code: https://creativecommons.org/licenses/by/4.0/legalcode
 
 You may share and adapt this material for any purpose, including commercially,
-as long as you give appropriate credit (for example: "Text from the TransientAI
-website"), link to the license, and indicate if you made changes.
+as long as you give appropriate credit (for example: "Text from the Matterworm
+Foundation website"), link to the license, and indicate if you made changes.
 
 Not covered by this license, and all rights reserved:
 
-  - the TransientAI mark (assets/mark.svg and assets/favicon.svg), the
-    TransientAI and Transient wordmarks, and the names "TransientAI" and
-    "Transient" as identifiers of this project and organization. You may refer
+  - the Matterworm mark (assets/mark.svg and assets/favicon.svg), the
+    Matterworm and Matter wordmarks, and the names "Matterworm", "Matterworm
+    Foundation" and "Matter" as identifiers of this project and organization. You may refer
     to them accurately (for example, to say what you are quoting or linking to),
     but you may not use them in a way that suggests your work is, or is
-    endorsed by, TransientAI. Note that the blog art includes the mark: you
+    endorsed by, the Matterworm Foundation. Note that the blog art includes the mark: you
     may adapt the art, but remove or replace the mark if you do.
 
 Third-party material:
@@ -29,6 +29,6 @@ Third-party material:
   - Fonts: Lexend and Josefin Sans, under the SIL Open Font License 1.1
     (fonts/OFL-Lexend.txt, fonts/OFL-JosefinSans.txt).
   - Icons: Lucide (ISC) and Phosphor Icons (MIT); see LICENSE-icons.
-  - Figures and quotations drawn from the Transient project's documentation
-    are from the Transient repository (https://github.com/DawsMacs/Transient),
+  - Figures and quotations drawn from the Matter project's documentation
+    are from the Matter repository (https://github.com/Matterworm/Matter),
     whose code is licensed AGPL-3.0-only.
