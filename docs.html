@@ -81,6 +81,7 @@
 <nav class="docs-nav" aria-label="On this page">
 <p>Start</p>
 <a href="#quickstart">Quick start</a>
+<a href="#platforms">Run it on your platform</a>
 <a href="#verify">Check your build</a>
 <p>Use</p>
 <a href="#commands">Commands</a>
@@ -98,13 +99,14 @@
 <div class="docs-body">
 
 <h2 id="quickstart">Quick start</h2>
-<p>You need a stable Rust toolchain (edition 2021). There are no other dependencies, and no network is needed to build.</p>
+<p>You need a stable Rust toolchain (edition 2021). There are no other dependencies, and no network is needed to build. There are no prebuilt binaries or releases yet: you build from source, which takes about a minute and a half on a recent desktop.</p>
 <pre data-copy><code>git clone https://github.com/DawsMacs/Transient.git
 cd Transient
 cargo build --release --offline
-cargo test --release --offline        # 139 tests, about 21 s
+cargo test --release --offline        # 150 tests, about 15 s
 ./target/release/baby school          # teach 13 units, print how each was learned and the scorecard
 ./target/release/baby ask "how far apart are two and nine"</code></pre>
+<p>Three ways to get the code, all tried: <code>git clone</code> (about 1.5 MB with the whole history, no account needed), GitHub's "Download ZIP" (about 0.5 MB), or <code>cargo install --git https://github.com/DawsMacs/Transient baby</code>, which builds in about a minute and puts a <code>baby</code> command in <code>~/.cargo/bin</code> (it installs only the program, not the tests or the Python tools). The full guide for every platform is <a href="https://github.com/DawsMacs/Transient/blob/main/docs/Running.md" rel="noopener">docs/Running.md</a> in the repository.</p>
 
 <h2 id="verify">Check your build</h2>
 <p>The two-minute check: tests pass, and the scorecard's WRONG column reads 0.0% on every row.</p>
@@ -113,10 +115,30 @@ cargo test --release --offline        # 139 tests, about 21 s
 ./target/release/baby ask "what is two times four"       # eight, with how it knew
 ./target/release/baby ask "what is seven times one"      # probably seven: a labeled guess
 ./target/release/baby ask "three minus five"             # ?  (must refuse)
-./target/release/baby ask "what is -3 plus 5"            # ?  (unreadable number: must refuse)</code></pre>
+./target/release/baby ask "what is -3 plus 5"            # ?  (unreadable number: must refuse)
+bash golden/check.sh                                   # about 1.5 min: the exam answers must match the pinned ones byte for byte</code></pre>
 <div class="callout good">
 <p class="callout-label"><svg class="icon" aria-hidden="true"><use href="#circle-check"/></svg>Check</p>
-<p>If <code>WRONG</code> is ever above 0.0%, or a refusal battery in the tests starts answering, treat it as a regression: honesty is the property this project protects first.</p></div>
+<p>If <code>WRONG</code> is ever above 0.0%, or a refusal battery in the tests starts answering, treat it as a regression: honesty is the property this project protects first. The <code>golden/</code> check pins what the baby answers on the reference platform (Linux x86_64); on another platform, a difference is a finding to report, not something to patch over.</p></div>
+
+<h2 id="platforms">Run it on your platform</h2>
+<p>Every row below is built and tested by CI on GitHub's runners on every change. That is a result of testing, not a promise of support: other versions and other hardware were not tried.</p>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Platform</th><th>What to do</th></tr></thead>
+<tbody>
+<tr><td>Linux, macOS, FreeBSD, NetBSD, OpenBSD</td><td>The commands above. On the BSDs install Rust from the system's repository first (<code>pkg install rust</code>, <code>pkgin install rust</code>, <code>pkg_add rust</code>). macOS needs the Xcode command line tools for the linker.</td></tr>
+<tr><td>Windows</td><td>The same <code>cargo</code> commands; the program is <code>target\release\baby.exe</code>. CI builds with the MSVC toolchain and runs the commands in Git Bash; we have not run them in PowerShell or <code>cmd.exe</code>. The two scripts under <code>golden/</code> need <code>bash</code>.</td></tr>
+<tr><td>WebAssembly (WASI)</td><td><code>rustup target add wasm32-wasip1</code>, build with <code>--target wasm32-wasip1</code> (a 2 MB file), then <code>wasmtime run --dir . target/wasm32-wasip1/release/baby.wasm school</code>. It runs in a sandbox with no code changes. It cannot start other programs, so <code>baby scale --sweep</code> and <code>baby exam adapt-drive</code> are not available there.</td></tr>
+<tr><td>32-bit x86, s390x (big-endian), riscv64</td><td>Built and tested in CI, the last two under QEMU emulation (minutes instead of seconds). Building them yourself needs a cross toolchain and an emulator; the steps are in the repository's CI file.</td></tr>
+<tr><td>DragonFly BSD</td><td>Tried and dropped: the tests pass, but its packaged Rust crashes the program at startup inside the standard library.</td></tr>
+</tbody>
+</table>
+</div>
+<p>What CI found, on all 13 rows that run: the 150 tests pass, the scorecard reads 0.0% wrong, and the exam answers (4,832 predictions and 787 adaptive replies) are byte-identical to the Linux x86_64 reference. The platforms' math libraries do differ in the last bit of some results, never by more than one step from the correctly rounded value, and no answer changed because of it on anything tested.</p>
+<div class="callout caveat">
+<p class="callout-label"><svg class="icon" aria-hidden="true"><use href="#triangle-alert"/></svg>Caveat</p>
+<p>The runners are virtual machines running the real operating systems, or QEMU emulation, not real s390x or riscv64 hardware. Measured joules need Linux on hardware that exposes the CPU's energy counter (not a virtual machine); the counter is root-only by default, so Transient never changes that for you, and the command is in the <a href="https://github.com/DawsMacs/Transient/blob/main/docs/Running.md" rel="noopener">repository guide</a>. Elsewhere the energy report says it is unavailable and peak memory prints <code>n/a</code>.</p></div>
 
 <h2 id="commands">Commands</h2>
 <p>Usage is printed at the top of <code>baby/src/main.rs</code>. Careful mode is the default; <code>--permissive</code> opts out of it.</p>
@@ -132,6 +154,8 @@ cargo test --release --offline        # 139 tests, about 21 s
 <tr><td><code>baby sleep [--compact]</code></td><td>Reorganizes: merges units that follow one rule, splits ones that stopped. <code>--compact</code> forgets lessons that are fully explained.</td></tr>
 <tr><td><code>baby discover [--out FILE]</code></td><td>Finds the units itself from a heap of unlabeled lessons.</td></tr>
 <tr><td><code>baby grade</code></td><td>Re-runs the scorecard on a saved school.</td></tr>
+<tr><td><code>baby tutor [--rounds N --limit N]</code></td><td>The baby shows each question it wants checked, why, and what it would say now; you answer (Enter skips, <code>q</code> quits). A contradicting answer is held until you repeat it.</td></tr>
+<tr><td><code>baby exam write|run|score|adapt-write|adapt-run|adapt-drive|transformer|adapt-transformer DIR</code></td><td>The entry exam: plain files and a pipe protocol that any system, in any language, can take; judged on wrong facts and answered traps, then coverage and joules. <code>transformer</code> and <code>adapt-transformer</code> put the same exam to a plain attention transformer.</td></tr>
 <tr><td><code>baby cost</code> · <code>baby effort</code> · <code>baby storage</code></td><td>What learning costs (time and memory); what answering costs (counted operations and estimated energy); what it keeps (lessons versus what was learned).</td></tr>
 </tbody>
 </table>
@@ -145,6 +169,10 @@ cargo test --release --offline        # 139 tests, about 21 s
 <tbody>
 <tr><td><code>baby scale --sweep 20,60,200,600</code></td><td>Does learning stay light as the world grows? Also <code>--noise F</code>, <code>--digits</code>, <code>--typos F</code>.</td><td>5 min</td></tr>
 <tr><td><code>baby invent --seeds 20</code></td><td>Can it work out kinds of lesson nobody wrote a mechanism for? Variants: <code>--active</code>, <code>--check</code>, <code>--careful</code>, <code>--guesses</code>, <code>--corrections</code>, <code>--calibrate</code>.</td><td>8 min</td></tr>
+<tr><td><code>baby exam write DIR --units 60</code>, then <code>baby exam run DIR</code></td><td>Does it pass the static entry exam: 60 units, 4,832 questions, judged on wrong facts and traps?</td><td>under 1 s</td></tr>
+<tr><td><code>baby exam adapt-write DIR</code>, then <code>baby exam adapt-run DIR</code></td><td>Does it stay honest and improve as it is told each truth, on kinds that change rule? Add <code>--wrong P --repeat F</code> to the write step for a teacher who is sometimes wrong.</td><td>20 s clean; 6 to 15 min with a wrong teacher</td></tr>
+<tr><td><code>baby exam transformer DIR</code></td><td>The same exam put to a plain attention transformer, always answering or refusing below its own confidence.</td><td>10 s without the energy meter</td></tr>
+<tr><td><code>baby compare</code> (options <code>--adapt</code>, <code>--scale</code>, <code>--refusals</code>, <code>--teacher</code>)</td><td>The controlled comparison against matched transformers.</td><td>minutes; 10 to 30 for the large options</td></tr>
 <tr><td><code>baby bridge --svamp FILE.json</code> or <code>--pairs FILE.tsv</code></td><td>Which of this survives real text? Loads a corpus, sets aside what it cannot read (and says why), teaches a share, grades the rest, and lists every wrong answer.</td><td>depends</td></tr>
 </tbody>
 </table>
@@ -173,7 +201,7 @@ cargo test --release --offline        # 139 tests, about 21 s
 <p>The scorecard grades four kinds of question: <strong>taught</strong> (asked exactly as taught), <strong>reworded</strong> (same fact, new phrasing), <strong>never taught</strong> (a new fact of a known kind), and <strong>beyond the taught range</strong>. For each it reports the share <em>right</em>, <em>refused</em> and <em>WRONG</em>, then, of the refused, how many came with a labeled guess and whether that guess was right. A refusal is acceptable. A wrong answer is not, and is reported on its own so that accuracy cannot hide it.</p>
 
 <h2 id="codemap">Code map</h2>
-<p>All under <code>baby/src/</code>.</p>
+<p>The first rows are under <code>baby/src/</code>; the last ones are elsewhere in the repository.</p>
 <div class="table-wrap">
 <table>
 <thead><tr><th>File</th><th>Role</th></tr></thead>
@@ -189,9 +217,15 @@ cargo test --release --offline        # 139 tests, about 21 s
 <tr><td><code>selector.rs</code></td><td>Which numbers in a real question matter.</td></tr>
 <tr><td><code>exam.rs</code></td><td>The entry exam: plain files and a line protocol any system can be taught and judged by.</td></tr>
 <tr><td><code>tutor.rs</code></td><td>The baby asks, a person answers.</td></tr>
+<tr><td><code>transformer.rs</code> · <code>compare.rs</code></td><td>A from-scratch attention transformer with a hand-written, gradient-checked backward pass, and the controlled comparison against it.</td></tr>
+<tr><td><code>platform.rs</code></td><td>What Transient asks the operating system (memory, energy availability, temporary files); says <code>n/a</code> where the system cannot answer.</td></tr>
 <tr><td><code>kinds.rs</code></td><td>The synthetic curriculum.</td></tr>
 <tr><td><code>ledger.rs</code></td><td>Counted operations and words moved, priced with published figures; optional RAPL reader.</td></tr>
 <tr><td><code>memory.rs</code> · <code>store.rs</code> · <code>net.rs</code> · <code>model.rs</code> · <code>data.rs</code> · <code>know.rs</code> · <code>life.rs</code> · <code>curious.rs</code> · <code>rules.rs</code> · <code>rng.rs</code> · <code>main.rs</code></td><td>Taught facts, the earlier network and its experiments, plumbing, and the command-line interface.</td></tr>
+<tr><td><code>baby/examples/mathprint.rs</code></td><td>Not part of the baby: a fingerprint and an accuracy audit of the platform's math library.</td></tr>
+<tr><td><code>golden/</code></td><td>The exam answers pinned on the reference platform, and the two shell scripts that check them (generate, compare byte for byte).</td></tr>
+<tr><td><code>tools/</code></td><td>Python: two deliberately naive systems that take the exam from another language, and the tuned PyTorch comparison.</td></tr>
+<tr><td><code>.github/workflows/</code></td><td>The CI: thirteen platform rows on every change, and a weekly check of the answers under a wrong teacher.</td></tr>
 </tbody>
 </table>
 </div>
@@ -202,6 +236,7 @@ cargo test --release --offline        # 139 tests, about 21 s
 <table>
 <tbody>
 <tr><td><a href="https://github.com/DawsMacs/Transient/blob/main/README.md" rel="noopener">README.md</a></td><td>The technical overview.</td></tr>
+<tr><td><a href="https://github.com/DawsMacs/Transient/blob/main/docs/Running.md" rel="noopener">docs/Running.md</a></td><td>Get, build, run and check Transient on each platform; what is tested where.</td></tr>
 <tr><td><a href="https://github.com/DawsMacs/Transient/blob/main/baby/README.md" rel="noopener">baby/README.md</a></td><td>The experiment log: every result, dead end and bug, newest first.</td></tr>
 <tr><td><a href="https://github.com/DawsMacs/Transient/blob/main/LEARNING.md" rel="noopener">LEARNING.md</a></td><td>Learning-efficiency research notes and sources.</td></tr>
 <tr><td><a href="https://github.com/DawsMacs/Transient/blob/main/docs/Direction.md" rel="noopener">docs/Direction.md</a></td><td>Strategy, hardware terrain, language choice.</td></tr>
@@ -222,6 +257,7 @@ cargo test --release --offline        # 139 tests, about 21 s
 <ul>
 <li>Report WRONG separately from refused. A new capability must not raise the WRONG column above 0.0%.</li>
 <li>Add must-refuse questions for every new capability, and think adversarially about what could be answered but should not be.</li>
+<li>A change that is meant to change the answers runs <code>golden/check.sh update</code> in the same commit and says why; otherwise a difference from the pinned answers is a regression.</li>
 <li>Write down mistakes and rejected hypotheses as they happen.</li>
 <li>State caveats plainly: synthetic lessons, estimated joules, thresholds chosen by hand.</li>
 <li>Keep it light and dependency-free. A dependency has to earn its place with a measurement.</li>
@@ -229,7 +265,8 @@ cargo test --release --offline        # 139 tests, about 21 s
 <p>Before opening a pull request:</p>
 <pre data-copy><code>cargo build --release --offline
 cargo test --release --offline
-./target/release/baby school      # WRONG must read 0.0% on every row</code></pre>
+./target/release/baby school      # WRONG must read 0.0% on every row
+bash golden/check.sh              # the pinned exam answers must still match</code></pre>
 <p class="small muted">The repository's <a href="https://github.com/DawsMacs/Transient/blob/main/CONTRIBUTING.md" rel="noopener">CONTRIBUTING.md</a> has the same rules and the license header for new files.</p>
 
 <h2 id="license">License</h2>
