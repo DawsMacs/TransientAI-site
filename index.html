@@ -171,6 +171,15 @@
 <div class="stat reveal"><div class="v">2.65 s</div><div class="l">to teach 25,776 lessons across 600 kinds of lesson (56 MB peak) in the scale test.</div></div>
 <div class="stat reveal"><div class="v">~0.5 ms</div><div class="l">to learn one more fact, at every size tested from 20 to 600 units.</div></div>
 </div>
+<div class="section-head reveal" style="margin-top:2.4rem">
+<p>From the entry exam and the platform checks, measured with the CPU's own counter where joules are quoted. The exam, its judge and the pinned answers are in the repository.</p>
+</div>
+<div class="grid g4">
+<div class="stat reveal"><div class="v">0 and 0</div><div class="l">wrong facts and trap questions answered on the entry exam (60 units, 4,832 questions). A plain transformer on the same exam states 1,500 to 2,800 wrong facts.</div></div>
+<div class="stat reveal"><div class="v">36 mJ</div><div class="l">to learn from one told answer, down from 1.8 J, with the replies unchanged: still about 600 times the cost of answering without learning.</div></div>
+<div class="stat reveal"><div class="v">13 of 13</div><div class="l">platform rows (Linux, macOS, Windows, three BSDs, WebAssembly, 32-bit and big-endian) give byte-identical answers. CI-tested, not a promise of support.</div></div>
+<div class="stat reveal"><div class="v">0 of 6</div><div class="l">runs with a teacher who is wrong about a share of the facts damaged anything it was never wrongly told. It still believes a wrong answer that is repeated.</div></div>
+</div>
 <p class="muted small" style="margin-top:1.2rem;max-width:70ch">These come from tidy, synthetic lessons. Nothing here shows behavior on real text at scale, or that this approach can reach the quality of today's language models. <a href="progress#unknowns">What we do not know yet<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-right"/></svg></a></p>
 </div>
 </section>
@@ -180,11 +189,11 @@
 <div class="grid g2 roomy">
 <div class="reveal">
 <h2 style="margin-top:0">Latest from the blog</h2>
-<a class="card has-thumb" href="blog/entry-exam">
-<img class="thumb invertable" src="assets/cover-exam.svg" alt="" width="1200" height="630" loading="lazy">
-<span class="meta">2026-10-23</span>
-<h3 style="margin-top:.4rem">An exam any system can take, and two mistakes it found in ours</h3>
-<p>The entry exam we built so any future version is judged the same way, the baby's scores on it, and two honesty mistakes of our own that only showed up when we changed the test.</p>
+<a class="card has-thumb" href="blog/platforms">
+<img class="thumb invertable" src="assets/cover-platforms.svg" alt="" width="1200" height="630" loading="lazy">
+<span class="meta">2026-10-24</span>
+<h3 style="margin-top:.4rem">Thirteen platforms, one set of answers</h3>
+<p>The same exam on Linux, macOS, Windows, three BSDs, WebAssembly, and 32-bit and big-endian machines: identical answers, different math libraries, and one system that did not work.</p>
 <span class="more">Read the post<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-right"/></svg></span>
 </a>
 </div>

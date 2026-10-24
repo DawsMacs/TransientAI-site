@@ -16,7 +16,7 @@ docs.html                  build, run it on your platform, commands, concepts, c
 progress.html              roadmap, what we do not know yet, timeline
 about.html                 TransientAI, the founder and founding member, how we work
 blog/index.html            blog index
-blog/beginning.html        first post
+blog/beginning.html        first post (blog/entry-exam.html and blog/platforms.html follow it)
 404.html
 css/site.css  js/site.js   styling (dark first, light via prefers-color-scheme) and progressive enhancements
 assets/                    logo mark, favicon, social preview, blog art (cover-beginning.svg, blog-banner.svg: plain SVG built from the mark)

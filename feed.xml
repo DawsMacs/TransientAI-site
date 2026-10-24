@@ -7,6 +7,13 @@
   <description>Progress, results, mistakes and plans from TransientAI, the creator of the open Transient project.</description>
   <language>en</language>
   <item>
+    <title>Thirteen platforms, one set of answers</title>
+    <link>https://transientai.org/blog/platforms</link>
+    <guid isPermaLink="true">https://transientai.org/blog/platforms</guid>
+    <pubDate>Sat, 24 Oct 2026 00:00:00 +0000</pubDate>
+    <description>The same exam on Linux, macOS, Windows, three BSDs, WebAssembly, and 32-bit and big-endian machines: identical answers, different math libraries, and one system that did not work.</description>
+  </item>
+  <item>
     <title>An exam any system can take, and two mistakes it found in ours</title>
     <link>https://transientai.org/blog/entry-exam</link>
     <guid isPermaLink="true">https://transientai.org/blog/entry-exam</guid>
