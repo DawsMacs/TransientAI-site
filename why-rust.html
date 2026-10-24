@@ -95,7 +95,7 @@
 <ul>
 <li>A dot product written as eight independent accumulators let the compiler vectorize a loop in safe code, with no flags: 32 µs to 13 µs per question, same answers. That is an implementation choice that the language made easy to reach, not a property of Rust.</li>
 <li>The release build is one binary under 3 MB; the test suite (150 tests, including batteries of questions that must be refused) runs in about 15 seconds; teaching from nothing takes about a third of a second.</li>
-<li>With no dependencies and no network, the same source builds and passes its tests on Linux (glibc and musl, x86_64 and aarch64, plus 32-bit x86, s390x and riscv64), macOS (Apple silicon and Intel), Windows, FreeBSD, NetBSD, OpenBSD and as WebAssembly under Wasmtime. On all of them the exam answers are byte-identical to the Linux reference. That was tested by CI on GitHub's runners; it is not a promise of support, and DragonFly BSD, which we also tried, crashes the program at startup in its packaged Rust.</li>
+<li>With no dependencies and no network, the same source builds and passes its tests on Linux (glibc and musl, x86_64 and aarch64, plus 32-bit x86, s390x and riscv64), macOS (Apple silicon and Intel), Windows, FreeBSD, NetBSD, OpenBSD and as WebAssembly under Wasmtime. On all of them the exam answers are byte-identical to the Linux reference. That was tested by CI on GitHub's runners; it is not a promise of support, and DragonFly BSD is planned for later.</li>
 </ul>
 
 <h2>What Rust does not change</h2>

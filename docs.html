@@ -82,6 +82,15 @@
 <p>Start</p>
 <a href="#quickstart">Quick start</a>
 <a href="#platforms">Run it on your platform</a>
+<a class="sub" href="#p-linux">Linux</a>
+<a class="sub" href="#p-macos">macOS</a>
+<a class="sub" href="#p-windows">Windows</a>
+<a class="sub" href="#p-freebsd">FreeBSD</a>
+<a class="sub" href="#p-netbsd">NetBSD</a>
+<a class="sub" href="#p-openbsd">OpenBSD</a>
+<a class="sub" href="#p-wasi">WebAssembly</a>
+<a class="sub" href="#p-other">Other processors</a>
+<a class="sub" href="#p-later">Coming later</a>
 <a href="#verify">Check your build</a>
 <p>Use</p>
 <a href="#commands">Commands</a>
@@ -122,23 +131,132 @@ bash golden/check.sh                                   # about 1.5 min: the exam
 <p>If <code>WRONG</code> is ever above 0.0%, or a refusal battery in the tests starts answering, treat it as a regression: honesty is the property this project protects first. The <code>golden/</code> check pins what the baby answers on the reference platform (Linux x86_64); on another platform, a difference is a finding to report, not something to patch over.</p></div>
 
 <h2 id="platforms">Run it on your platform</h2>
-<p>Every row below is built and tested by CI on GitHub's runners on every change. That is a result of testing, not a promise of support: other versions and other hardware were not tried.</p>
+<p>One section per system. Every system listed is built and tested by CI on GitHub's runners on every change. That is a result of testing, not a promise of support: other versions and other hardware were not tried. The package commands are each system's standard ones, not something we ran on a fresh machine; the Transient commands are the ones CI runs.</p>
 <div class="table-wrap">
 <table>
-<thead><tr><th>Platform</th><th>What to do</th></tr></thead>
+<thead><tr><th>Your system</th><th>Go to</th><th>How it is tested</th></tr></thead>
 <tbody>
-<tr><td>Linux, macOS, FreeBSD, NetBSD, OpenBSD</td><td>The commands above. On the BSDs install Rust from the system's repository first (<code>pkg install rust</code>, <code>pkgin install rust</code>, <code>pkg_add rust</code>). macOS needs the Xcode command line tools for the linker.</td></tr>
-<tr><td>Windows</td><td>The same <code>cargo</code> commands; the program is <code>target\release\baby.exe</code>. CI builds with the MSVC toolchain and runs the commands in Git Bash; we have not run them in PowerShell or <code>cmd.exe</code>. The two scripts under <code>golden/</code> need <code>bash</code>.</td></tr>
-<tr><td>WebAssembly (WASI)</td><td><code>rustup target add wasm32-wasip1</code>, build with <code>--target wasm32-wasip1</code> (a 2 MB file), then <code>wasmtime run --dir . target/wasm32-wasip1/release/baby.wasm school</code>. It runs in a sandbox with no code changes. It cannot start other programs, so <code>baby scale --sweep</code> and <code>baby exam adapt-drive</code> are not available there.</td></tr>
-<tr><td>32-bit x86, s390x (big-endian), riscv64</td><td>Built and tested in CI, the last two under QEMU emulation (minutes instead of seconds). Building them yourself needs a cross toolchain and an emulator; the steps are in the repository's CI file.</td></tr>
-<tr><td>DragonFly BSD</td><td>Tried and dropped: the tests pass, but its packaged Rust crashes the program at startup inside the standard library.</td></tr>
+<tr><td>Linux (Debian, Ubuntu, Fedora, Arch, Alpine), x86_64 or aarch64</td><td><a href="#p-linux">Linux</a></td><td>Native, glibc and musl</td></tr>
+<tr><td>macOS, Apple silicon or Intel</td><td><a href="#p-macos">macOS</a></td><td>Native</td></tr>
+<tr><td>Windows 10 or 11</td><td><a href="#p-windows">Windows</a></td><td>Native (MSVC, Git Bash)</td></tr>
+<tr><td>FreeBSD, NetBSD, OpenBSD</td><td><a href="#p-freebsd">FreeBSD</a> · <a href="#p-netbsd">NetBSD</a> · <a href="#p-openbsd">OpenBSD</a></td><td>Virtual machines</td></tr>
+<tr><td>Any system with a WebAssembly runtime (sandboxed)</td><td><a href="#p-wasi">WebAssembly</a></td><td>Wasmtime</td></tr>
+<tr><td>32-bit x86, s390x (big-endian), riscv64</td><td><a href="#p-other">Other processors</a></td><td>Native / QEMU emulation</td></tr>
+<tr><td>DragonFly BSD</td><td><a href="#p-later">Coming later</a></td><td>Not yet</td></tr>
 </tbody>
 </table>
 </div>
+<h3 id="p-linux">Linux</h3>
+<p><strong>Tested in CI:</strong> Ubuntu 24.04 on x86_64 (glibc, the reference every other platform is compared with) and on aarch64, and an x86_64 musl build. Not tried: Alpine itself, Raspberry Pi hardware, and distributions other than Ubuntu.</p>
+<ol>
+<li><strong>Install the build tools and git.</strong> Debian or Ubuntu: <code>sudo apt update &amp;&amp; sudo apt install -y git curl build-essential</code>. Fedora: <code>sudo dnf install -y git curl gcc</code>. Arch: <code>sudo pacman -S --needed git curl base-devel</code>. Alpine: <code>apk add git curl build-base</code>.</li>
+<li><strong>Install Rust</strong> with <a href="https://rustup.rs" rel="noopener">rustup</a>:<pre data-copy><code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh     # accept the defaults, then open a new terminal</code></pre>
+(Your distribution's <code>rust</code> and <code>cargo</code> packages work if they are recent enough; on Alpine, <code>apk add rust cargo</code> gives the musl build.)</li>
+<li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/DawsMacs/Transient.git
+cd Transient
+cargo build --release --offline
+cargo test --release --offline        # 150 tests, about 15 s
+./target/release/baby school
+./target/release/baby ask "how far apart are two and nine"</code></pre>
+</li>
+</ol>
+<p>Then <a href="#verify">check your build</a>. Measured joules need a readable RAPL counter, see the caveat below.</p>
+<h3 id="p-macos">macOS</h3>
+<p><strong>Tested in CI:</strong> macOS 15 on Apple silicon (arm64) and on Intel (x86_64), both byte-identical to the Linux reference. Other versions were not tried. Energy is not measured on a Mac, and peak memory prints <code>n/a</code>.</p>
+<ol>
+<li><strong>Install the command line tools</strong> (the linker, and git): <code>xcode-select --install</code>, then accept the dialog.</li>
+<li><strong>Install Rust:</strong><pre data-copy><code>curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh     # accept the defaults, then open a new terminal</code></pre>
+Or, with Homebrew: <code>brew install rust</code>.</li>
+<li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/DawsMacs/Transient.git
+cd Transient
+cargo build --release --offline
+cargo test --release --offline        # 150 tests, about 15 s
+./target/release/baby school
+./target/release/baby ask "how far apart are two and nine"</code></pre>
+</li>
+</ol>
+<h3 id="p-windows">Windows</h3>
+<p><strong>Tested in CI:</strong> Windows Server 2022 (the same code base as Windows 10 and 11), x86_64, MSVC toolchain, with the commands running in Git Bash. We have not run them in PowerShell or <code>cmd.exe</code>. Windows on Arm was not tried. Energy is not measured on Windows, and peak memory prints <code>n/a</code>.</p>
+<ol>
+<li><strong>Install Git for Windows</strong> from <a href="https://git-scm.com/download/win" rel="noopener">git-scm.com</a>, or in PowerShell <code>winget install --id Git.Git -e</code>. It includes Git Bash, which the two scripts under <code>golden/</code> need.</li>
+<li><strong>Install Rust and its linker:</strong> download and run <code>rustup-init.exe</code> from <a href="https://rustup.rs" rel="noopener">rustup.rs</a>. If the Microsoft C++ build tools are missing it offers to install them (choose "Desktop development with C++"); the download is large. Open a <em>new</em> terminal afterward and check <code>rustc --version</code>.</li>
+<li><strong>Build, test and run.</strong> In Git Bash, the commands are the same as on Linux (the program is <code>target/release/baby.exe</code>). In PowerShell or <code>cmd.exe</code>:<pre data-copy><code>cargo build --release --offline
+cargo test --release --offline
+target\release\baby.exe school
+target\release\baby.exe ask "how far apart are two and nine"</code></pre>
+</li>
+</ol>
+<h3 id="p-freebsd">FreeBSD</h3>
+<p><strong>Tested in CI:</strong> FreeBSD 15.1, x86_64, in a virtual machine, with the packaged Rust (1.98.1). Peak memory prints <code>n/a</code> when the system does not report it.</p>
+<ol>
+<li><strong>Install Rust and git</strong> from the system's packages: <code>sudo pkg install -y rust git</code></li>
+<li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/DawsMacs/Transient.git
+cd Transient
+cargo build --release --offline
+cargo test --release --offline        # 150 tests, about 15 s
+./target/release/baby school
+./target/release/baby ask "how far apart are two and nine"</code></pre>
+</li>
+</ol>
+<h3 id="p-netbsd">NetBSD</h3>
+<p><strong>Tested in CI:</strong> NetBSD 10.1, x86_64, in a virtual machine, with the packaged Rust (1.96.1). This needs <code>pkgin</code>; set it up first if it is not there. NetBSD's <code>/proc/self/status</code> is in a different format from Linux's, so peak memory prints <code>n/a</code>.</p>
+<ol>
+<li><strong>Install Rust and git</strong> from the system's packages: <code>sudo pkgin -y install rust git</code></li>
+<li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/DawsMacs/Transient.git
+cd Transient
+cargo build --release --offline
+cargo test --release --offline        # 150 tests, about 15 s
+./target/release/baby school
+./target/release/baby ask "how far apart are two and nine"</code></pre>
+</li>
+</ol>
+<h3 id="p-openbsd">OpenBSD</h3>
+<p><strong>Tested in CI:</strong> OpenBSD 7.9, x86_64, in a virtual machine, with the packaged Rust (1.94.1). OpenBSD is a "tier 3" Rust target (no official builds), so use the system's package, as CI does.</p>
+<ol>
+<li><strong>Install Rust and git</strong> from the system's packages: <code>doas pkg_add rust git</code></li>
+<li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/DawsMacs/Transient.git
+cd Transient
+cargo build --release --offline
+cargo test --release --offline        # 150 tests, about 15 s
+./target/release/baby school
+./target/release/baby ask "how far apart are two and nine"</code></pre>
+</li>
+</ol>
+<h3 id="p-wasi">WebAssembly (WASI)</h3>
+<p><strong>Tested in CI:</strong> <code>wasm32-wasip1</code> under <a href="https://wasmtime.dev" rel="noopener">Wasmtime</a> 50.0.0, on Linux. It runs Transient in a sandbox that sees only the folders you give it, with no code changes.</p>
+<ol>
+<li><strong>Install Rust</strong> as for your system above, then <code>rustup target add wasm32-wasip1</code>.</li>
+<li><strong>Install Wasmtime</strong> from its <a href="https://github.com/bytecodealliance/wasmtime/releases" rel="noopener">releases page</a>, and check the SHA-256 that GitHub shows for the file. CI pins version 50.0.0 and verifies it.</li>
+<li><strong>Build and run</strong> (the build is a 2 MB file):<pre data-copy><code>cargo build --release --offline --target wasm32-wasip1
+wasmtime run --dir . target/wasm32-wasip1/release/baby.wasm school</code></pre>
+<code>--dir .</code> gives the program the current folder, where it keeps <code>runs/baby.school</code>.</li>
+</ol>
+<p>Not available there: anything that starts another program (<code>baby scale --sweep</code>, <code>baby exam adapt-drive</code>). There is no energy or memory report.</p>
+<h3 id="p-other">Other processors</h3>
+<p><strong>Tested in CI:</strong> 32-bit x86 (i686) natively on a 64-bit runner, and s390x (big-endian) and riscv64 Linux under QEMU user-mode emulation. All three give byte-identical answers to the reference.</p>
+<p>To do the same yourself you need that target's cross toolchain and an emulator. On Ubuntu, for riscv64:</p>
+<pre data-copy><code>rustup target add riscv64gc-unknown-linux-gnu
+sudo apt-get install -y gcc-riscv64-linux-gnu libc6-dev-riscv64-cross qemu-user
+export CARGO_TARGET_RISCV64GC_UNKNOWN_LINUX_GNU_LINKER=riscv64-linux-gnu-gcc
+export CARGO_TARGET_RISCV64GC_UNKNOWN_LINUX_GNU_RUNNER="qemu-riscv64 -L /usr/riscv64-linux-gnu"
+cargo test --release --offline --target riscv64gc-unknown-linux-gnu</code></pre>
+<p>The exact packages for each of the three are in the repository's CI file (job <code>emulated</code>). Emulated runs take minutes instead of seconds, and any timing or energy reading from them is meaningless. Real s390x and riscv64 machines were not tried.</p>
 <p>What CI found, on all 13 rows that run: the 150 tests pass, the scorecard reads 0.0% wrong, and the exam answers (4,832 predictions and 787 adaptive replies) are byte-identical to the Linux x86_64 reference. The platforms' math libraries do differ in the last bit of some results, never by more than one step from the correctly rounded value, and no answer changed because of it on anything tested.</p>
 <div class="callout caveat">
 <p class="callout-label"><svg class="icon" aria-hidden="true"><use href="#triangle-alert"/></svg>Caveat</p>
-<p>The runners are virtual machines running the real operating systems, or QEMU emulation, not real s390x or riscv64 hardware. Measured joules need Linux on hardware that exposes the CPU's energy counter (not a virtual machine); the counter is root-only by default, so Transient never changes that for you, and the command is in the <a href="https://github.com/DawsMacs/Transient/blob/main/docs/Running.md" rel="noopener">repository guide</a>. Elsewhere the energy report says it is unavailable and peak memory prints <code>n/a</code>.</p></div>
+<p>The runners are virtual machines running the real operating systems, or QEMU emulation, not real s390x or riscv64 hardware. Measured joules need Linux on hardware that exposes the CPU's energy counter (not a virtual machine); the counter is root-only by default, so Transient never changes that for you, and the command is in the <a href="https://github.com/DawsMacs/Transient/blob/main/docs/Running.md#energy-and-memory" rel="noopener">repository guide</a>. Elsewhere the energy report says it is unavailable and peak memory prints <code>n/a</code>.</p></div>
+
+<h3 id="p-trouble">Troubleshooting</h3>
+<ul>
+<li><code>cargo: command not found</code> right after installing Rust: open a new terminal, or run <code>source "$HOME/.cargo/env"</code>.</li>
+<li><code>linker cc not found</code> (Linux, the BSDs) or <code>link.exe not found</code> (Windows): install the build tools from your system's steps above.</li>
+<li><code>bash golden/check.sh</code> fails on Windows: run it in Git Bash, not PowerShell.</li>
+<li>A test fails: run it alone with <code>cargo test --release --offline NAME -- --nocapture</code> and <a href="https://github.com/DawsMacs/Transient/issues" rel="noopener">open an issue</a> with the system, the output of <code>rustc -Vv</code> and the output. A platform that works is as useful to hear about as one that does not.</li>
+</ul>
+<p>To update, run <code>git pull --ff-only</code> and build again. To remove, delete the folder you cloned (or run <code>cargo uninstall baby</code> if you used <code>cargo install</code>). More detail: the <a href="https://github.com/DawsMacs/Transient/blob/main/docs/Running.md" rel="noopener">repository guide</a>.</p>
+
+<h3 id="p-later">Coming later</h3>
+<p><strong>DragonFly BSD</strong> is planned for later. We tried it: the tests pass, but the program built with its packaged Rust crashes at startup, inside the standard library, so it is not in the tested list. We intend to bring it back once there is a Rust toolchain there that runs it. Prebuilt binaries and a first release are not decided yet; until then, build from source.</p>
 
 <h2 id="commands">Commands</h2>
 <p>Usage is printed at the top of <code>baby/src/main.rs</code>. Careful mode is the default; <code>--permissive</code> opts out of it.</p>
