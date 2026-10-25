@@ -1,6 +1,13 @@
 # Blog cover artwork
 
-Generated with the built-in imagegen tool, then refined from the initial minimal covers with the prompts below. Final assets are optimized 1200 × 630 PNGs. The October 21 cover is unchanged.
+The current covers are still SVG illustrations made from points, shared by the blog list, individual posts, and the home page's latest-post card. Each cover has a 1200 × 630 PNG export for social previews. The SVGs adapt to the site's color scheme and contain no animation or scripts.
+
+- `points-beginning.svg`: points sampled from the official Matterworm mark's silhouette, with one restrained pale blue accent.
+- `points-exam.svg`: a dotted exam sheet with exactly two coral error marks, one under a magnifying glass.
+- `points-platforms.svg`: thirteen computers with matching answer marks, connected to one shared answer sheet.
+- `points-blog-banner.svg`: a spacious version of the point mark for the blog index masthead.
+
+These are conceptual illustrations, not scorecards or measured results. The original mark and previous artwork remain available. Earlier image-generation prompts are retained below for reference.
 
 ## October 23 — cover-exam.png
 

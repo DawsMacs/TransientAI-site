@@ -19,7 +19,7 @@ blog/index.html            blog index
 blog/beginning.html        first post (blog/entry-exam.html and blog/platforms.html follow it)
 404.html
 css/site.css  js/site.js   styling (dark first, light via prefers-color-scheme) and progressive enhancements
-assets/                    logo mark, favicon, social preview, blog art (original SVGs and generated cover-exam.png / cover-platforms.png; prompts in blog-art-prompts.md)
+assets/                    logo mark, favicon, social preview, blog art (point-based SVG covers and matching PNG social previews; notes in blog-art-prompts.md)
 ```
 
 All links are relative, so the site works from any folder or sub-path.
@@ -48,6 +48,7 @@ styling and any direct `*.html` URL still work.
 - `404.html` uses root-relative links (`/css/site.css`), because a 404 can be served at any path; it only renders correctly when the site is served from the domain root (`https://matterworm.github.io/`).
 - Address: the site is the organization's GitHub Pages site, `https://matterworm.github.io/`, so this repository is named `matterworm.github.io` and there is no `CNAME` file. `<link rel="canonical">`, `og:` tags, `sitemap.xml`, `feed.xml` and `robots.txt` use that absolute URL. When a custom domain is bought: add a `CNAME` file, replace the address in those files, and set the domain in the repository's Pages settings.
 - `assets/og-image.png` (1200x630) is the social preview; it was rendered from an SVG with the brand fonts and is not regenerated automatically.
+- `assets/motion-adaptive.svg`, `motion-energy.svg`, and `motion-honesty.svg` are shared by the home research cards and their matching page headers. These decorative, conceptual animations use fine points, pale blue activity, and coral error marks; they are not run transcripts or measured results. They work without JavaScript, adapt to the color scheme, and show still compositions when reduced motion is requested.
 
 ## Icons
 

@@ -1,0 +1,249 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" color="#ececee">
+<title>Thirteen point-drawn computers linked to one shared answer sheet, with matching pale blue answers on every display</title>
+<style>
+:root { color: #ececee; }
+.background { fill: #09090a; }
+.accent { color: #b4cdff; }
+.error { color: #ff9a9a; }
+@media (max-width: 400px) { .point { r: 2.7px; } .dotted { stroke-width: 4; } }
+@media (prefers-color-scheme: light) {
+  :root { color: #131316; }
+  .background { fill: #f2f2f4; }
+  .accent { color: #1c4fd1; }
+  .error { color: #b42323; }
+}
+</style>
+<rect class="background" width="1200" height="630"/>
+<path d="M600.00 131.53 L600.00 263.75" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 9" opacity="0.17" class="dotted "/>
+<path d="M756.80 152.54 L643.80 269.62" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 9" opacity="0.17" class="dotted "/>
+<path d="M877.69 210.77 L677.57 285.89" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 9" opacity="0.17" class="dotted "/>
+<path d="M934.95 292.88 L693.56 308.82" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 9" opacity="0.17" class="dotted "/>
+<path d="M915.49 380.06 L688.13 333.17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 9" opacity="0.17" class="dotted "/>
+<path d="M823.75 452.33 L662.50 353.36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 9" opacity="0.17" class="dotted "/>
+<path d="M680.75 493.14 L622.56 364.76" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 9" opacity="0.17" class="dotted "/>
+<path d="M519.25 493.14 L577.44 364.76" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 9" opacity="0.17" class="dotted "/>
+<path d="M376.25 452.33 L537.50 353.36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 9" opacity="0.17" class="dotted "/>
+<path d="M284.51 380.06 L511.87 333.17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 9" opacity="0.17" class="dotted "/>
+<path d="M265.05 292.88 L506.44 308.82" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 9" opacity="0.17" class="dotted "/>
+<path d="M322.31 210.77 L522.43 285.89" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 9" opacity="0.17" class="dotted "/>
+<path d="M443.20 152.54 L556.20 269.62" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 9" opacity="0.17" class="dotted "/>
+<rect class="background" x="512" y="225" width="176" height="180" rx="9"/>
+<rect class="dotted" x="512" y="225" width="176" height="180" rx="9" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0 8" opacity="0.65"/>
+<path d="M649 225 V257 H688" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 7" opacity="0.3" class="dotted "/>
+<circle cx="537.00" cy="278.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="546.00" cy="278.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="555.00" cy="278.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="564.00" cy="278.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="573.00" cy="278.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="582.00" cy="278.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="591.00" cy="278.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<path d="M651 278 L656 283 L666 272" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0 4" opacity="0.85" class="dotted accent"/>
+<circle cx="537.00" cy="307.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="546.00" cy="307.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="555.00" cy="307.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="564.00" cy="307.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="573.00" cy="307.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="582.00" cy="307.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="591.00" cy="307.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="600.00" cy="307.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="609.00" cy="307.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<path d="M651 307 L656 312 L666 301" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0 4" opacity="0.85" class="dotted accent"/>
+<circle cx="537.00" cy="336.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="546.00" cy="336.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="555.00" cy="336.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="564.00" cy="336.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="573.00" cy="336.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="582.00" cy="336.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<path d="M651 336 L656 341 L666 330" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0 4" opacity="0.85" class="dotted accent"/>
+<circle cx="537.00" cy="365.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="546.00" cy="365.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="555.00" cy="365.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="564.00" cy="365.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="573.00" cy="365.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="582.00" cy="365.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="591.00" cy="365.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<circle cx="600.00" cy="365.00" r="1.90" fill="currentColor" opacity="0.75" class="point "/>
+<path d="M651 365 L656 370 L666 359" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="0 4" opacity="0.85" class="dotted accent"/>
+<g data-platform="1" transform="translate(600.00 110.00)">
+<rect class="dotted" x="-40" y="-25" width="80" height="48" rx="5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0 8" opacity="0.67"/>
+<path d="M-48 31 H48 L40 23 H-40 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 6" opacity="0.48" class="dotted "/>
+<circle cx="-22.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="10.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-22.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<path d="M22 0 L25 3 L31 -4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 3" opacity="0.85" class="dotted accent"/>
+</g>
+<g data-platform="2" transform="translate(775.20 133.48)">
+<rect class="dotted" x="-40" y="-25" width="80" height="48" rx="5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0 8" opacity="0.67"/>
+<path d="M0 23 V34 M-18 35 H18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 6" opacity="0.48" class="dotted "/>
+<circle cx="-22.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="10.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-22.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<path d="M22 0 L25 3 L31 -4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 3" opacity="0.85" class="dotted accent"/>
+</g>
+<g data-platform="3" transform="translate(910.26 198.55)">
+<rect class="dotted" x="-40" y="-25" width="80" height="48" rx="5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0 8" opacity="0.67"/>
+<path d="M0 23 V34 M-18 35 H18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 6" opacity="0.48" class="dotted "/>
+<circle cx="-22.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="10.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-22.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<path d="M22 0 L25 3 L31 -4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 3" opacity="0.85" class="dotted accent"/>
+</g>
+<g data-platform="4" transform="translate(974.25 290.29)">
+<rect class="dotted" x="-40" y="-25" width="80" height="48" rx="5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0 8" opacity="0.67"/>
+<path d="M-48 31 H48 L40 23 H-40 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 6" opacity="0.48" class="dotted "/>
+<circle cx="-22.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="10.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-22.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<path d="M22 0 L25 3 L31 -4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 3" opacity="0.85" class="dotted accent"/>
+</g>
+<g data-platform="5" transform="translate(952.50 387.69)">
+<rect class="dotted" x="-40" y="-25" width="80" height="48" rx="5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0 8" opacity="0.67"/>
+<path d="M0 23 V34 M-18 35 H18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 6" opacity="0.48" class="dotted "/>
+<circle cx="-22.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="10.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-22.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<path d="M22 0 L25 3 L31 -4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 3" opacity="0.85" class="dotted accent"/>
+</g>
+<g data-platform="6" transform="translate(850.00 468.44)">
+<rect class="dotted" x="-40" y="-25" width="80" height="48" rx="5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0 8" opacity="0.67"/>
+<path d="M0 23 V34 M-18 35 H18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 6" opacity="0.48" class="dotted "/>
+<circle cx="-22.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="10.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-22.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<path d="M22 0 L25 3 L31 -4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 3" opacity="0.85" class="dotted accent"/>
+</g>
+<g data-platform="7" transform="translate(690.22 514.04)">
+<rect class="dotted" x="-40" y="-25" width="80" height="48" rx="5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0 8" opacity="0.67"/>
+<path d="M-48 31 H48 L40 23 H-40 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 6" opacity="0.48" class="dotted "/>
+<circle cx="-22.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="10.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-22.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<path d="M22 0 L25 3 L31 -4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 3" opacity="0.85" class="dotted accent"/>
+</g>
+<g data-platform="8" transform="translate(509.78 514.04)">
+<rect class="dotted" x="-40" y="-25" width="80" height="48" rx="5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0 8" opacity="0.67"/>
+<path d="M0 23 V34 M-18 35 H18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 6" opacity="0.48" class="dotted "/>
+<circle cx="-22.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="10.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-22.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<path d="M22 0 L25 3 L31 -4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 3" opacity="0.85" class="dotted accent"/>
+</g>
+<g data-platform="9" transform="translate(350.00 468.44)">
+<rect class="dotted" x="-40" y="-25" width="80" height="48" rx="5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0 8" opacity="0.67"/>
+<path d="M0 23 V34 M-18 35 H18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 6" opacity="0.48" class="dotted "/>
+<circle cx="-22.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="10.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-22.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<path d="M22 0 L25 3 L31 -4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 3" opacity="0.85" class="dotted accent"/>
+</g>
+<g data-platform="10" transform="translate(247.50 387.69)">
+<rect class="dotted" x="-40" y="-25" width="80" height="48" rx="5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0 8" opacity="0.67"/>
+<path d="M-48 31 H48 L40 23 H-40 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 6" opacity="0.48" class="dotted "/>
+<circle cx="-22.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="10.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-22.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<path d="M22 0 L25 3 L31 -4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 3" opacity="0.85" class="dotted accent"/>
+</g>
+<g data-platform="11" transform="translate(225.75 290.29)">
+<rect class="dotted" x="-40" y="-25" width="80" height="48" rx="5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0 8" opacity="0.67"/>
+<path d="M0 23 V34 M-18 35 H18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 6" opacity="0.48" class="dotted "/>
+<circle cx="-22.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="10.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-22.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<path d="M22 0 L25 3 L31 -4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 3" opacity="0.85" class="dotted accent"/>
+</g>
+<g data-platform="12" transform="translate(289.74 198.55)">
+<rect class="dotted" x="-40" y="-25" width="80" height="48" rx="5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0 8" opacity="0.67"/>
+<path d="M0 23 V34 M-18 35 H18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 6" opacity="0.48" class="dotted "/>
+<circle cx="-22.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="10.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-22.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<path d="M22 0 L25 3 L31 -4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 3" opacity="0.85" class="dotted accent"/>
+</g>
+<g data-platform="13" transform="translate(424.80 133.48)">
+<rect class="dotted" x="-40" y="-25" width="80" height="48" rx="5" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-dasharray="0 8" opacity="0.67"/>
+<path d="M-48 31 H48 L40 23 H-40 Z" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-dasharray="0 6" opacity="0.48" class="dotted "/>
+<circle cx="-22.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="10.00" cy="-9.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-22.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-14.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="-6.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<circle cx="2.00" cy="4.00" r="1.55" fill="currentColor" opacity="0.85" class="point accent"/>
+<path d="M22 0 L25 3 L31 -4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-dasharray="0 3" opacity="0.85" class="dotted accent"/>
+</g>
+</svg>
