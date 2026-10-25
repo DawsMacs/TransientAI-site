@@ -88,6 +88,7 @@
 <a class="sub" href="#p-freebsd">FreeBSD</a>
 <a class="sub" href="#p-netbsd">NetBSD</a>
 <a class="sub" href="#p-openbsd">OpenBSD</a>
+<a class="sub" href="#p-dragonfly">DragonFly BSD</a>
 <a class="sub" href="#p-wasi">WebAssembly</a>
 <a class="sub" href="#p-other">Other processors</a>
 <a class="sub" href="#p-later">Coming later</a>
@@ -112,7 +113,7 @@
 <pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
 cd Matter
 cargo build --release --offline
-cargo test --release --offline        # 150 tests, about 15 s
+cargo test --release --offline        # 152 tests, about 15 s
 ./target/release/baby school          # teach 13 units, print how each was learned and the scorecard
 ./target/release/baby ask "how far apart are two and nine"</code></pre>
 <p>Three ways to get the code, all tried: <code>git clone</code> (about 1.5 MB with the whole history, no account needed), GitHub's "Download ZIP" (about 0.5 MB), or <code>cargo install --git https://github.com/Matterworm/Matter baby</code>, which builds in about a minute and puts a <code>baby</code> command in <code>~/.cargo/bin</code> (it installs only the program, not the tests or the Python tools). The full guide for every platform is <a href="https://github.com/Matterworm/Matter/blob/main/docs/Running.md" rel="noopener">docs/Running.md</a> in the repository.</p>
@@ -131,7 +132,7 @@ bash golden/check.sh                                   # about 1.5 min: the exam
 <p>If <code>WRONG</code> is ever above 0.0%, or a refusal battery in the tests starts answering, treat it as a regression: honesty is the property this project protects first. The <code>golden/</code> check pins what the baby answers on the reference platform (Linux x86_64); on another platform, a difference is a finding to report, not something to patch over.</p></div>
 
 <h2 id="platforms">Run it on your platform</h2>
-<p>One section per system. Every system listed is built and tested by CI on GitHub's runners on every change. That is a result of testing, not a promise of support: other versions and other hardware were not tried. The package commands are each system's standard ones, not something we ran on a fresh machine; the Matter commands are the ones CI runs.</p>
+<p>One section per system. Every system listed except DragonFly BSD is built and tested by CI on GitHub's runners on every change. That is a result of testing, not a promise of support: other versions and other hardware were not tried. The package commands are each system's standard ones, not something we ran on a fresh machine; the Matter commands are the ones CI runs.</p>
 <div class="table-wrap">
 <table>
 <thead><tr><th>Your system</th><th>Go to</th><th>How it is tested</th></tr></thead>
@@ -142,7 +143,7 @@ bash golden/check.sh                                   # about 1.5 min: the exam
 <tr><td>FreeBSD, NetBSD, OpenBSD</td><td><a href="#p-freebsd">FreeBSD</a> · <a href="#p-netbsd">NetBSD</a> · <a href="#p-openbsd">OpenBSD</a></td><td>Virtual machines</td></tr>
 <tr><td>Any system with a WebAssembly runtime (sandboxed)</td><td><a href="#p-wasi">WebAssembly</a></td><td>Wasmtime</td></tr>
 <tr><td>32-bit x86, s390x (big-endian), riscv64</td><td><a href="#p-other">Other processors</a></td><td>Native / QEMU emulation</td></tr>
-<tr><td>DragonFly BSD</td><td><a href="#p-later">Coming later</a></td><td>Not yet</td></tr>
+<tr><td>DragonFly BSD</td><td><a href="#p-dragonfly">DragonFly BSD</a></td><td>Not tested: the first try crashed at startup; a workaround is described, untested</td></tr>
 </tbody>
 </table>
 </div>
@@ -155,7 +156,7 @@ bash golden/check.sh                                   # about 1.5 min: the exam
 <li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
 cd Matter
 cargo build --release --offline
-cargo test --release --offline        # 150 tests, about 15 s
+cargo test --release --offline        # 152 tests, about 15 s
 ./target/release/baby school
 ./target/release/baby ask "how far apart are two and nine"</code></pre>
 </li>
@@ -170,7 +171,7 @@ Or, with Homebrew: <code>brew install rust</code>.</li>
 <li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
 cd Matter
 cargo build --release --offline
-cargo test --release --offline        # 150 tests, about 15 s
+cargo test --release --offline        # 152 tests, about 15 s
 ./target/release/baby school
 ./target/release/baby ask "how far apart are two and nine"</code></pre>
 </li>
@@ -193,7 +194,7 @@ target\release\baby.exe ask "how far apart are two and nine"</code></pre>
 <li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
 cd Matter
 cargo build --release --offline
-cargo test --release --offline        # 150 tests, about 15 s
+cargo test --release --offline        # 152 tests, about 15 s
 ./target/release/baby school
 ./target/release/baby ask "how far apart are two and nine"</code></pre>
 </li>
@@ -205,7 +206,7 @@ cargo test --release --offline        # 150 tests, about 15 s
 <li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
 cd Matter
 cargo build --release --offline
-cargo test --release --offline        # 150 tests, about 15 s
+cargo test --release --offline        # 152 tests, about 15 s
 ./target/release/baby school
 ./target/release/baby ask "how far apart are two and nine"</code></pre>
 </li>
@@ -217,11 +218,26 @@ cargo test --release --offline        # 150 tests, about 15 s
 <li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
 cd Matter
 cargo build --release --offline
-cargo test --release --offline        # 150 tests, about 15 s
+cargo test --release --offline        # 152 tests, about 15 s
 ./target/release/baby school
 ./target/release/baby ask "how far apart are two and nine"</code></pre>
 </li>
 </ol>
+<h3 id="p-dragonfly">DragonFly BSD</h3>
+<p><strong>Not tested in CI.</strong> We tried DragonFly 6.4.2, x86_64, in a virtual machine on 2026-10-24, with its packaged Rust (1.85.1, a "tier 3" target). The 149 tests passed, but running <code>baby</code> died at startup with <code>fatal runtime error: assertion failed: key as usize != KEY_SENTVAL</code>, inside Rust's standard library, before any of Matter's code ran. A second try on 2026-10-25 could not even install Rust: the virtual machine could not resolve DragonFly's package host that day.</p>
+<p><strong>What is probably happening</strong> (an explanation from reading, not yet confirmed on a DragonFly machine). The same error was reported to Rust as <a href="https://github.com/rust-lang/rust/issues/112180" rel="noopener">rust-lang/rust#112180</a>: on DragonFly, a program that is not linked against the thread library can be handed thread-local key 0 by <code>pthread_key_create</code>, and Rust's standard library treats 0 as "not set yet" and aborts. A comment on that issue says that with link-time optimization the linker drops the thread library when nothing in the program asks for it. Matter's release profile uses full link-time optimization, and the tests passed because the test program starts threads, which keeps the thread library linked. That fits everything we saw. The Rust issue was closed as "not planned" in June 2025 without a fix.</p>
+<p><strong>Source.</strong> The code is at <a href="https://github.com/Matterworm/Matter" rel="noopener">github.com/Matterworm/Matter</a> (AGPL-3.0-only). There is no prebuilt binary, and the Linux build cannot be used here: DragonFly removed its Linux emulation in 2016 and 2017 (<a href="https://lists.dragonflybsd.org/pipermail/commits/2017-February/714870.html" rel="noopener">the commit</a>), and as far as we found it only ran 32-bit programs.</p>
+<ol>
+<li><strong>Install Rust and git</strong> from the system's packages: <code>sudo pkg install -y rust git</code></li>
+<li><strong>Build from source, without link-time optimization (the workaround is untested), then test and run:</strong><pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
+cd Matter
+CARGO_PROFILE_RELEASE_LTO=false cargo build --release --offline
+CARGO_PROFILE_RELEASE_LTO=false cargo test --release --offline        # 152 tests
+./target/release/baby school</code></pre>
+</li>
+</ol>
+<p>Then run the check above, including <code>bash golden/check.sh</code>: building without link-time optimization should not change any answer, but that has not been checked on this system, and the program may run a little slower. If <code>baby school</code> still dies with the same message, please <a href="https://github.com/Matterworm/Matter/issues" rel="noopener">tell us</a> with the output of <code>uname -a</code> and <code>rustc -Vv</code>: a report from a real DragonFly machine, or a newer Rust there, is what we are missing.</p>
+
 <h3 id="p-wasi">WebAssembly (WASI)</h3>
 <p><strong>Tested in CI:</strong> <code>wasm32-wasip1</code> under <a href="https://wasmtime.dev" rel="noopener">Wasmtime</a> 50.0.0, on Linux. It runs Matter in a sandbox that sees only the folders you give it, with no code changes.</p>
 <ol>
@@ -241,7 +257,7 @@ export CARGO_TARGET_RISCV64GC_UNKNOWN_LINUX_GNU_LINKER=riscv64-linux-gnu-gcc
 export CARGO_TARGET_RISCV64GC_UNKNOWN_LINUX_GNU_RUNNER="qemu-riscv64 -L /usr/riscv64-linux-gnu"
 cargo test --release --offline --target riscv64gc-unknown-linux-gnu</code></pre>
 <p>The exact packages for each of the three are in the repository's CI file (job <code>emulated</code>). Emulated runs take minutes instead of seconds, and any timing or energy reading from them is meaningless. Real s390x and riscv64 machines were not tried.</p>
-<p>What CI found, on all 13 rows that run: the 150 tests pass, the scorecard reads 0.0% wrong, and the exam answers (4,832 predictions and 787 adaptive replies) are byte-identical to the Linux x86_64 reference. The platforms' math libraries do differ in the last bit of some results, never by more than one step from the correctly rounded value, and no answer changed because of it on anything tested.</p>
+<p>What CI found, on all 13 rows that run: the 152 tests pass, the scorecard reads 0.0% wrong, and the exam answers (4,832 predictions and 787 adaptive replies) are byte-identical to the Linux x86_64 reference. The platforms' math libraries do differ in the last bit of some results, never by more than one step from the correctly rounded value, and no answer changed because of it on anything tested.</p>
 <div class="callout caveat">
 <p class="callout-label"><svg class="icon" aria-hidden="true"><use href="#triangle-alert"/></svg>Caveat</p>
 <p>The runners are virtual machines running the real operating systems, or QEMU emulation, not real s390x or riscv64 hardware. Measured joules need Linux on hardware that exposes the CPU's energy counter (not a virtual machine); the counter is root-only by default, so Matter never changes that for you, and the command is in the <a href="https://github.com/Matterworm/Matter/blob/main/docs/Running.md#energy-and-memory" rel="noopener">repository guide</a>. Elsewhere the energy report says it is unavailable and peak memory prints <code>n/a</code>.</p></div>
@@ -256,7 +272,7 @@ cargo test --release --offline --target riscv64gc-unknown-linux-gnu</code></pre>
 <p>To update, run <code>git pull --ff-only</code> and build again. To remove, delete the folder you cloned (or run <code>cargo uninstall baby</code> if you used <code>cargo install</code>). More detail: the <a href="https://github.com/Matterworm/Matter/blob/main/docs/Running.md" rel="noopener">repository guide</a>.</p>
 
 <h3 id="p-later">Coming later</h3>
-<p><strong>DragonFly BSD</strong> is planned for later. We tried it: the tests pass, but the program built with its packaged Rust crashes at startup, inside the standard library, so it is not in the tested list. We intend to bring it back once there is a Rust toolchain there that runs it. Prebuilt binaries and a first release are not decided yet; until then, build from source.</p>
+<p><strong>DragonFly BSD in CI</strong> comes once a build there is known to run: see <a href="#p-dragonfly">DragonFly BSD</a> for what we know and the workaround to try. Prebuilt binaries and a first release are not decided yet; until then, build from source.</p>
 
 <h2 id="commands">Commands</h2>
 <p>Usage is printed at the top of <code>baby/src/main.rs</code>. Careful mode is the default; <code>--permissive</code> opts out of it.</p>
