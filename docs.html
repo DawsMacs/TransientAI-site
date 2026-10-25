@@ -88,6 +88,7 @@
 <a class="sub" href="#p-freebsd">FreeBSD</a>
 <a class="sub" href="#p-netbsd">NetBSD</a>
 <a class="sub" href="#p-openbsd">OpenBSD</a>
+<a class="sub" href="#p-dragonfly">DragonFly BSD</a>
 <a class="sub" href="#p-wasi">WebAssembly</a>
 <a class="sub" href="#p-other">Other processors</a>
 <a class="sub" href="#p-later">Coming later</a>
@@ -112,7 +113,7 @@
 <pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
 cd Matter
 cargo build --release --offline
-cargo test --release --offline        # 150 tests, about 15 s
+cargo test --release --offline        # 153 tests, about 15 s
 ./target/release/baby school          # teach 13 units, print how each was learned and the scorecard
 ./target/release/baby ask "how far apart are two and nine"</code></pre>
 <p>Three ways to get the code, all tried: <code>git clone</code> (about 1.5 MB with the whole history, no account needed), GitHub's "Download ZIP" (about 0.5 MB), or <code>cargo install --git https://github.com/Matterworm/Matter baby</code>, which builds in about a minute and puts a <code>baby</code> command in <code>~/.cargo/bin</code> (it installs only the program, not the tests or the Python tools). The full guide for every platform is <a href="https://github.com/Matterworm/Matter/blob/main/docs/Running.md" rel="noopener">docs/Running.md</a> in the repository.</p>
@@ -142,7 +143,7 @@ bash golden/check.sh                                   # about 1.5 min: the exam
 <tr><td>FreeBSD, NetBSD, OpenBSD</td><td><a href="#p-freebsd">FreeBSD</a> · <a href="#p-netbsd">NetBSD</a> · <a href="#p-openbsd">OpenBSD</a></td><td>Virtual machines</td></tr>
 <tr><td>Any system with a WebAssembly runtime (sandboxed)</td><td><a href="#p-wasi">WebAssembly</a></td><td>Wasmtime</td></tr>
 <tr><td>32-bit x86, s390x (big-endian), riscv64</td><td><a href="#p-other">Other processors</a></td><td>Native / QEMU emulation</td></tr>
-<tr><td>DragonFly BSD</td><td><a href="#p-later">Coming later</a></td><td>Not yet</td></tr>
+<tr><td>DragonFly BSD</td><td><a href="#p-dragonfly">DragonFly BSD</a></td><td>Virtual machine</td></tr>
 </tbody>
 </table>
 </div>
@@ -155,7 +156,7 @@ bash golden/check.sh                                   # about 1.5 min: the exam
 <li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
 cd Matter
 cargo build --release --offline
-cargo test --release --offline        # 150 tests, about 15 s
+cargo test --release --offline        # 153 tests, about 15 s
 ./target/release/baby school
 ./target/release/baby ask "how far apart are two and nine"</code></pre>
 </li>
@@ -170,7 +171,7 @@ Or, with Homebrew: <code>brew install rust</code>.</li>
 <li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
 cd Matter
 cargo build --release --offline
-cargo test --release --offline        # 150 tests, about 15 s
+cargo test --release --offline        # 153 tests, about 15 s
 ./target/release/baby school
 ./target/release/baby ask "how far apart are two and nine"</code></pre>
 </li>
@@ -193,7 +194,7 @@ target\release\baby.exe ask "how far apart are two and nine"</code></pre>
 <li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
 cd Matter
 cargo build --release --offline
-cargo test --release --offline        # 150 tests, about 15 s
+cargo test --release --offline        # 153 tests, about 15 s
 ./target/release/baby school
 ./target/release/baby ask "how far apart are two and nine"</code></pre>
 </li>
@@ -205,7 +206,7 @@ cargo test --release --offline        # 150 tests, about 15 s
 <li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
 cd Matter
 cargo build --release --offline
-cargo test --release --offline        # 150 tests, about 15 s
+cargo test --release --offline        # 153 tests, about 15 s
 ./target/release/baby school
 ./target/release/baby ask "how far apart are two and nine"</code></pre>
 </li>
@@ -217,11 +218,27 @@ cargo test --release --offline        # 150 tests, about 15 s
 <li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
 cd Matter
 cargo build --release --offline
-cargo test --release --offline        # 150 tests, about 15 s
+cargo test --release --offline        # 153 tests, about 15 s
 ./target/release/baby school
 ./target/release/baby ask "how far apart are two and nine"</code></pre>
 </li>
 </ol>
+<h3 id="p-dragonfly">DragonFly BSD</h3>
+<p><strong>Tested in CI:</strong> DragonFly 6.4.2, x86_64, in a virtual machine, with the packaged Rust (1.85.1, a "tier 3" target), default release build. The 153 tests pass, the scorecard reads 0.0% wrong, and the exam predictions, the adaptive-stream replies and the scorecard are byte-identical to the Linux reference (2026-10-25).</p>
+<ol>
+<li><strong>Install Rust and git</strong> from the system's packages: <code>sudo pkg install -y rust git</code></li>
+<li><strong>Build, test and run:</strong><pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
+cd Matter
+cargo build --release --offline
+cargo test --release --offline        # 153 tests
+./target/release/baby school
+./target/release/baby ask "how far apart are two and nine"</code></pre>
+</li>
+</ol>
+<p>Then run the check above. Energy is not measured here, and the math library differs from the reference in the last bit of some results (as on other systems; the accuracy audit shows <code>ln</code>, <code>log2</code> and <code>exp</code> at most one step from the correctly rounded value, <code>tanh</code> at most two, and the answers still match).</p>
+<p><strong>Source.</strong> The code is at <a href="https://github.com/Matterworm/Matter" rel="noopener">github.com/Matterworm/Matter</a> (AGPL-3.0-only). There is no prebuilt binary, and the Linux build cannot be used here: DragonFly removed its Linux emulation in 2016 and 2017 (<a href="https://lists.dragonflybsd.org/pipermail/commits/2017-February/714870.html" rel="noopener">the commit</a>), and as far as we found it only ran 32-bit programs.</p>
+<p><strong>What went wrong the first time, and the fix.</strong> The first try (2026-10-24) passed the tests, but running <code>baby</code> died with <code>fatal runtime error: assertion failed: key as usize != KEY_SENTVAL</code>, inside Rust's standard library, before any of Matter's code ran. It is <a href="https://github.com/rust-lang/rust/issues/112180" rel="noopener">rust-lang/rust#112180</a>: on DragonFly, a program that is not linked against the thread library can be handed thread-local key 0 by <code>pthread_key_create</code>, and the standard library treats 0 as "not set yet" and aborts. With link-time optimization (which Matter's release profile uses) the linker drops the thread library when nothing in the program asks for it; the tests passed because the test program starts threads. Matter now starts one short thread at startup on DragonFly, which keeps the library linked, and does nothing anywhere else. Before that, building with <code>CARGO_PROFILE_RELEASE_LTO=false</code> also made the program run. The Rust issue was closed as "not planned" in June 2025 without a fix. If an older checkout dies with the message above, update it, or build it with that variable set on every <code>cargo</code> command.</p>
+
 <h3 id="p-wasi">WebAssembly (WASI)</h3>
 <p><strong>Tested in CI:</strong> <code>wasm32-wasip1</code> under <a href="https://wasmtime.dev" rel="noopener">Wasmtime</a> 50.0.0, on Linux. It runs Matter in a sandbox that sees only the folders you give it, with no code changes.</p>
 <ol>
@@ -241,7 +258,7 @@ export CARGO_TARGET_RISCV64GC_UNKNOWN_LINUX_GNU_LINKER=riscv64-linux-gnu-gcc
 export CARGO_TARGET_RISCV64GC_UNKNOWN_LINUX_GNU_RUNNER="qemu-riscv64 -L /usr/riscv64-linux-gnu"
 cargo test --release --offline --target riscv64gc-unknown-linux-gnu</code></pre>
 <p>The exact packages for each of the three are in the repository's CI file (job <code>emulated</code>). Emulated runs take minutes instead of seconds, and any timing or energy reading from them is meaningless. Real s390x and riscv64 machines were not tried.</p>
-<p>What CI found, on all 13 rows that run: the 150 tests pass, the scorecard reads 0.0% wrong, and the exam answers (4,832 predictions and 787 adaptive replies) are byte-identical to the Linux x86_64 reference. The platforms' math libraries do differ in the last bit of some results, never by more than one step from the correctly rounded value, and no answer changed because of it on anything tested.</p>
+<p>What CI found, on all 14 rows that run (13 on 2026-10-24, DragonFly BSD added on 2026-10-25): the 153 tests pass, the scorecard reads 0.0% wrong, and the exam answers (4,832 predictions and 787 adaptive replies) are byte-identical to the Linux x86_64 reference. The platforms' math libraries do differ in the last bit of some results, never by more than one step from the correctly rounded value for <code>ln</code>, <code>log2</code> and <code>exp</code> on any row, and no answer changed because of it on anything tested.</p>
 <div class="callout caveat">
 <p class="callout-label"><svg class="icon" aria-hidden="true"><use href="#triangle-alert"/></svg>Caveat</p>
 <p>The runners are virtual machines running the real operating systems, or QEMU emulation, not real s390x or riscv64 hardware. Measured joules need Linux on hardware that exposes the CPU's energy counter (not a virtual machine); the counter is root-only by default, so Matter never changes that for you, and the command is in the <a href="https://github.com/Matterworm/Matter/blob/main/docs/Running.md#energy-and-memory" rel="noopener">repository guide</a>. Elsewhere the energy report says it is unavailable and peak memory prints <code>n/a</code>.</p></div>
@@ -256,7 +273,7 @@ cargo test --release --offline --target riscv64gc-unknown-linux-gnu</code></pre>
 <p>To update, run <code>git pull --ff-only</code> and build again. To remove, delete the folder you cloned (or run <code>cargo uninstall baby</code> if you used <code>cargo install</code>). More detail: the <a href="https://github.com/Matterworm/Matter/blob/main/docs/Running.md" rel="noopener">repository guide</a>.</p>
 
 <h3 id="p-later">Coming later</h3>
-<p><strong>DragonFly BSD</strong> is planned for later. We tried it: the tests pass, but the program built with its packaged Rust crashes at startup, inside the standard library, so it is not in the tested list. We intend to bring it back once there is a Rust toolchain there that runs it. Prebuilt binaries and a first release are not decided yet; until then, build from source.</p>
+<p>Prebuilt binaries and a first release are not decided yet; until then, build from source.</p>
 
 <h2 id="commands">Commands</h2>
 <p>Usage is printed at the top of <code>baby/src/main.rs</code>. Careful mode is the default; <code>--permissive</code> opts out of it.</p>
@@ -343,7 +360,7 @@ cargo test --release --offline --target riscv64gc-unknown-linux-gnu</code></pre>
 <tr><td><code>baby/examples/mathprint.rs</code></td><td>Not part of the baby: a fingerprint and an accuracy audit of the platform's math library.</td></tr>
 <tr><td><code>golden/</code></td><td>The exam answers pinned on the reference platform, and the two shell scripts that check them (generate, compare byte for byte).</td></tr>
 <tr><td><code>tools/</code></td><td>Python: two deliberately naive systems that take the exam from another language, and the tuned PyTorch comparison.</td></tr>
-<tr><td><code>.github/workflows/</code></td><td>The CI: thirteen platform rows on every change, and a weekly check of the answers under a wrong teacher.</td></tr>
+<tr><td><code>.github/workflows/</code></td><td>The CI: fourteen platform rows on every change, and a weekly check of the answers under a wrong teacher.</td></tr>
 </tbody>
 </table>
 </div>
