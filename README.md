@@ -19,7 +19,7 @@ blog/index.html            blog index
 blog/beginning.html        first post (blog/entry-exam.html and blog/platforms.html follow it)
 404.html
 css/site.css  js/site.js   styling (dark first, light via prefers-color-scheme) and progressive enhancements
-assets/                    logo mark, favicon, social preview, blog art (point-based SVG covers and matching PNG social previews; notes in blog-art-prompts.md)
+assets/                    logo mark, favicon, social preview, blog art (point-based SVG covers and matching PNG social previews)
 ```
 
 All links are relative, so the site works from any folder or sub-path.
