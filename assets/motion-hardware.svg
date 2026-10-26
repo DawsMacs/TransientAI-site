@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 320" width="640" height="320">
+<title>A point-drawn laptop with a processor, memory, and passing activity</title>
+<style>
+:root { color: #ececee; --accent: #b4cdff; --surface: #09090a; }
+@media (prefers-color-scheme: light) { :root { color: #131316; --accent: #1c4fd1; --surface: #f2f2f4; } }
+.dot-path { fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 0 6; }
+.accent { color: var(--accent); }
+.signal { opacity: .65; animation: signal 8s ease-in-out infinite; animation-delay: var(--delay, 0s); }
+@keyframes signal { 0%, 10%, 90%, 100% { opacity: .16; } 32%, 52% { opacity: .95; } 72% { opacity: .35; } }
+.transfer { animation: transfer 6s ease-in-out infinite; }
+@keyframes transfer { 0%, 12% { opacity: 0; transform: translateX(0); } 22% { opacity: .9; } 70% { opacity: .9; } 84%, 100% { opacity: 0; transform: translateX(68px); } }
+.beacon { transform-box: fill-box; transform-origin: center; opacity: .4; animation: beacon 7s ease-out infinite; }
+@keyframes beacon { 0%, 15% { opacity: .1; transform: scale(.9); } 45% { opacity: .65; transform: scale(1); } 80%, 100% { opacity: .1; transform: scale(1.2); } }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; } }
+</style>
+<g fill="currentColor">
+<rect class="dot-path " x="198" y="71" width="244" height="166" rx="8" opacity="0.6"/>
+<rect class="dot-path " x="210" y="83" width="220" height="140" rx="3" opacity="0.22"/>
+<path class="dot-path " d="M198 237 L171 254 Q168 258 178 258 H462 Q472 258 469 254 L442 237" opacity="0.55"/>
+<path class="dot-path " d="M292 242 H348" opacity="0.22"/>
+<rect class="dot-path " x="263" y="119" width="66" height="66" rx="5" opacity="0.65"/>
+<rect class="dot-path " x="275" y="131" width="42" height="42" rx="2" opacity="0.28"/>
+<circle cx="282.00" cy="138.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="289.00" cy="138.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="296.00" cy="138.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="303.00" cy="138.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="310.00" cy="138.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="282.00" cy="145.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="289.00" cy="145.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="296.00" cy="145.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="303.00" cy="145.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="310.00" cy="145.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="282.00" cy="152.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="289.00" cy="152.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="296.00" cy="152.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="303.00" cy="152.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="310.00" cy="152.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="282.00" cy="159.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="289.00" cy="159.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="296.00" cy="159.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="303.00" cy="159.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="310.00" cy="159.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="282.00" cy="166.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="289.00" cy="166.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="296.00" cy="166.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="303.00" cy="166.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<circle cx="310.00" cy="166.00" r="1.15" fill="currentColor" opacity="0.23"/>
+<path class="dot-path " d="M253 129 H261" opacity="0.45"/>
+<path class="dot-path " d="M331 129 H341" opacity="0.45"/>
+<path class="dot-path " d="M273 109 V117" opacity="0.4"/>
+<path class="dot-path " d="M273 187 V197" opacity="0.4"/>
+<path class="dot-path " d="M253 141 H261" opacity="0.45"/>
+<path class="dot-path " d="M331 141 H341" opacity="0.45"/>
+<path class="dot-path " d="M285 109 V117" opacity="0.4"/>
+<path class="dot-path " d="M285 187 V197" opacity="0.4"/>
+<path class="dot-path " d="M253 153 H261" opacity="0.45"/>
+<path class="dot-path " d="M331 153 H341" opacity="0.45"/>
+<path class="dot-path " d="M297 109 V117" opacity="0.4"/>
+<path class="dot-path " d="M297 187 V197" opacity="0.4"/>
+<path class="dot-path " d="M253 165 H261" opacity="0.45"/>
+<path class="dot-path " d="M331 165 H341" opacity="0.45"/>
+<path class="dot-path " d="M309 109 V117" opacity="0.4"/>
+<path class="dot-path " d="M309 187 V197" opacity="0.4"/>
+<path class="dot-path " d="M253 177 H261" opacity="0.45"/>
+<path class="dot-path " d="M331 177 H341" opacity="0.45"/>
+<path class="dot-path " d="M321 109 V117" opacity="0.4"/>
+<path class="dot-path " d="M321 187 V197" opacity="0.4"/>
+<rect class="dot-path " x="367" y="116" width="13" height="70" rx="2" opacity="0.48"/>
+<circle cx="373.50" cy="126.00" r="1.2" fill="currentColor" opacity="0.5"/>
+<circle cx="373.50" cy="138.00" r="1.2" fill="currentColor" opacity="0.5"/>
+<circle cx="373.50" cy="150.00" r="1.2" fill="currentColor" opacity="0.5"/>
+<circle cx="373.50" cy="162.00" r="1.2" fill="currentColor" opacity="0.5"/>
+<circle cx="373.50" cy="174.00" r="1.2" fill="currentColor" opacity="0.5"/>
+<rect class="dot-path " x="387" y="116" width="13" height="70" rx="2" opacity="0.48"/>
+<circle cx="393.50" cy="126.00" r="1.2" fill="currentColor" opacity="0.5"/>
+<circle cx="393.50" cy="138.00" r="1.2" fill="currentColor" opacity="0.5"/>
+<circle cx="393.50" cy="150.00" r="1.2" fill="currentColor" opacity="0.5"/>
+<circle cx="393.50" cy="162.00" r="1.2" fill="currentColor" opacity="0.5"/>
+<circle cx="393.50" cy="174.00" r="1.2" fill="currentColor" opacity="0.5"/>
+<path class="dot-path " d="M341 153 H365" opacity="0.35"/>
+<path class="dot-path " d="M234 160 H251" opacity="0.3"/>
+<path class="dot-path " d="M296 199 V210 H398 V192" opacity="0.25"/>
+<path class="dot-path " d="M234 122 V101 H380" opacity="0.18"/>
+<circle cx="236.00" cy="153.00" r="2.4" fill="currentColor" opacity="0.7" class="accent transfer"/>
+<path class="dot-path accent signal" d="M341 153 H365" opacity="0.8" style="--delay:-2s"/>
+<circle cx="296.00" cy="152.00" r="2.4" fill="currentColor" opacity="0.75" class="accent signal" style="--delay:0s"/>
+<circle class="dot-path accent signal" cx="296" cy="152" r="7" opacity="0.35" style="--delay:0s"/>
+<circle cx="373.50" cy="148.00" r="2.4" fill="currentColor" opacity="0.75" class="accent signal" style="--delay:-2s"/>
+<circle class="dot-path accent signal" cx="373.5" cy="148" r="7" opacity="0.35" style="--delay:-2s"/>
+<circle cx="393.50" cy="160.00" r="2.4" fill="currentColor" opacity="0.75" class="accent signal" style="--delay:-3.5s"/>
+<circle class="dot-path accent signal" cx="393.5" cy="160" r="7" opacity="0.35" style="--delay:-3.5s"/>
+<circle cx="426.00" cy="246.00" r="1.8" fill="currentColor" opacity="0.7" class="accent signal" style="--delay:-4s"/>
+</g>
+</svg>
