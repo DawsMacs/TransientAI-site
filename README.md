@@ -11,7 +11,7 @@ This is a separate repository from `Matter` on purpose: the project is the resea
 ```
 index.html                 home
 baby.html                  the project and its first prototype
-research.html              research hub, then: adaptive-learning, efficiency, why-rust, hardware, method
+research.html              research hub, then: recursive-meta-adaptive-learning, efficiency, why-rust, hardware, method
 docs.html                  build, run it on your platform, commands, concepts, code map, contributing
 progress.html              roadmap, what we do not know yet, timeline
 about.html                 the Matterworm Foundation, the founder and founding member, how we work

@@ -403,6 +403,7 @@ td code { white-space: nowrap; }
 .icon-inline { display: inline-block; width: 0.95em; height: 0.95em; margin-left: 0.3em; vertical-align: -0.12em; } /* the global svg { display: block } would otherwise drop the arrow onto its own line */
 /* keep links in one piece instead of splitting them across lines; all link texts here are short */
 main p a, main li a:not(.post-item), .foot-grid a, a:has(> .icon-inline) { white-space: nowrap; }
+.foot-grid a[href$="recursive-meta-adaptive-learning"] { white-space: normal; }
 .ico { display: grid; place-items: center; width: 38px; height: 38px; margin-bottom: 1.1rem; color: var(--text); border: 1px solid var(--line-2); border-radius: 6px; background: var(--bg-3); }
 .ico .icon { width: 19px; height: 19px; }
 .stat .ico { margin-bottom: 0.9rem; }

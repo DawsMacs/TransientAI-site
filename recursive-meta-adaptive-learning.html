@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recursive meta-adaptive learning · Matterworm</title>
+<meta name="description" content="What we mean by recursive meta-adaptive learning (RMAL): a system that learns during use, adapts how it learns, and in time revises that process itself. What the prototype does today and where it stops.">
+<link rel="canonical" href="https://matterworm.github.io/recursive-meta-adaptive-learning">
+<meta property="og:site_name" content="Matterworm">
+<meta property="og:title" content="Recursive meta-adaptive learning · Matterworm">
+<meta property="og:description" content="What we mean by recursive meta-adaptive learning (RMAL): a system that learns during use, adapts how it learns, and in time revises that process itself. What the prototype does today and where it stops.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://matterworm.github.io/recursive-meta-adaptive-learning">
+<meta property="og:image" content="https://matterworm.github.io/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="alternate" type="application/rss+xml" title="Matterworm blog" href="https://matterworm.github.io/feed.xml">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="fonts/Lexend.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="preload" href="fonts/JosefinSans.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="css/site.css?v=20261026-rmal">
+<script>document.documentElement.classList.add("js")</script>
+<script src="js/site.js" defer></script>
+</head>
+<body>
+<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+<!-- Icons: Lucide (ISC) and Phosphor regular (MIT); see LICENSE-icons -->
+<symbol id="brain-circuit" viewBox="0 0 24 24"><path d="M12 5a3 3 0 1 0-5.997.125 4 4 0 0 0-2.526 5.77 4 4 0 0 0 .556 6.588A4 4 0 1 0 12 18Z"/><path d="M9 13a4.5 4.5 0 0 0 3-4"/><path d="M6.003 5.125A3 3 0 0 0 6.401 6.5"/><path d="M3.477 10.896a4 4 0 0 1 .585-.396"/><path d="M6 18a4 4 0 0 1-1.967-.516"/><path d="M12 13h4"/><path d="M12 18h6a2 2 0 0 1 2 2v1"/><path d="M12 8h8"/><path d="M16 8V5a2 2 0 0 1 2-2"/><circle cx="16" cy="13" r=".5"/><circle cx="18" cy="3" r=".5"/><circle cx="20" cy="21" r=".5"/><circle cx="20" cy="8" r=".5"/></symbol>
+<symbol id="zap" viewBox="0 0 24 24"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></symbol>
+<symbol id="shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="cog" viewBox="0 0 24 24"><path d="M11 10.27 7 3.34"/><path d="m11 13.73-4 6.93"/><path d="M12 22v-2"/><path d="M12 2v2"/><path d="M14 12h8"/><path d="m17 20.66-1-1.73"/><path d="m17 3.34-1 1.73"/><path d="M2 12h2"/><path d="m20.66 17-1.73-1"/><path d="m20.66 7-1.73 1"/><path d="m3.34 17 1.73-1"/><path d="m3.34 7 1.73 1"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="12" r="8"/></symbol>
+<symbol id="flask-conical" viewBox="0 0 24 24"><path d="M14 2v6a2 2 0 0 0 .245.96l5.51 10.08A2 2 0 0 1 18 22H6a2 2 0 0 1-1.755-2.96l5.51-10.08A2 2 0 0 0 10 8V2"/><path d="M6.453 15h11.094"/><path d="M8.5 2h7"/></symbol>
+<symbol id="cpu" viewBox="0 0 24 24"><path d="M12 20v2"/><path d="M12 2v2"/><path d="M17 20v2"/><path d="M17 2v2"/><path d="M2 12h2"/><path d="M2 17h2"/><path d="M2 7h2"/><path d="M20 12h2"/><path d="M20 17h2"/><path d="M20 7h2"/><path d="M7 20v2"/><path d="M7 2v2"/><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="8" y="8" width="8" height="8" rx="1"/></symbol>
+<symbol id="milestone" viewBox="0 0 24 24"><path d="M12 13v8"/><path d="M12 3v3"/><path d="M18.172 6a2 2 0 0 1 1.414.586l2.06 2.06a1.207 1.207 0 0 1 0 1.708l-2.06 2.06a2 2 0 0 1-1.414.586H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1z"/></symbol>
+<symbol id="message-circle-question-mark" viewBox="0 0 24 24"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
+<symbol id="route" viewBox="0 0 24 24"><circle cx="6" cy="19" r="3"/><path d="M9 19h8.5a3.5 3.5 0 0 0 0-7h-11a3.5 3.5 0 0 1 0-7H15"/><circle cx="18" cy="5" r="3"/></symbol>
+<symbol id="message-square-text" viewBox="0 0 24 24"><path d="M22 17a2 2 0 0 1-2 2H6.828a2 2 0 0 0-1.414.586l-2.202 2.202A.71.71 0 0 1 2 21.286V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/><path d="M7 11h10"/><path d="M7 15h6"/><path d="M7 7h8"/></symbol>
+<symbol id="triangle-alert" viewBox="0 0 24 24"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></symbol>
+<symbol id="info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></symbol>
+<symbol id="circle-check" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></symbol>
+<symbol id="circle-dot" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="1"/></symbol>
+<symbol id="circle-question-mark" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></symbol>
+<symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+<symbol id="circle-arrow-right" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m12 16 4-4-4-4"/><path d="M8 12h8"/></symbol>
+<symbol id="arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+<symbol id="arrow-up-right" viewBox="0 0 24 24"><path d="M7 7h10v10"/><path d="M7 17 17 7"/></symbol>
+<symbol id="chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+<symbol id="copy" viewBox="0 0 24 24"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></symbol>
+<symbol id="check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="menu" viewBox="0 0 24 24"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></symbol>
+<symbol id="x" viewBox="0 0 24 24"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+<symbol id="laptop" viewBox="0 0 24 24"><path d="M18 5a2 2 0 0 1 2 2v8.526a2 2 0 0 0 .212.897l1.068 2.127a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45l1.068-2.127A2 2 0 0 0 4 15.526V7a2 2 0 0 1 2-2z"/><path d="M20.054 15.987H3.946"/></symbol>
+<symbol id="memory-stick" viewBox="0 0 24 24"><path d="M12 12v-2"/><path d="M12 18v-2"/><path d="M16 12v-2"/><path d="M16 18v-2"/><path d="M2 11h1.5"/><path d="M20 18v-2"/><path d="M20.5 11H22"/><path d="M4 18v-2"/><path d="M8 12v-2"/><path d="M8 18v-2"/><rect x="2" y="6" width="20" height="10" rx="2"/></symbol>
+<symbol id="ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M4.929 4.929 19.07 19.071"/></symbol>
+<symbol id="compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"/></symbol>
+<symbol id="github" viewBox="0 0 256 256" class="ph"><path d="M208.31,75.68A59.78,59.78,0,0,0,202.93,28,8,8,0,0,0,196,24a59.75,59.75,0,0,0-48,24H124A59.75,59.75,0,0,0,76,24a8,8,0,0,0-6.93,4,59.78,59.78,0,0,0-5.38,47.68A58.14,58.14,0,0,0,56,104v8a56.06,56.06,0,0,0,48.44,55.47A39.8,39.8,0,0,0,96,192v8H72a24,24,0,0,1-24-24A40,40,0,0,0,8,136a8,8,0,0,0,0,16,24,24,0,0,1,24,24,40,40,0,0,0,40,40H96v16a8,8,0,0,0,16,0V192a24,24,0,0,1,48,0v40a8,8,0,0,0,16,0V192a39.8,39.8,0,0,0-8.44-24.53A56.06,56.06,0,0,0,216,112v-8A58.14,58.14,0,0,0,208.31,75.68ZM200,112a40,40,0,0,1-40,40H112a40,40,0,0,1-40-40v-8a41.74,41.74,0,0,1,6.9-22.48A8,8,0,0,0,80,73.83a43.81,43.81,0,0,1,.79-33.58,43.88,43.88,0,0,1,32.32,20.06A8,8,0,0,0,119.82,64h32.35a8,8,0,0,0,6.74-3.69,43.87,43.87,0,0,1,32.32-20.06A43.81,43.81,0,0,1,192,73.83a8.09,8.09,0,0,0,1,7.65A41.72,41.72,0,0,1,200,104Z"/></symbol>
+</svg>
+<a class="skip" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="wrap bar">
+<a class="brand" href="./"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">Matterworm</span></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg class="icon" aria-hidden="true"><use href="#menu"/></svg><span>Menu</span></button>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="baby">Project</a><a href="research" aria-current="page">Research</a><a href="docs">Docs</a><a href="blog/">Blog</a><a href="progress">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/Matterworm/Matter" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
+</div>
+</header>
+<main id="main">
+
+<section class="page-head with-art">
+<div class="wrap">
+<div class="page-head-copy">
+<p class="crumbs"><a href="research">Research</a> / Recursive meta-adaptive learning</p>
+<h1>Recursive meta-adaptive learning</h1>
+<p class="lead">"Recursive meta-adaptive learning" (RMAL) is our name for a direction: learning that continues while the system is used, changes the system's internals as it goes, adapts <em>how</em> it learns and not only <em>what</em>, and in the end revises that adapting process itself. It is an ambition we are working toward, not something the prototype has reached, and not a settled definition.</p>
+</div>
+<img class="page-head-image" src="assets/motion-adaptive.svg" alt="" width="960" height="480" decoding="async">
+</div>
+</section>
+
+<section class="section">
+<div class="wrap">
+<div class="prose">
+<h2>Why not just train a model?</h2>
+<p>The usual pipeline is to pretrain on a very large corpus, post-train, freeze the weights and serve them. Training is an event that happens once, somewhere else, for everyone. That has costs we would like to avoid for a system meant to run on a personal machine:</p>
+<ul>
+<li><strong>Facts are learned expensively.</strong> One study reports that transformers store roughly 2 bits of knowledge per parameter, and only after seeing a fact on the order of a thousand times (<a href="https://arxiv.org/pdf/2404.05405" rel="noopener">Allen-Zhu and Li</a>). Writing a line to a store takes one step and no gradients.</li>
+<li><strong>Updating weights can forget.</strong> In one continual-learning test, fine-tuning on new facts reduced performance on old ones sharply, while updating only a few memory slots reduced it far less (<a href="https://arxiv.org/pdf/2510.15103" rel="noopener">sparse memory finetuning</a>). We have not reproduced these figures.</li>
+<li><strong>A frozen model cannot learn from you</strong>, privately and cheaply, after it ships.</li>
+</ul>
+
+<h2>Three levels of adaptation</h2>
+<p>These are the levels we use to say how far the prototype goes.</p>
+<ol>
+<li><strong>Adapting the knowledge.</strong> New facts, new words, corrections. <code>baby</code> does this in real time: one new lesson costs about half a millisecond.</li>
+<li><strong>Adapting how much and when it learns.</strong> Steps per lesson, when to sleep, what to ask, how far to trust a match. Our first versions had these as constants chosen by hand; the move is to make each a quantity the system measures from its own experience. So far: the reliability bar (set from the noise it measures in its own lessons) and how boldly it guesses (set from its own track record). Several others remain constants.</li>
+<li><strong>Adapting the learning mechanism itself.</strong> For each kind of thing it meets, try different ways of learning it and keep whichever generalizes, judged on facts it held back. This is the level that most distinguishes the work, and the one where the prototype is both most interesting and most limited.</li>
+</ol>
+
+<h2>What "recursive" adds</h2>
+<p>Levels 1 to 3 are adaptation that we set up: the system tunes and chooses, but the procedure that does the tuning and choosing is ours. A fixed procedure that adjusts its own settings is still programmed adaptation. The recursive step is the one beyond level 3: the system revising the process that does the adapting, by means we did not hand it in advance. That step is what would separate genuine adaptation from a very good learning algorithm, and it is the part the prototype does not do. Everything below describes levels 1 to 3 only.</p>
+
+<h2>What the prototype does at level 3</h2>
+<p>Given groups of lessons and no instructions, <code>baby</code> chooses per group among remembering, fitting a rule, selecting, searching for a small program, or training a small network. Some outcomes from the synthetic curriculum:</p>
+<ul>
+<li>Sums, differences and doubling became <em>rules</em>; "which is bigger" became a <em>selection</em>; multiplication and "how far apart" became <em>programs</em> it built (<code>first × second</code>, <code>first apart second</code>) and that stayed right beyond the numbers it was taught; capitals and colors stayed <em>memorized</em> because nothing could be worked out.</li>
+<li>Given a heap of 792 unlabeled lessons, it found 9 units itself (the teacher had named 13; some followed one rule and were merged), with a scorecard identical to the teacher-organized version.</li>
+<li>In the invention battery it worked out all 16 hidden numeric kinds nobody wrote a mechanism for, and 7 of 9 harder ones by reusing constants and programs learned from earlier kinds as vocabulary. Taught in the wrong order, the harder ones failed more often (8 of 72), so the gain came from learning and not luck. It explained 0 of 120 unexplainable kinds (random codes, primes) and answered 0 wrongly.</li>
+<li>It asks. Where two explanations both fit, it names the number that would tell them apart. With digit sum taught on 0 to 15, one such question took it from 88.9% to 100% of unseen questions; random questions needed three.</li>
+</ul>
+
+<div class="callout caveat">
+<p class="callout-label"><svg class="icon" aria-hidden="true"><use href="#triangle-alert"/></svg>Caveat</p>
+<p><strong>The limit is large and we want it visible.</strong> The mechanisms, the expression language and the thresholds are ours. The system builds and selects <em>inside</em> a language we gave it. Calling that "invention" means expressions and vocabulary, not a new kind of learner. Mechanisms of a different kind, not a formula, are not yet started.</p>
+</div>
+
+<h2>Learning that stays light</h2>
+<p>Learning should be light enough that nearly anyone can do it, without a data center. Three things measurably help:</p>
+<ul>
+<li><strong>A surprise gate.</strong> A lesson the unit can already work out is neither learned from nor stored.</li>
+<li><strong>Refit, do not re-decide.</strong> A lesson consistent with a settled rule just refits it exactly; the expensive cross-validation of all mechanisms only runs when something structural changed.</li>
+<li><strong>Exact where possible.</strong> Fitting a rule is solved, not iterated: 392× fewer operations than the 800-pass gradient descent it replaced, for the same rule.</li>
+</ul>
+<p>In the scale test, learning one more fact stayed at roughly half a millisecond from 20 to 600 units. <a href="efficiency">More in efficiency<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-right"/></svg></a></p>
+
+<h2>Learning in real time</h2>
+<p>One advantage we hope to keep is that a user's correction can change behavior <em>immediately</em>, without a training run. A concrete case: when <code>baby</code> guesses beyond what it was taught and a teacher says it was wrong, it stops guessing in that region right away. Before this was built, after one correction 303 of the 305 other wrong guesses stayed wrong and 2 became wrong <em>facts</em>; after it, none stayed wrong and none became wrong facts (they were all refused). At first it only stopped; it did not learn the new regime from one point, so the right guesses nearby were refused too. It now rebuilds the law from the numbers the correcting lessons name, and in our test all 157 of the wrong guesses became right guesses after one correction. That comes with a price: it is careful about overruling the old law, so some coverage is lost when the teacher is sometimes wrong.</p>
+
+<h2>Terms</h2>
+<p>Recursive meta-adaptive learning is the project's own term, used as a direction and not an exact definition. It may shift as the work does. It is the earlier working name "adaptive learning" with the recursive step named. The second row is how we compare systems.</p>
+<div class="table-wrap">
+<table>
+<tbody>
+<tr><th>Recursive meta-adaptive learning</th><td>A direction, not a measured property: learning that is continuous and from interaction, with internals that change (adaptive); a learning process that itself adapts (meta); and an adapting process the system revises itself (recursive). The prototype reaches the first two in small, and not the third.</td></tr>
+<tr><th>Capability per resource</th><td>A score on a fixed set of questions, reported against parameters, bytes and estimated joules as separate numbers, never blended into one figure.</td></tr>
+</tbody>
+</table>
+</div>
+
+<h2>Next steps on this thread</h2>
+<ul>
+<li>Run on a factoid corpus as well as word problems (word problems have had a first look) to see which of this survives contact with messy text.</li>
+<li>Win back the coverage the repair guard costs, without letting wrong facts return.</li>
+<li>A teacher who repeats a wrong answer: since 2026-10-25 the baby holds an answer that contradicts a settled rule until it is repeated, or until one law explains several held answers together (a rule that really changed). Believed mistakes fell from 20, 14 and 10 to 5, 7 and 6 when 10% of the facts are told wrongly, and from 41, 25 and 28 to 10, 10 and 18 at 20% (a plain memorizer: 32 and 59 on one stream), with no damage to things it was never wrongly told. These are simulated teachers on tidy streams. What is left is almost all in kinds with no law to check an answer against, which one source cannot settle; a second, independent source is the untried idea.</li>
+<li>Cheaper adapting: learning from a told answer costs 36 mJ now, about 600 times answering without learning. The remaining savings are the risky ones, and each has to be checked against a stream with a wrong teacher before it is accepted.</li>
+<li>Adapt more of the remaining constants from measurement.</li>
+<li>A unit that starts tiny and grows capacity only when it saturates.</li>
+</ul>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+<div class="wrap">
+<div class="foot-grid">
+<div>
+<div class="foot-brand"><img class="invertable" src="assets/mark.svg" alt="" width="24" height="24"><span class="wordmark">Matterworm<span class="foundation"> Foundation</span></span></div>
+<p class="small">An independent research effort, run by its founder and a founding member, behind the open Matter project. We publish our progress, our code and our mistakes so anyone can replicate, check and reuse them.</p>
+</div>
+<div>
+<h4>Project</h4>
+<ul>
+<li><a href="baby">Matter &amp; baby</a></li>
+<li><a href="docs">Documentation</a></li>
+<li><a href="progress">Progress &amp; roadmap</a></li>
+<li><a href="https://github.com/Matterworm/Matter" rel="noopener">Source on GitHub<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
+</ul>
+</div>
+<div>
+<h4>Research</h4>
+<ul>
+<li><a href="recursive-meta-adaptive-learning">Recursive meta-adaptive learning</a></li>
+<li><a href="efficiency">Efficiency &amp; joules</a></li>
+<li><a href="why-rust">Why Rust</a></li>
+<li><a href="method">How we judge results</a></li>
+<li><a href="hardware">Hardware</a></li>
+</ul>
+</div>
+<div>
+<h4>Matterworm</h4>
+<ul>
+<li><a href="about">About</a></li>
+<li><a href="blog/">Blog</a></li>
+<li><a href="docs#contribute">Contribute</a></li>
+<li><a href="https://github.com/Matterworm/Matter/issues" rel="noopener">Issues<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
+</ul>
+</div>
+</div>
+<div class="foot-note">
+<span>© 2026 Matterworm Foundation. Site code MIT; text and blog art CC BY 4.0; the Matterworm mark and names are reserved. The Matter project's code is AGPL-3.0-only.</span>
+</div>
+</div>
+</footer>
+</body>
+</html>
