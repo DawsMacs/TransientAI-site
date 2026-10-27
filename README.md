@@ -49,6 +49,8 @@ styling and any direct `*.html` URL still work.
 - `assets/og-image.png` (1200x630) is the social preview; it was rendered from an SVG with the brand fonts and is not regenerated automatically.
 - `assets/motion-adaptive.svg`, `motion-energy.svg`, and `motion-honesty.svg` are shared by the home and research cards and their matching page headers. The research hub adds `motion-rust.svg` (code and a gear), `motion-hardware.svg` (a laptop and its processor), and `motion-progress.svg` (a path through milestones). These decorative, conceptual animations use fine points, pale blue activity, and coral error marks; they are not run transcripts or measured results. They work without JavaScript, adapt to the color scheme, and show still compositions when reduced motion is requested.
 
+- The recursive meta-adaptive learning page includes a 46-second conceptual short (`css/rmal-story.css`, `js/rmal-story.js`) about a robot crossing a changing course. It illustrates the ambition, not a recorded prototype result. Playback starts when the player enters view, pauses when it leaves view or the tab is hidden, and can be paused, replayed, or scrubbed by chapter. Reduced motion defaults to the completed still; playback remains available by choice. Without JavaScript, the still and a text transcript remain available.
+
 ## Icons
 
 Icons are Lucide, with Phosphor (regular weight) only where Lucide has no equivalent (the GitHub mark). They live in an inline SVG sprite at the top of every page
