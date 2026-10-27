@@ -44,8 +44,9 @@ styling and any direct `*.html` URL still work.
   Keep the caveats next to them.
 - Do not guess what the name "Matter" means; the project keeps that open.
 - Hardware is described only roughly on purpose. Do not add personal or device-specific details.
-- `404.html` uses root-relative links (`/css/site.css`), because a 404 can be served at any path; it only renders correctly when the site is served from the domain root (`https://matterworm.github.io/`).
-- Address: the site is the organization's GitHub Pages site, `https://matterworm.github.io/`, so this repository is named `matterworm.github.io` and there is no `CNAME` file. `<link rel="canonical">`, `og:` tags, `sitemap.xml`, `feed.xml` and `robots.txt` use that absolute URL. When a custom domain is bought: add a `CNAME` file, replace the address in those files, and set the domain in the repository's Pages settings.
+- `404.html` uses root-relative links (`/css/site.css`), because a 404 can be served at any path; it only renders correctly when the site is served from the domain root (`https://matterworm.org/`).
+- Address: the primary domain is `https://matterworm.org/`. `CNAME` contains `matterworm.org`; `<link rel="canonical">`, `og:` tags, `sitemap.xml`, `feed.xml` and `robots.txt` use that absolute URL. The repository keeps its name, `matterworm.github.io`.
+- Existing RSS item GUIDs remain stable across domain changes so subscribers do not receive duplicate entries.
 - `assets/og-image.png` (1200x630) is the social preview; it was rendered from an SVG with the brand fonts and is not regenerated automatically.
 - `assets/motion-adaptive.svg`, `motion-energy.svg`, and `motion-honesty.svg` are shared by the home and research cards and their matching page headers. The research hub adds `motion-rust.svg` (code and a gear), `motion-hardware.svg` (a laptop and its processor), and `motion-progress.svg` (a path through milestones). These decorative, conceptual animations use fine points, pale blue activity, and coral error marks; they are not run transcripts or measured results. They work without JavaScript, adapt to the color scheme, and show still compositions when reduced motion is requested.
 
@@ -68,4 +69,22 @@ Icons are Lucide, with Phosphor (regular weight) only where Lucide has no equiva
 
 ## Hosting
 
-GitHub Pages, deploying `main` from the repository root, at `https://matterworm.github.io/` (Settings > Pages: deploy from the `main` branch, root folder, no custom domain for now).
+GitHub Pages, deploying `main` from the repository root. Configure Settings > Pages with `matterworm.org` as the custom domain and enable Enforce HTTPS once GitHub has issued its certificate.
+
+Both domains are registered at Namecheap, with DNS managed through Cloudflare after switching each domain to its assigned Cloudflare nameservers. Preserve any email and verification records when switching DNS providers.
+
+For `matterworm.org`, use these records with TTL Auto and proxy status **DNS only**:
+
+| Type | Name | Target |
+|---|---|---|
+| A | @ | 185.199.108.153 |
+| A | @ | 185.199.109.153 |
+| A | @ | 185.199.110.153 |
+| A | @ | 185.199.111.153 |
+| CNAME | www | matterworm.github.io |
+
+Verify `matterworm.org` in the Matterworm organization's GitHub Pages settings using GitHub's supplied TXT record, and keep that record. Configure the repository's custom domain before directing website traffic to GitHub. GitHub Pages handles the `www.matterworm.org` redirect to the primary domain.
+
+For `matterworm.com`, create a proxied A record for `@` targeting `192.0.2.1` and a proxied CNAME record for `www` targeting `matterworm.com`. In that Cloudflare zone, create a Single Redirect matching `(http.host in {"matterworm.com" "www.matterworm.com"})`, using the dynamic destination `concat("https://matterworm.org", http.request.uri.path)`, status **301**, and **Preserve query string** enabled. Cloudflare serves this redirect without contacting an origin; activate it after the primary site works over HTTPS and Cloudflare's edge certificate is active for the redirect domain.
+
+DNS and redirect references: [GitHub Pages custom domains](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site), [GitHub Pages domain verification](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages), and [Cloudflare Single Redirects](https://developers.cloudflare.com/rules/url-forwarding/single-redirects/create-dashboard/).

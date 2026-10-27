@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://matterworm.github.io/sitemap.xml
+Sitemap: https://matterworm.org/sitemap.xml
