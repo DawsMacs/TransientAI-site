@@ -18,10 +18,10 @@ docs.html                  build, run it on your platform, commands, concepts, c
 progress.html              roadmap, what we do not know yet, timeline
 about.html                 the Matterworm Foundation, the founder and founding member, how we work
 blog/index.html            blog index
-blog/beginning.html        first post (blog/entry-exam.html and blog/platforms.html follow it)
+blog/beginning.html        first post (entry-exam, platforms, and baby-to-novice follow it)
 404.html
 css/site.css  js/site.js   styling (dark first, light via prefers-color-scheme) and progressive enhancements
-assets/                    logo mark, favicon, social preview, blog art (point-based SVG covers and matching PNG social previews)
+assets/                    logo mark, favicon, social preview, blog art (point-based SVG covers and PNG previews; generated PNG art for baby-to-novice)
 ```
 
 All links are relative, so the site works from any folder or sub-path.
@@ -53,6 +53,8 @@ styling and any direct `*.html` URL still work.
 - `assets/motion-adaptive.svg`, `motion-energy.svg`, and `motion-honesty.svg` are shared by the home and research cards and their matching page headers. The research hub adds `motion-rust.svg` (code and a gear), `motion-hardware.svg` (a laptop and its processor), and `motion-progress.svg` (a path through milestones). These decorative, conceptual animations use fine points, pale blue activity, and coral error marks; they are not run transcripts or measured results. They work without JavaScript, adapt to the color scheme, and show still compositions when reduced motion is requested.
 
 - The recursive meta-adaptive learning page includes a 46-second conceptual short (`css/rmal-story.css`, `js/rmal-story.js`) about a robot crossing a changing course. It illustrates the ambition, not a recorded prototype result. Playback starts when the player enters view, pauses when it leaves view or the tab is hidden, and can be paused, replayed, or scrubbed by chapter. Reduced motion defaults to the completed still; playback remains available by choice. Without JavaScript, the still and a text transcript remain available.
+
+- `assets/points-novice.png` is original artwork generated with the built-in image generation tool, using the three existing point-based covers as style references. It serves as the Novice blog cover, index thumbnail, and social preview (1200x630).
 
 ## Icons
 

@@ -7,6 +7,13 @@
   <description>Progress, results, mistakes and plans from the Matterworm Foundation, the creator of the open Matter project.</description>
   <language>en</language>
   <item>
+    <title>From Baby to Novice: what the rebuild showed</title>
+    <link>https://matterworm.org/blog/baby-to-novice</link>
+    <guid isPermaLink="true">https://matterworm.org/blog/baby-to-novice</guid>
+    <pubDate>Fri, 30 Oct 2026 00:00:00 +0000</pubDate>
+    <description>Novice 0.0.1 is a research snapshot: a rebuild, a stricter validation check, narrow transfer, and hard tasks still out of reach. Baby stays preserved as the reference.</description>
+  </item>
+  <item>
     <title>Thirteen platforms, one set of answers</title>
     <link>https://matterworm.org/blog/platforms</link>
     <guid isPermaLink="true">https://matterworm.github.io/blog/platforms</guid>
