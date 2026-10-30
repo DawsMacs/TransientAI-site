@@ -64,7 +64,7 @@
 <div class="wrap bar">
 <a class="brand" href="./"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">Matterworm</span></a>
 <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg class="icon" aria-hidden="true"><use href="#menu"/></svg><span>Menu</span></button>
-<nav class="nav" id="site-nav" aria-label="Main"><a href="baby">Project</a><a href="research">Research</a><a href="docs">Docs</a><a href="blog/">Blog</a><a href="progress">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/Matterworm/Matter" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="novice">Project</a><a href="research">Research</a><a href="docs">Docs</a><a href="blog/">Blog</a><a href="progress">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/Matterworm/Matter" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
 </div>
 </header>
 <main id="main">
@@ -74,10 +74,10 @@
 <div>
 <p class="eyebrow">Matterworm Foundation · independent research</p>
 <h1>Learning systems that run on ordinary hardware.</h1>
-<p class="lead">The Matterworm Foundation is a small research effort building <strong>Matter</strong>, an open, experimental learning system written in Rust. The aim is capable AI that almost anyone can run, study and teach on their own machine. We publish everything, mistakes included, so others can replicate it, check it and reuse it.</p>
+<p class="lead">The Matterworm Foundation is a small research effort building <strong>Matter</strong>, an open, experimental learning system written in Rust. The aim is capable AI that almost anyone can run, study and teach on their own machine. We publish our code, results, and mistakes so others can replicate, check, and reuse the work.</p>
 <div class="cta">
 <a class="btn primary" href="blog/beginning">Read the first post<svg class="icon" aria-hidden="true"><use href="#arrow-right"/></svg></a>
-<a class="btn" href="baby">Meet the prototype</a>
+<a class="btn" href="novice">Meet Novice</a>
 <a class="btn" href="https://github.com/Matterworm/Matter" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>Source on GitHub</a>
 </div>
 </div>
@@ -199,64 +199,10 @@
 </div>
 </section>
 
-<section class="section">
-<div class="wrap">
-<div class="section-head reveal">
-<h2>The prototype, in action</h2>
-<p><code>baby</code> is the first working piece of Matter. It is taught from scratch in about a third of a second, then answers a question and says <em>how it knew</em>, or refuses and says why. This is copied from a real run of the current build.</p>
-</div>
-<div class="term reveal" data-type role="img" aria-label="Terminal transcript of five questions put to the baby prototype">
-<div class="term-bar"><i></i><i></i><i></i><span>baby ask</span></div>
-<div class="term-body">
-<div class="t-line t-cmd">baby ask "what is two times four"</div>
-<div class="t-line t-out t-ans">eight</div>
-<div class="t-line t-out dim">  (unit 'times', worked out by an expression I built, (first x second) (100% on facts I held back))</div>
-<div class="t-gap"></div>
-<div class="t-line t-cmd">baby ask "the capital of peru"</div>
-<div class="t-line t-out t-ans">lima</div>
-<div class="t-line t-out dim">  (unit 'capital', recalled, not worked out: nothing I tried could work these out, so I only remember what I was told)</div>
-<div class="t-gap"></div>
-<div class="t-line t-cmd">baby ask "what is seven times one"</div>
-<div class="t-line t-out t-ans">probably seven</div>
-<div class="t-line t-out dim">  (a guess, not a fact: unit 'times', for this kind I was only taught (or have checked) numbers from 0 to 5, and this asks about 7: I won't state it as fact unchecked ...)</div>
-<div class="t-gap"></div>
-<div class="t-line t-cmd">baby ask "three minus five"</div>
-<div class="t-line t-out t-ans">?</div>
-<div class="t-line t-out dim">  I don't know this one: unit 'minus', I couldn't work it out: it has a word or a shape I haven't learned how to handle. Teach me: baby teach "three minus five" &lt;answer&gt;</div>
-<div class="t-gap"></div>
-<div class="t-line t-cmd">baby ask "what is -3 plus 5"</div>
-<div class="t-line t-out t-ans">?</div>
-<div class="t-line t-out dim">  I only read plain whole numbers, not '-3' (signs, decimals, fractions, percentages).</div>
-</div>
-</div>
-<p class="small muted" style="margin-top:1rem;max-width:70ch">Multiplication was taught on the numbers 0 to 5 only, so "seven times one" is a labeled guess and not stated as fact. The long explanation after it is trimmed here. The last two are refusals on purpose: a negative result and a number it cannot read are things it must not bluff.</p>
-</div>
-</section>
-
-<section class="section">
-<div class="wrap">
-<div class="section-head reveal">
-<h2>A few numbers, with their caveats</h2>
-<p>From the synthetic lesson set the prototype is developed on, on one CPU core of an ordinary laptop with no GPU. Those energy figures are estimates from counted operations; trust the ratios, not the absolute joules. Real readings from the CPU's energy counter are used in the entry exam.</p>
-</div>
-<div class="grid g4">
-<div class="stat reveal"><div class="v">0.0%</div><div class="l">wrong answers on every row of the scorecard (taught, reworded, never taught, beyond range). It refuses or labels a guess instead.</div></div>
-<div class="stat reveal"><div class="v">8,977 → 57</div><div class="l">operations per answer after changing how it finds the right kind of lesson: about 85× less estimated energy, same answers.</div></div>
-<div class="stat reveal"><div class="v">2.65 s</div><div class="l">to teach 25,776 lessons across 600 kinds of lesson (56 MB peak) in the scale test.</div></div>
-<div class="stat reveal"><div class="v">~0.5 ms</div><div class="l">to learn one more fact, at every size tested from 20 to 600 units.</div></div>
-</div>
-<div class="section-head reveal" style="margin-top:2.4rem">
-<p>From the entry exam and the platform checks, measured with the CPU's own counter where joules are quoted. The exam, its judge and the pinned answers are in the repository.</p>
-</div>
-<div class="grid g4">
-<div class="stat reveal"><div class="v">0 and 0</div><div class="l">wrong facts and trap questions answered on the entry exam (60 units, 4,832 questions). A plain transformer on the same exam states 1,500 to 2,800 wrong facts.</div></div>
-<div class="stat reveal"><div class="v">36 mJ</div><div class="l">to learn from one told answer, down from 1.8 J, with the replies unchanged: still about 600 times the cost of answering without learning.</div></div>
-<div class="stat reveal"><div class="v">13 of 13</div><div class="l">platform rows (Linux, macOS, Windows, three BSDs, WebAssembly, 32-bit and big-endian) give byte-identical answers. CI-tested, not a promise of support.</div></div>
-<div class="stat reveal"><div class="v">0 of 6</div><div class="l">runs with a teacher who is wrong about a share of the facts damaged anything it was never wrongly told. It still believes a wrong answer that is repeated.</div></div>
-</div>
-<p class="muted small" style="margin-top:1.2rem;max-width:70ch">These come from tidy, synthetic lessons. Nothing here shows behavior on real text at scale, or that this approach can reach the quality of today's language models. <a href="progress#unknowns">What we do not know yet<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-right"/></svg></a></p>
-</div>
-</section>
+<section class="section"><div class="wrap"><div class="prose"><h2>Novice takes the spotlight</h2><p>Our current research system is <a href="novice">Novice</a>, rebuilt in dependency-free Rust. It searches for explanations in bits and learns reusable program pieces. Baby stays preserved as the frozen reference.</p>
+<p>On the latest initially blind set K, Novice recorded zero wrong facts and zero answered traps across three seeds, but acquired none of the twelve hard kinds. More than 91% of all questions were refused. The result shows restraint on this test, with substantial capability still missing.</p>
+<p><strong>Development is pausing while research and foundation maintenance continue.</strong> The published snapshot tightens recurrence validation and documents the remaining evaluation and efficiency limits.</p>
+<p><a class="btn" href="novice">Results and source release</a> <a href="baby">Baby archive</a> · <a href="sparse-generative-learning">Sparse learning: lessons and failures</a></p></div></div></section>
 
 <section class="section">
 <div class="wrap">
@@ -295,7 +241,8 @@
 <div>
 <h4>Project</h4>
 <ul>
-<li><a href="baby">Matter &amp; baby</a></li>
+<li><a href="novice">Matter &amp; Novice</a></li>
+<li><a href="baby">Baby reference</a></li>
 <li><a href="docs">Documentation</a></li>
 <li><a href="progress">Progress &amp; roadmap</a></li>
 <li><a href="https://github.com/Matterworm/Matter" rel="noopener">Source on GitHub<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>

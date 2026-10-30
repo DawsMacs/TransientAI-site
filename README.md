@@ -10,7 +10,9 @@ This is a separate repository from `Matter` on purpose: the project is the resea
 
 ```
 index.html                 home
-baby.html                  the project and its first prototype
+novice.html                current research snapshot, results and release
+baby.html                  frozen reference and historical results
+sparse-generative-learning.html  generative research retrospective
 research.html              research hub, then: recursive-meta-adaptive-learning, efficiency, why-rust, hardware, method
 docs.html                  build, run it on your platform, commands, concepts, code map, contributing
 progress.html              roadmap, what we do not know yet, timeline
@@ -40,7 +42,7 @@ styling and any direct `*.html` URL still work.
 
 - The header and footer are repeated in every page (no templating), so a navigation change means editing each file
   (`grep -l 'id="site-nav"' *.html blog/*.html`). Pages in `blog/` use `../` prefixes.
-- Every number on the site comes from the Matter repository's docs (`README.md`, `baby/README.md`) or from a real run of `baby school` / `baby ask`. When the project's numbers change, update them here.
+- Every number on the site comes from the Matter repository's docs (`README.md`, `novice/README.md`, `baby/README.md`, `docs/`) or from a real run of `baby school` / `baby ask`. When the project's numbers change, update them here.
   Keep the caveats next to them.
 - Do not guess what the name "Matter" means; the project keeps that open.
 - Hardware is described only roughly on purpose. Do not add personal or device-specific details.

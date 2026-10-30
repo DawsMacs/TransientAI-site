@@ -64,7 +64,7 @@
 <div class="wrap bar">
 <a class="brand" href="./"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">Matterworm</span></a>
 <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg class="icon" aria-hidden="true"><use href="#menu"/></svg><span>Menu</span></button>
-<nav class="nav" id="site-nav" aria-label="Main"><a href="baby">Project</a><a href="research" aria-current="page">Research</a><a href="docs">Docs</a><a href="blog/">Blog</a><a href="progress">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/Matterworm/Matter" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="novice">Project</a><a href="research" aria-current="page">Research</a><a href="docs">Docs</a><a href="blog/">Blog</a><a href="progress">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/Matterworm/Matter" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
 </div>
 </header>
 <main id="main">
@@ -110,11 +110,12 @@
 <p><strong>This is a working hypothesis, not a verified result.</strong> Some evidence points the same way (for example, the compute needed to reach a fixed image-classification accuracy fell 44× between 2012 and 2019, faster than hardware improvement alone would give), and some points the other way (transformers won partly because they map well onto GPUs, and many ideas that look good small fade at scale). We treat the difficulties as terrain: they tell us what to measure first, not whether to continue.</p>
 <p>If the hypothesis is right, then roughly: some design reaches a given quality using far less energy per answer than a dense transformer; the gain comes mostly from software; and it runs on a phone or an old laptop. Those are things that can be tested one at a time. The controlled comparison that would test them properly (a matched small transformer against <code>baby</code>-style systems, at several sizes) has only partly been done: a first controlled comparison exists, and the matched transformer at several sizes (which needs a rented GPU) has not. See the <a href="progress">roadmap</a>.</p>
 
-<h2>Matterworm Copernicus</h2>
+<h2>Sparse generative learning</h2><p>A CPU-first prediction attempt improved bits per byte on fresh books while leaving coherent generation and broad wording transfer unresolved. <a href="sparse-generative-learning">Read the measured results, failures, and lessons</a>.</p><h2>Matterworm Copernicus</h2>
 <p>Copernicus is a planned competing branch of the Matter project. Its job is to look at AI research beyond our own work, and to propose alternatives to our core approach where that research points somewhere different. A proposal that passes a review process can be folded back into Matter, so both sides gain: we keep our main objectives and mission, and we do not neglect what the rest of the field has found. It is an idea at this stage, not yet running.</p>
 
 <h2>Where to read more</h2>
 <ul>
+<li><a href="https://github.com/Matterworm/Matter/blob/main/novice/README.md">novice/README.md</a>: current results and known limitations.</li>
 <li><a href="https://github.com/Matterworm/Matter/blob/main/baby/README.md" rel="noopener">baby/README.md</a>: the experiment log, newest first, including the dead ends.</li>
 <li><a href="https://github.com/Matterworm/Matter/blob/main/LEARNING.md" rel="noopener">LEARNING.md</a>: notes and sources on learning efficiently on small hardware.</li>
 <li><a href="https://github.com/Matterworm/Matter/blob/main/docs/Direction.md" rel="noopener">docs/Direction.md</a>: strategy, hardware terrain and the language choice.</li>
@@ -135,7 +136,8 @@
 <div>
 <h4>Project</h4>
 <ul>
-<li><a href="baby">Matter &amp; baby</a></li>
+<li><a href="novice">Matter &amp; Novice</a></li>
+<li><a href="baby">Baby reference</a></li>
 <li><a href="docs">Documentation</a></li>
 <li><a href="progress">Progress &amp; roadmap</a></li>
 <li><a href="https://github.com/Matterworm/Matter" rel="noopener">Source on GitHub<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>

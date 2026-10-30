@@ -64,7 +64,7 @@
 <div class="wrap bar">
 <a class="brand" href="./"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">Matterworm</span></a>
 <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg class="icon" aria-hidden="true"><use href="#menu"/></svg><span>Menu</span></button>
-<nav class="nav" id="site-nav" aria-label="Main"><a href="baby">Project</a><a href="research">Research</a><a href="docs">Docs</a><a href="blog/">Blog</a><a href="progress" aria-current="page">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/Matterworm/Matter" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="novice">Project</a><a href="research">Research</a><a href="docs">Docs</a><a href="blog/">Blog</a><a href="progress" aria-current="page">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/Matterworm/Matter" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
 </div>
 </header>
 <main id="main">
@@ -77,7 +77,7 @@
 </div>
 </section>
 
-<section class="section">
+<section class="section"><div class="wrap"><div class="prose"><h2>Current status · October 30, 2026</h2><p><strong>Novice is published as a research snapshot. Development is pausing while research and foundation maintenance continue.</strong> Baby remains the frozen reference.</p><p>The latest initially blind test acquired 0 of 12 hard kinds on each seed, with zero wrong facts and zero answered traps. Constant inference added one kind per seed; the earlier cost saving did not transfer. The release removes answer-dependent recurrence-validation exclusions; independent outer evaluation remains open.</p><p><a href="novice">Novice results and release</a> · <a href="sparse-generative-learning">Sparse generative learning retrospective</a>. The roadmap and timeline below retain earlier milestones and Baby measurements.</p></div></div></section><section class="section">
 <div class="wrap">
 <div class="section-head">
 <h2>Roadmap</h2>
@@ -134,7 +134,7 @@
 <h2>Timeline</h2>
 <p>Newest first. Dates are when the work landed; numbers come from the experiment log and carry its caveats.</p>
 </div>
-<ol class="timeline">
+<ol class="timeline"><li><time>2026-10-30</time><h3>Novice research snapshot; development pause</h3><p>Novice takes the spotlight, Baby stays preserved, and the sparse generative attempt is documented with its failures. Research and foundation maintenance continue.</p></li>
 <li class="reveal"><time>2026-10-25</time><h3>A baby that doubts its teacher, without losing the power to learn</h3><p>The exam had been repeating every held answer on the baby's behalf, so a wrongly told fact was always believed at once. Letting the baby hold it cut believed mistakes, but also stopped it learning a rule that really changes (the rule-changing kinds fell from 91, 94 and 100% right to 72, 69 and 50%). The fix: several different held answers that one exact law explains together, with everything it was taught, are believed together; isolated slips are not. Clean-stream accuracy is unchanged within 0.4 points, believed mistakes under a wrong teacher fell by half or more, and a first version of the check that passed when it should not have was caught by a test.</p></li>
 <li class="reveal"><time>2026-10-25</time><h3>DragonFly BSD joins</h3><p>DragonFly was the one system that failed on 2026-10-24: the tests passed but the program died at startup. The cause turned out to be link-time optimization dropping DragonFly's thread library (a known Rust issue), not our code. Built without it, and then, after a small change that starts one thread there, with it, all 153 tests pass and every pinned answer matches the Linux reference, and CI has a fourteenth row. The first notes had guessed the wrong cause; the account is in the <a href="docs#p-dragonfly">docs</a>.</p></li>
 <li class="reveal"><time>2026-10-24</time><h3>Thirteen platforms, one set of answers</h3><p>CI now builds and tests on Linux (x86_64 glibc and musl, aarch64, 32-bit x86, s390x, riscv64), macOS (Apple silicon and Intel), Windows, FreeBSD, NetBSD, OpenBSD and WebAssembly. A fingerprint and an accuracy audit show the math libraries differ in the last bit, never by more than one step; the exam predictions, the adaptive replies and the scorecard are byte-identical to the Linux reference on every row, and a difference on the reference row now fails the build. DragonFly BSD was tried and dropped (its packaged Rust crashes the program at startup). CI-tested, not a promise of support. The guide to getting and running it is in the <a href="docs#platforms">docs</a>. <a href="blog/platforms">Read the post</a>.</p></li>
@@ -173,7 +173,8 @@
 <div>
 <h4>Project</h4>
 <ul>
-<li><a href="baby">Matter &amp; baby</a></li>
+<li><a href="novice">Matter &amp; Novice</a></li>
+<li><a href="baby">Baby reference</a></li>
 <li><a href="docs">Documentation</a></li>
 <li><a href="progress">Progress &amp; roadmap</a></li>
 <li><a href="https://github.com/Matterworm/Matter" rel="noopener">Source on GitHub<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>

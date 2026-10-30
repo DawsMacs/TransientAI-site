@@ -64,7 +64,7 @@
 <div class="wrap bar">
 <a class="brand" href="./"><img class="invertable" src="assets/mark.svg" alt="" width="28" height="28"><span class="wordmark">Matterworm</span></a>
 <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav"><svg class="icon" aria-hidden="true"><use href="#menu"/></svg><span>Menu</span></button>
-<nav class="nav" id="site-nav" aria-label="Main"><a href="baby">Project</a><a href="research">Research</a><a href="docs" aria-current="page">Docs</a><a href="blog/">Blog</a><a href="progress">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/Matterworm/Matter" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="novice">Project</a><a href="research">Research</a><a href="docs" aria-current="page">Docs</a><a href="blog/">Blog</a><a href="progress">Progress</a><a href="about">About</a><a class="gh" href="https://github.com/Matterworm/Matter" rel="noopener"><svg class="icon fill" aria-hidden="true"><use href="#github"/></svg>GitHub</a></nav>
 </div>
 </header>
 <main id="main">
@@ -73,14 +73,14 @@
 <div class="wrap">
 <p class="eyebrow">Documentation</p>
 <h1>Build it, run it, read it</h1>
-<p class="lead">A guide to the <code>baby</code> prototype in the <a href="https://github.com/Matterworm/Matter" rel="noopener">Matter repository</a>. The repository's own markdown files are the source of truth and move faster than this page; where they disagree, trust them.</p>
+<p class="lead">Start with <a href="#novice">Novice</a>, the current research snapshot. The sections below preserve the guide to the <code>baby</code> reference in the <a href="https://github.com/Matterworm/Matter" rel="noopener">Matter repository</a>. The repository's own markdown files are the source of truth and move faster than this page; where they disagree, trust them.</p>
 </div>
 </section>
 
 <div class="wrap docs-layout">
 <nav class="docs-nav" aria-label="On this page">
 <p>Start</p>
-<a href="#quickstart">Quick start</a>
+<a href="#novice">Novice quick start</a><a href="#quickstart">Baby reference</a>
 <a href="#platforms">Run it on your platform</a>
 <a class="sub" href="#p-linux">Linux</a>
 <a class="sub" href="#p-macos">macOS</a>
@@ -107,9 +107,22 @@
 </nav>
 
 <div class="docs-body">
+<h2 id="novice">Build and judge Novice</h2><p>Novice has its own Cargo workspace and builds offline with a recent stable Rust toolchain. Python 3 is used by the exam generators. This is a source research release; the protocol is an exam interface, not a chat app.</p>
+<pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
+cd Matter
+git checkout novice-v0.0.1
+cargo test --manifest-path novice/Cargo.toml --release --offline
+cargo build --manifest-path novice/Cargo.toml --release --offline
+cargo build --release --offline
+./target/release/baby exam adapt-write /tmp/novice-exam --seed 1
+EXAM_NO_JOULES=1 ./target/release/baby exam adapt-drive /tmp/novice-exam "$PWD/novice/target/release/novice" serve
+bash novice/golden/check.sh</code></pre>
+<p>Use a new exam directory if it already exists. <code>EXAM_NO_JOULES=1</code> makes this a correctness check without energy measurement. Read the <a href="novice">results and known limitations</a> and <a href="https://github.com/Matterworm/Matter/blob/main/docs/NoviceRelease.md">release notes</a> before interpreting the scores.</p>
+<h2>Baby reference documentation</h2><p>The remaining platform, command, and scorecard sections describe Baby. Their historical measurements do not describe Novice.</p>
+
 
 <h2 id="quickstart">Quick start</h2>
-<p>You need a stable Rust toolchain (edition 2021). There are no other dependencies, and no network is needed to build. There are no prebuilt binaries or releases yet: you build from source, which takes about a minute and a half on a recent desktop.</p>
+<p>You need a stable Rust toolchain (edition 2021). There are no other dependencies, and no network is needed to build. For Baby, there are no prebuilt binaries: you build from source, which takes about a minute and a half on a recent desktop.</p>
 <pre data-copy><code>git clone https://github.com/Matterworm/Matter.git
 cd Matter
 cargo build --release --offline
@@ -132,7 +145,7 @@ bash golden/check.sh                                   # about 1.5 min: the exam
 <p>If <code>WRONG</code> is ever above 0.0%, or a refusal battery in the tests starts answering, treat it as a regression: honesty is the property this project protects first. The <code>golden/</code> check pins what the baby answers on the reference platform (Linux x86_64); on another platform, a difference is a finding to report, not something to patch over.</p></div>
 
 <h2 id="platforms">Run it on your platform</h2>
-<p>One section per system. Every system listed is built and tested by CI on GitHub's runners on every change. That is a result of testing, not a promise of support: other versions and other hardware were not tried. The package commands are each system's standard ones, not something we ran on a fresh machine; the Matter commands are the ones CI runs.</p>
+<p>One section per system. Baby's platform matrix runs on relevant Baby changes and weekly. Novice has separate Linux checks, with additional platforms weekly and on demand. That is a result of testing, not a promise of support: other versions and other hardware were not tried. The package commands are each system's standard ones, not something we ran on a fresh machine; the Matter commands are the ones CI runs.</p>
 <div class="table-wrap">
 <table>
 <thead><tr><th>Your system</th><th>Go to</th><th>How it is tested</th></tr></thead>
@@ -420,7 +433,8 @@ bash golden/check.sh              # the pinned exam answers must still match</co
 <div>
 <h4>Project</h4>
 <ul>
-<li><a href="baby">Matter &amp; baby</a></li>
+<li><a href="novice">Matter &amp; Novice</a></li>
+<li><a href="baby">Baby reference</a></li>
 <li><a href="docs">Documentation</a></li>
 <li><a href="progress">Progress &amp; roadmap</a></li>
 <li><a href="https://github.com/Matterworm/Matter" rel="noopener">Source on GitHub<svg class="icon icon-inline" aria-hidden="true"><use href="#arrow-up-right"/></svg></a></li>
